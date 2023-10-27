@@ -1,0 +1,62 @@
+2023-10-26 02:01:40.638  INFO 53035 --- [main] c.l.d.DataSyncTaskApplication            : Starting DataSyncTaskApplication using Java 1.8.0_312 on liuhaodeMacBook-Pro.local with PID 53035 (/Users/liuhao/Downloads/JavaProjects/DataSyncTask/target/classes started by liuhao in /Users/liuhao/Downloads/JavaProjects/DataSyncTask)
+2023-10-26 02:01:40.641  INFO 53035 --- [main] c.l.d.DataSyncTaskApplication            : The following 1 profile is active: "dev"
+2023-10-26 02:01:41.274  INFO 53035 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 23849 (http)
+2023-10-26 02:01:41.278  INFO 53035 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-10-26 02:01:41.278  INFO 53035 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-26 02:01:41.328  INFO 53035 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-10-26 02:01:41.328  INFO 53035 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 660 ms
+2023-10-26 02:01:41.469  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Starting...
+2023-10-26 02:01:41.471  WARN 53035 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-10-26 02:01:41.681  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Start completed.
+2023-10-26 02:01:41.683  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Starting...
+2023-10-26 02:01:41.778  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Start completed.
+2023-10-26 02:01:41.779  INFO 53035 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [sqlserver] success
+2023-10-26 02:01:41.779  INFO 53035 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [mysql] success
+2023-10-26 02:01:41.779  WARN 53035 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [2] datasource,Please add your primary datasource or check your configuration
+2023-10-26 02:01:42.180  INFO 53035 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 23849 (http) with context path ''
+2023-10-26 02:01:42.186  INFO 53035 --- [main] c.l.d.DataSyncTaskApplication            : Started DataSyncTaskApplication in 1.773 seconds (JVM running for 2.122)
+2023-10-26 02:01:52.652  INFO 53035 --- [http-nio-23849-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-26 02:01:52.652  INFO 53035 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-10-26 02:01:52.653  INFO 53035 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-10-26 02:02:25.741  INFO 53035 --- [SpringApplicationShutdownHook] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
+2023-10-26 02:02:25.742  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : sqlserver - Shutdown initiated...
+2023-10-26 02:02:25.744  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : sqlserver - Shutdown completed.
+2023-10-26 02:02:25.744  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : mysql - Shutdown initiated...
+2023-10-26 02:02:25.749  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : mysql - Shutdown completed.
+2023-10-26 02:02:25.749  INFO 53035 --- [SpringApplicationShutdownHook] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
+2023-10-26 02:02:28.508  INFO 53068 --- [main] c.l.d.DataSyncTaskApplication            : Starting DataSyncTaskApplication using Java 1.8.0_312 on liuhaodeMacBook-Pro.local with PID 53068 (/Users/liuhao/Downloads/JavaProjects/DataSyncTask/target/classes started by liuhao in /Users/liuhao/Downloads/JavaProjects/DataSyncTask)
+2023-10-26 02:02:28.510  INFO 53068 --- [main] c.l.d.DataSyncTaskApplication            : The following 1 profile is active: "dev"
+2023-10-26 02:02:29.108  INFO 53068 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 23849 (http)
+2023-10-26 02:02:29.113  INFO 53068 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-10-26 02:02:29.113  INFO 53068 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.80]
+2023-10-26 02:02:29.162  INFO 53068 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-10-26 02:02:29.163  INFO 53068 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 627 ms
+2023-10-26 02:02:29.287  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Starting...
+2023-10-26 02:02:29.289  WARN 53068 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2023-10-26 02:02:29.494  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Start completed.
+2023-10-26 02:02:29.496  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Starting...
+2023-10-26 02:02:29.582  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Start completed.
+2023-10-26 02:02:29.583  INFO 53068 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [sqlserver] success
+2023-10-26 02:02:29.583  INFO 53068 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [mysql] success
+2023-10-26 02:02:29.583  WARN 53068 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [2] datasource,Please add your primary datasource or check your configuration
+2023-10-26 02:02:29.976  INFO 53068 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 23849 (http) with context path ''
+2023-10-26 02:02:29.984  INFO 53068 --- [main] c.l.d.DataSyncTaskApplication            : Started DataSyncTaskApplication in 1.749 seconds (JVM running for 2.029)
+2023-10-26 02:02:41.620  INFO 53068 --- [http-nio-23849-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-10-26 02:02:41.621  INFO 53068 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-10-26 02:02:41.622  INFO 53068 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-10-26 02:20:25.240  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=17m25s636ms).
+2023-10-26 02:20:25.326  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=17m25s639ms).
+2023-10-26 03:26:06.898  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h5m41s658ms).
+2023-10-26 03:26:06.981  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h5m41s655ms).
+2023-10-26 04:31:07.809  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h5m912ms).
+2023-10-26 04:31:07.892  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h5m911ms).
+2023-10-26 05:38:22.627  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h7m14s818ms).
+2023-10-26 05:38:22.718  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h7m14s826ms).
+2023-10-26 07:00:15.193  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h21m52s566ms).
+2023-10-26 07:00:15.281  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h21m52s563ms).
+2023-10-26 08:03:33.835  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h3m18s641ms).
+2023-10-26 08:03:33.916  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h3m18s635ms).
+2023-10-26 08:30:27.058  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=26m53s224ms).
+2023-10-26 08:30:27.143  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=26m53s226ms).
+2023-10-26 08:45:09.808  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=14m42s750ms).
+2023-10-26 08:45:09.892  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=14m42s750ms).
