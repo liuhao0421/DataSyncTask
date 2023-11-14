@@ -24,11 +24,8 @@ import java.util.stream.Stream;
 import static io.debezium.data.Envelope.FieldName.*;
 import static java.util.stream.Collectors.toMap;
 
-/**
- * @author lei
- * @create 2021-06-22 16:11
- * @desc 变更数据处理
- **/
+
+
 @Service
 @Log4j2
 @ConditionalOnProperty(name = "timely.switch", havingValue = "true")

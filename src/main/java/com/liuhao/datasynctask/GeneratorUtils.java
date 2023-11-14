@@ -51,7 +51,7 @@ public class GeneratorUtils {
 
    /* public static DataSourceConfig getDataSourceConfig(){
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=liuhao");
+        dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=sync_data");
         dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         dsc.setUsername("SA");
         dsc.setPassword("Root@1234");
@@ -75,12 +75,19 @@ public class GeneratorUtils {
         gc.setBaseResultMap(true);
         gc.setBaseColumnList(true);
 
-        gc.setEntityName("%sEntityMySQL");
-        gc.setMapperName("%sMapperMySQL");
-        gc.setXmlName("%sMapperMySQL");
-        gc.setServiceName("%sServiceMySQL");
-        gc.setServiceImplName("%sServiceImplMySQL");
-        gc.setControllerName("%sControllerMySQL");
+//        gc.setEntityName("%sEntityMySQL");
+//        gc.setMapperName("%sMapperMySQL");
+//        gc.setXmlName("%sMapperMySQL");
+//        gc.setServiceName("%sServiceMySQL");
+//        gc.setServiceImplName("%sServiceImplMySQL");
+//        gc.setControllerName("%sControllerMySQL");
+
+        gc.setEntityName("%sEntitySQLserver");
+        gc.setMapperName("%sMapperSQLserver");
+        gc.setXmlName("%sMapperSQLserver");
+        gc.setServiceName("%sServiceSQLserver");
+        gc.setServiceImplName("%sServiceImplSQLserver");
+        gc.setControllerName("%sControllerSQLserver");
 
 
         return gc;

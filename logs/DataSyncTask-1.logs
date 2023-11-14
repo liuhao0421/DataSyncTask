@@ -1,62 +1,26 @@
-2023-10-26 02:01:40.638  INFO 53035 --- [main] c.l.d.DataSyncTaskApplication            : Starting DataSyncTaskApplication using Java 1.8.0_312 on liuhaodeMacBook-Pro.local with PID 53035 (/Users/liuhao/Downloads/JavaProjects/DataSyncTask/target/classes started by liuhao in /Users/liuhao/Downloads/JavaProjects/DataSyncTask)
-2023-10-26 02:01:40.641  INFO 53035 --- [main] c.l.d.DataSyncTaskApplication            : The following 1 profile is active: "dev"
-2023-10-26 02:01:41.274  INFO 53035 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 23849 (http)
-2023-10-26 02:01:41.278  INFO 53035 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-10-26 02:01:41.278  INFO 53035 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.80]
-2023-10-26 02:01:41.328  INFO 53035 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-10-26 02:01:41.328  INFO 53035 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 660 ms
-2023-10-26 02:01:41.469  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Starting...
-2023-10-26 02:01:41.471  WARN 53035 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-2023-10-26 02:01:41.681  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Start completed.
-2023-10-26 02:01:41.683  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Starting...
-2023-10-26 02:01:41.778  INFO 53035 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Start completed.
-2023-10-26 02:01:41.779  INFO 53035 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [sqlserver] success
-2023-10-26 02:01:41.779  INFO 53035 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [mysql] success
-2023-10-26 02:01:41.779  WARN 53035 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [2] datasource,Please add your primary datasource or check your configuration
-2023-10-26 02:01:42.180  INFO 53035 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 23849 (http) with context path ''
-2023-10-26 02:01:42.186  INFO 53035 --- [main] c.l.d.DataSyncTaskApplication            : Started DataSyncTaskApplication in 1.773 seconds (JVM running for 2.122)
-2023-10-26 02:01:52.652  INFO 53035 --- [http-nio-23849-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-10-26 02:01:52.652  INFO 53035 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-10-26 02:01:52.653  INFO 53035 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-10-26 02:02:25.741  INFO 53035 --- [SpringApplicationShutdownHook] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource start closing ....
-2023-10-26 02:02:25.742  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : sqlserver - Shutdown initiated...
-2023-10-26 02:02:25.744  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : sqlserver - Shutdown completed.
-2023-10-26 02:02:25.744  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : mysql - Shutdown initiated...
-2023-10-26 02:02:25.749  INFO 53035 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : mysql - Shutdown completed.
-2023-10-26 02:02:25.749  INFO 53035 --- [SpringApplicationShutdownHook] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource all closed success,bye
-2023-10-26 02:02:28.508  INFO 53068 --- [main] c.l.d.DataSyncTaskApplication            : Starting DataSyncTaskApplication using Java 1.8.0_312 on liuhaodeMacBook-Pro.local with PID 53068 (/Users/liuhao/Downloads/JavaProjects/DataSyncTask/target/classes started by liuhao in /Users/liuhao/Downloads/JavaProjects/DataSyncTask)
-2023-10-26 02:02:28.510  INFO 53068 --- [main] c.l.d.DataSyncTaskApplication            : The following 1 profile is active: "dev"
-2023-10-26 02:02:29.108  INFO 53068 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 23849 (http)
-2023-10-26 02:02:29.113  INFO 53068 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-10-26 02:02:29.113  INFO 53068 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.80]
-2023-10-26 02:02:29.162  INFO 53068 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-10-26 02:02:29.163  INFO 53068 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 627 ms
-2023-10-26 02:02:29.287  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Starting...
-2023-10-26 02:02:29.289  WARN 53068 --- [main] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
-2023-10-26 02:02:29.494  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : mysql - Start completed.
-2023-10-26 02:02:29.496  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Starting...
-2023-10-26 02:02:29.582  INFO 53068 --- [main] com.zaxxer.hikari.HikariDataSource       : sqlserver - Start completed.
-2023-10-26 02:02:29.583  INFO 53068 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [sqlserver] success
-2023-10-26 02:02:29.583  INFO 53068 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource - add a datasource named [mysql] success
-2023-10-26 02:02:29.583  WARN 53068 --- [main] c.b.d.d.DynamicRoutingDataSource         : dynamic-datasource initial loaded [2] datasource,Please add your primary datasource or check your configuration
-2023-10-26 02:02:29.976  INFO 53068 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 23849 (http) with context path ''
-2023-10-26 02:02:29.984  INFO 53068 --- [main] c.l.d.DataSyncTaskApplication            : Started DataSyncTaskApplication in 1.749 seconds (JVM running for 2.029)
-2023-10-26 02:02:41.620  INFO 53068 --- [http-nio-23849-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-10-26 02:02:41.621  INFO 53068 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-10-26 02:02:41.622  INFO 53068 --- [http-nio-23849-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-10-26 02:20:25.240  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=17m25s636ms).
-2023-10-26 02:20:25.326  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=17m25s639ms).
-2023-10-26 03:26:06.898  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h5m41s658ms).
-2023-10-26 03:26:06.981  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h5m41s655ms).
-2023-10-26 04:31:07.809  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h5m912ms).
-2023-10-26 04:31:07.892  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h5m911ms).
-2023-10-26 05:38:22.627  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h7m14s818ms).
-2023-10-26 05:38:22.718  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h7m14s826ms).
-2023-10-26 07:00:15.193  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h21m52s566ms).
-2023-10-26 07:00:15.281  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h21m52s563ms).
-2023-10-26 08:03:33.835  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h3m18s641ms).
-2023-10-26 08:03:33.916  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h3m18s635ms).
-2023-10-26 08:30:27.058  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=26m53s224ms).
-2023-10-26 08:30:27.143  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=26m53s226ms).
-2023-10-26 08:45:09.808  WARN 53068 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=14m42s750ms).
-2023-10-26 08:45:09.892  WARN 53068 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=14m42s750ms).
+2023-11-14 00:42:19.691  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h4m50s913ms).
+2023-11-14 00:42:20.019  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h4m50s803ms).
+2023-11-14 01:48:43.392  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h6m23s702ms).
+2023-11-14 01:48:43.717  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h6m23s698ms).
+2023-11-14 02:55:38.151  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h6m54s759ms).
+2023-11-14 02:55:38.468  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h6m54s751ms).
+2023-11-14 03:59:25.758  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h3m47s607ms).
+2023-11-14 03:59:26.070  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h3m47s602ms).
+2023-11-14 05:07:30.549  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h8m4s791ms).
+2023-11-14 05:07:30.850  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h8m4s780ms).
+2023-11-14 06:04:07.956  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=56m37s406ms).
+2023-11-14 06:04:08.264  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=56m37s414ms).
+2023-11-14 07:04:44.180  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h36s224ms).
+2023-11-14 07:04:44.484  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h36s220ms).
+2023-11-14 08:23:34.957  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=1h18m50s778ms).
+2023-11-14 08:23:35.256  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=1h18m50s772ms).
+2023-11-14 08:32:11.266  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=8m36s309ms).
+2023-11-14 08:32:11.566  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=8m36s310ms).
+2023-11-14 08:46:17.533  WARN 93287 --- [sqlserver housekeeper] com.zaxxer.hikari.pool.HikariPool        : sqlserver - Thread starvation or clock leap detected (housekeeper delta=13m36s262ms).
+2023-11-14 08:46:17.838  WARN 93287 --- [mysql housekeeper] com.zaxxer.hikari.pool.HikariPool        : mysql - Thread starvation or clock leap detected (housekeeper delta=13m36s263ms).
+2023-11-14 09:30:15.822  WARN 93287 --- [sqlserver connection adder] c.m.s.j.internals.SQLServerConnection    : ConnectionID:16905 ClientConnectionId: a4d2746f-9fe6-4a45-8896-5cc606ec0040 Prelogin error: host localhost port 1433 Unexpected end of prelogin response after 0 bytes read
+2023-11-14 09:30:16.838  WARN 93287 --- [sqlserver connection adder] c.m.s.j.internals.SQLServerConnection    : ConnectionID:16905 ClientConnectionId: ae0dd914-44b7-4e64-bd87-65975baf47b2 Prelogin error: host localhost port 1433 Unexpected end of prelogin response after 0 bytes read
+2023-11-14 09:30:17.855  WARN 93287 --- [sqlserver connection adder] c.m.s.j.internals.SQLServerConnection    : ConnectionID:16905 ClientConnectionId: a7606575-5c95-42e9-bff9-f061a8883678 Prelogin error: host localhost port 1433 Error reading prelogin response: Connection reset ClientConnectionId:a7606575-5c95-42e9-bff9-f061a8883678
+2023-11-14 09:30:18.865  WARN 93287 --- [sqlserver connection adder] c.m.s.j.internals.SQLServerConnection    : ConnectionID:16905 ClientConnectionId: 4af60479-4925-4b1f-92b8-5b85becb62d5 Prelogin error: host localhost port 1433 Unexpected end of prelogin response after 0 bytes read
+2023-11-14 09:30:19.873  WARN 93287 --- [sqlserver connection adder] c.m.s.j.internals.SQLServerConnection    : ConnectionID:16905 ClientConnectionId: 2497e332-ab51-4985-86e6-316863a1fcd6 Prelogin error: host localhost port 1433 Unexpected end of prelogin response after 0 bytes read
+2023-11-14 09:30:20.878  WARN 93287 --- [sqlserver connection adder] c.m.s.j.internals.SQLServerConnection    : ConnectionID:16905 ClientConnectionId: dce8d005-4275-48c0-8434-800624734e8b Prelogin error: host localhost port 1433 Error reading prelogin response: Connection reset ClientConnectionId:dce8d005-4275-48c0-8434-800624734e8b

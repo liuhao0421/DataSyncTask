@@ -2,11 +2,7 @@ package com.liuhao.datasynctask.domain;
 
 import lombok.Data;
 
-/**
- * @author lei
- * @create 2021-06-23 09:58
- * @desc sqlServer数据变更model
- **/
+
 @Data
 public class ChangeListenerModel {
     /**
