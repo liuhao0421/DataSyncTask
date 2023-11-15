@@ -1,12 +1,18 @@
 package com.liuhao.datasynctask.controller;
 
-import com.liuhao.datasynctask.service.DataSyncService;
+import com.liuhao.datasynctask.handler.MemberCardXGSyncHandler;
+import com.liuhao.datasynctask.handler.MemberCardXZSyncHandler;
+import com.liuhao.datasynctask.service.MemberCardService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/dataSync")
@@ -16,23 +22,23 @@ public class FirstTestController {
 
     @Value("${person.name}")
     private String name;
-
+    @Autowired
+    private RestTemplate template;
 
     @Autowired
-    private DataSyncService dataSyncService;
+    private MemberCardService dataSyncService;
 
-
-    @RequestMapping("/test1")
-    public String test1Controller(){
-        log.info(name);
-        return name;
+    @Autowired
+    MemberCardXGSyncHandler memberCardXGSyncHandler;
+    @Autowired
+    MemberCardXZSyncHandler memberCardXZSyncHandler;
+    @RequestMapping("/membercardinsert")
+    public void test1Controller(){
+        memberCardXZSyncHandler.syncTask();
     }
 
-    @RequestMapping("/test2")
-    public String test2Controller(){
-
-        return dataSyncService.dataSourceTestForSqlServer();
+    @RequestMapping("/membaercardupdate")
+    public void test2Controller(){
+        memberCardXGSyncHandler.syncTask();
     }
-
-
 }

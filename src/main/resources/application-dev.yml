@@ -59,12 +59,11 @@ spring:
           username: root
           password: rootroot
           driver-class-name: com.mysql.jdbc.Driver
-
-#        sqlserver:
-#          url: jdbc:sqlserver://localhost:1433;DatabaseName=liuhao
-#          username: SA
-#          password: Root@1234
-#          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        sqlserver:
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=sync_data
+          username: SA
+          password: Root@1234
+          driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
 mybatis-plus:
   mapper-locations: mapper/*.xml

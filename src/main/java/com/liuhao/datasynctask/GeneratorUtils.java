@@ -49,7 +49,7 @@ public class GeneratorUtils {
         return dsc;
     }
 
-   /* public static DataSourceConfig getDataSourceConfig(){
+/*    public static DataSourceConfig getDataSourceConfig(){
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=sync_data");
         dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -74,7 +74,7 @@ public class GeneratorUtils {
         gc.setIdType(IdType.INPUT);// id生成策略
         gc.setBaseResultMap(true);
         gc.setBaseColumnList(true);
-
+//
 //        gc.setEntityName("%sEntityMySQL");
 //        gc.setMapperName("%sMapperMySQL");
 //        gc.setXmlName("%sMapperMySQL");
@@ -82,13 +82,21 @@ public class GeneratorUtils {
 //        gc.setServiceImplName("%sServiceImplMySQL");
 //        gc.setControllerName("%sControllerMySQL");
 
-        gc.setEntityName("%sEntitySQLserver");
+/*        gc.setEntityName("%sEntitySQLserver");
         gc.setMapperName("%sMapperSQLserver");
         gc.setXmlName("%sMapperSQLserver");
         gc.setServiceName("%sServiceSQLserver");
         gc.setServiceImplName("%sServiceImplSQLserver");
-        gc.setControllerName("%sControllerSQLserver");
+        gc.setControllerName("%sControllerSQLserver");*/
 
+
+
+        gc.setEntityName("%sEntity");
+        gc.setMapperName("%sMapper");
+        gc.setXmlName("%sMapper");
+        gc.setServiceName("%sService");
+        gc.setServiceImplName("%sServiceImpl");
+        gc.setControllerName("%sController");
 
         return gc;
     }
