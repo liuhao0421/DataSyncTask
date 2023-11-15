@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.SaleDailyMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.SaleDailyEntity">
+        <id column="braid" property="braid" />
+        <result column="saleid" property="saleid" />
+        <result column="saletype" property="saletype" />
+        <result column="saledate" property="saledate" />
+        <result column="inputdate" property="inputdate" />
+        <result column="uploaddate" property="uploaddate" />
+        <result column="sendflag" property="sendflag" />
+        <result column="posno" property="posno" />
+        <result column="salerid" property="salerid" />
+        <result column="batch" property="batch" />
+        <result column="proid" property="proid" />
+        <result column="barcode" property="barcode" />
+        <result column="barcode_bulk" property="barcodeBulk" />
+        <result column="invoiceId" property="invoiceId" />
+        <result column="batchrowid" property="batchrowid" />
+        <result column="saleqty" property="saleqty" />
+        <result column="saleamt" property="saleamt" />
+        <result column="saledisamt" property="saledisamt" />
+        <result column="LastcostPrice" property="LastcostPrice" />
+        <result column="costPrice" property="costPrice" />
+        <result column="normalprice" property="normalprice" />
+        <result column="ncostprice" property="ncostprice" />
+        <result column="curPrice" property="curPrice" />
+        <result column="points1" property="points1" />
+        <result column="classid" property="classid" />
+        <result column="brandid" property="brandid" />
+        <result column="supid" property="supid" />
+        <result column="producttype" property="producttype" />
+        <result column="stockflag" property="stockflag" />
+        <result column="returnrat" property="returnrat" />
+        <result column="points" property="points" />
+        <result column="memcardno" property="memcardno" />
+        <result column="productpmtplanno" property="productpmtplanno" />
+        <result column="brandclasspmtplanno" property="brandclasspmtplanno" />
+        <result column="transpmtplanno" property="transpmtplanno" />
+        <result column="donatetype" property="donatetype" />
+        <result column="pmtqty" property="pmtqty" />
+        <result column="disExchange" property="disExchange" />
+        <result column="overlap" property="overlap" />
+        <result column="present" property="present" />
+        <result column="isinpromt" property="isinpromt" />
+        <result column="pmtrowid" property="pmtrowid" />
+        <result column="retsaleid" property="retsaleid" />
+        <result column="accredit_return" property="accreditReturn" />
+        <result column="accredit_disamt" property="accreditDisamt" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        braid, saleid, saletype, saledate, inputdate, uploaddate, sendflag, posno, salerid, batch, proid, barcode, barcode_bulk, invoiceId, batchrowid, saleqty, saleamt, saledisamt, LastcostPrice, costPrice, normalprice, ncostprice, curPrice, points1, classid, brandid, supid, producttype, stockflag, returnrat, points, memcardno, productpmtplanno, brandclasspmtplanno, transpmtplanno, donatetype, pmtqty, disExchange, overlap, present, isinpromt, pmtrowid, retsaleid, accredit_return, accredit_disamt, sync_time, sync_flag
+    </sql>
+
+</mapper>

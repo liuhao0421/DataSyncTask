@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.PosGoodsFlowMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.PosGoodsFlowEntity">
+        <id column="company_id" property="companyId" />
+        <result column="storeId" property="storeId" />
+        <result column="saleId" property="saleId" />
+        <result column="saleType" property="saleType" />
+        <result column="saleDate" property="saleDate" />
+        <result column="inputDate" property="inputDate" />
+        <result column="uploadDate" property="uploadDate" />
+        <result column="netStatus" property="netStatus" />
+        <result column="posno" property="posno" />
+        <result column="cashierId" property="cashierId" />
+        <result column="batchid" property="batchid" />
+        <result column="goodsId" property="goodsId" />
+        <result column="barcode" property="barcode" />
+        <result column="inputBar" property="inputBar" />
+        <result column="priceQtyFlag" property="priceQtyFlag" />
+        <result column="rowid" property="rowid" />
+        <result column="saleQty" property="saleQty" />
+        <result column="saleAmt" property="saleAmt" />
+        <result column="saleDisAmt" property="saleDisAmt" />
+        <result column="inPrice" property="inPrice" />
+        <result column="costPrice" property="costPrice" />
+        <result column="salePrice" property="salePrice" />
+        <result column="vipPrice" property="vipPrice" />
+        <result column="curPrice" property="curPrice" />
+        <result column="curPoint" property="curPoint" />
+        <result column="classid" property="classid" />
+        <result column="brandid" property="brandid" />
+        <result column="supid" property="supid" />
+        <result column="supplyMode" property="supplyMode" />
+        <result column="stocktype" property="stocktype" />
+        <result column="retType" property="retType" />
+        <result column="retRate" property="retRate" />
+        <result column="vipPoint" property="vipPoint" />
+        <result column="memId" property="memId" />
+        <result column="promtNo1" property="promtNo1" />
+        <result column="promtNo2" property="promtNo2" />
+        <result column="promtNo3" property="promtNo3" />
+        <result column="promtType" property="promtType" />
+        <result column="promtQty" property="promtQty" />
+        <result column="promtDisType" property="promtDisType" />
+        <result column="promtSaleOnSale" property="promtSaleOnSale" />
+        <result column="promtIsPresent" property="promtIsPresent" />
+        <result column="promtIsInPromt" property="promtIsInPromt" />
+        <result column="promtRowId" property="promtRowId" />
+        <result column="retSaleId" property="retSaleId" />
+        <result column="retAccId" property="retAccId" />
+        <result column="disAmtAccId" property="disAmtAccId" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        company_id, storeId, saleId, saleType, saleDate, inputDate, uploadDate, netStatus, posno, cashierId, batchid, goodsId, barcode, inputBar, priceQtyFlag, rowid, saleQty, saleAmt, saleDisAmt, inPrice, costPrice, salePrice, vipPrice, curPrice, curPoint, classid, brandid, supid, supplyMode, stocktype, retType, retRate, vipPoint, memId, promtNo1, promtNo2, promtNo3, promtType, promtQty, promtDisType, promtSaleOnSale, promtIsPresent, promtIsInPromt, promtRowId, retSaleId, retAccId, disAmtAccId, sync_time, sync_flag
+    </sql>
+
+</mapper>

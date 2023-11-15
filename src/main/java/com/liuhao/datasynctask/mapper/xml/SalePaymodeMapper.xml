@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.SalePaymodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.SalePaymodeEntity">
+        <id column="braid" property="braid" />
+        <result column="saleid" property="saleid" />
+        <result column="saletype" property="saletype" />
+        <result column="saledate" property="saledate" />
+        <result column="inputdate" property="inputdate" />
+        <result column="uploaddate" property="uploaddate" />
+        <result column="sendflag" property="sendflag" />
+        <result column="posno" property="posno" />
+        <result column="salerid" property="salerid" />
+        <result column="saleamt" property="saleamt" />
+        <result column="disamt" property="disamt" />
+        <result column="payamt" property="payamt" />
+        <result column="paydibs" property="paydibs" />
+        <result column="cash" property="cash" />
+        <result column="creditcard" property="creditcard" />
+        <result column="prepaycard" property="prepaycard" />
+        <result column="mempay" property="mempay" />
+        <result column="shoppingticket" property="shoppingticket" />
+        <result column="points" property="points" />
+        <result column="alipay" property="alipay" />
+        <result column="wxpay" property="wxpay" />
+        <result column="bestpay" property="bestpay" />
+        <result column="otheramt" property="otheramt" />
+        <result column="othermemo" property="othermemo" />
+        <result column="reccash" property="reccash" />
+        <result column="retamt" property="retamt" />
+        <result column="clearamt" property="clearamt" />
+        <result column="iccard_disamt" property="iccardDisamt" />
+        <result column="membalance" property="membalance" />
+        <result column="payorderno" property="payorderno" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        braid, saleid, saletype, saledate, inputdate, uploaddate, sendflag, posno, salerid, saleamt, disamt, payamt, paydibs, cash, creditcard, prepaycard, mempay, shoppingticket, points, alipay, wxpay, bestpay, otheramt, othermemo, reccash, retamt, clearamt, iccard_disamt, membalance, payorderno, sync_time, sync_flag
+    </sql>
+
+</mapper>

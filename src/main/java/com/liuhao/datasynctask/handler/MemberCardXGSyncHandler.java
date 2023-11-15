@@ -30,7 +30,7 @@ public class MemberCardXGSyncHandler{
                         dataSyncService.updateSourceData(syncedData);
                     }
                 }else{
-                    System.out.println("无修改数据！！！！！！！");
+                    System.out.println("member_card无修改数据！！！！！！！");
                     Thread.sleep(5000);
                 }
             }

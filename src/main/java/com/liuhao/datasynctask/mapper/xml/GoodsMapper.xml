@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.GoodsMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.GoodsEntity">
+        <id column="company_id" property="companyId" />
+        <result column="goodsid" property="goodsid" />
+        <result column="barcode" property="barcode" />
+        <result column="goodsname" property="goodsname" />
+        <result column="unitno" property="unitno" />
+        <result column="inprice" property="inprice" />
+        <result column="saleprice" property="saleprice" />
+        <result column="vipPrice" property="vipPrice" />
+        <result column="vipPoint" property="vipPoint" />
+        <result column="spec" property="spec" />
+        <result column="area" property="area" />
+        <result column="grade" property="grade" />
+        <result column="classid" property="classid" />
+        <result column="brandid" property="brandid" />
+        <result column="supid" property="supid" />
+        <result column="intax" property="intax" />
+        <result column="saletax" property="saletax" />
+        <result column="helpCode" property="helpCode" />
+        <result column="boxrate" property="boxrate" />
+        <result column="minOrderQty" property="minOrderQty" />
+        <result column="barType" property="barType" />
+        <result column="proType" property="proType" />
+        <result column="supplyMode" property="supplyMode" />
+        <result column="canScalechgPrice" property="canScalechgPrice" />
+        <result column="vipDisType" property="vipDisType" />
+        <result column="minDisrate" property="minDisrate" />
+        <result column="printMode" property="printMode" />
+        <result column="shelfDay" property="shelfDay" />
+        <result column="seasonal" property="seasonal" />
+        <result column="retType" property="retType" />
+        <result column="retRate" property="retRate" />
+        <result column="alarmDays" property="alarmDays" />
+        <result column="cpsType" property="cpsType" />
+        <result column="cpsRate" property="cpsRate" />
+        <result column="stockType" property="stockType" />
+        <result column="operId" property="operId" />
+        <result column="createdate" property="createdate" />
+        <result column="lastUpdateUser" property="lastUpdateUser" />
+        <result column="updatedate" property="updatedate" />
+        <result column="stopdate" property="stopdate" />
+        <result column="status" property="status" />
+        <result column="ingredient" property="ingredient" />
+        <result column="saleMethod" property="saleMethod" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        company_id, goodsid, barcode, goodsname, unitno, inprice, saleprice, vipPrice, vipPoint, spec, area, grade, classid, brandid, supid, intax, saletax, helpCode, boxrate, minOrderQty, barType, proType, supplyMode, canScalechgPrice, vipDisType, minDisrate, printMode, shelfDay, seasonal, retType, retRate, alarmDays, cpsType, cpsRate, stockType, operId, createdate, lastUpdateUser, updatedate, stopdate, status, ingredient, saleMethod, sync_time, sync_flag
+    </sql>
+
+</mapper>

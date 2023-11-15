@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.ProductMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.ProductEntity">
+        <id column="proid" property="proid" />
+        <result column="barcode" property="barcode" />
+        <result column="proname" property="proname" />
+        <result column="measureid" property="measureid" />
+        <result column="taxprice" property="taxprice" />
+        <result column="normalprice" property="normalprice" />
+        <result column="memberprice" property="memberprice" />
+        <result column="cardpoint" property="cardpoint" />
+        <result column="spec" property="spec" />
+        <result column="area" property="area" />
+        <result column="grade" property="grade" />
+        <result column="classid" property="classid" />
+        <result column="brandid" property="brandid" />
+        <result column="supid" property="supid" />
+        <result column="intax" property="intax" />
+        <result column="saletax" property="saletax" />
+        <result column="Helpcode" property="Helpcode" />
+        <result column="packetqty" property="packetqty" />
+        <result column="minorderqty" property="minorderqty" />
+        <result column="barmode" property="barmode" />
+        <result column="ProType" property="ProType" />
+        <result column="proflag" property="proflag" />
+        <result column="udf3" property="udf3" />
+        <result column="potflag" property="potflag" />
+        <result column="MinDisrate" property="MinDisrate" />
+        <result column="weightflag" property="weightflag" />
+        <result column="warrantydays" property="warrantydays" />
+        <result column="Seasonal" property="Seasonal" />
+        <result column="Returntype" property="Returntype" />
+        <result column="returnrat" property="returnrat" />
+        <result column="alarmdays" property="alarmdays" />
+        <result column="cpstype" property="cpstype" />
+        <result column="cpsrate" property="cpsrate" />
+        <result column="stocktaking" property="stocktaking" />
+        <result column="operatorid" property="operatorid" />
+        <result column="createdate" property="createdate" />
+        <result column="LastUpdateUser" property="LastUpdateUser" />
+        <result column="updatedate" property="updatedate" />
+        <result column="stopdate" property="stopdate" />
+        <result column="status" property="status" />
+        <result column="Material" property="Material" />
+        <result column="saleMethod" property="saleMethod" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        proid, barcode, proname, measureid, taxprice, normalprice, memberprice, cardpoint, spec, area, grade, classid, brandid, supid, intax, saletax, Helpcode, packetqty, minorderqty, barmode, ProType, proflag, udf3, potflag, MinDisrate, weightflag, warrantydays, Seasonal, Returntype, returnrat, alarmdays, cpstype, cpsrate, stocktaking, operatorid, createdate, LastUpdateUser, updatedate, stopdate, status, Material, saleMethod, sync_time, sync_flag
+    </sql>
+
+</mapper>

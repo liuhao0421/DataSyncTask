@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.GoodsmulticodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.GoodsmulticodeEntity">
+        <id column="company_id" property="companyId" />
+        <result column="goodsid" property="goodsid" />
+        <result column="barcode" property="barcode" />
+        <result column="pluno" property="pluno" />
+        <result column="labelFormat" property="labelFormat" />
+        <result column="isMain" property="isMain" />
+        <result column="createDate" property="createDate" />
+        <result column="updateDate" property="updateDate" />
+        <result column="barType" property="barType" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        company_id, goodsid, barcode, pluno, labelFormat, isMain, createDate, updateDate, barType, sync_time, sync_flag
+    </sql>
+
+</mapper>

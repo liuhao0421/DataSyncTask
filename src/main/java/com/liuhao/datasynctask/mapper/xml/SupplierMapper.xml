@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.SupplierMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.SupplierEntity">
+        <id column="supid" property="supid" />
+        <result column="supname" property="supname" />
+        <result column="address" property="address" />
+        <result column="tel" property="tel" />
+        <result column="fax" property="fax" />
+        <result column="contactman" property="contactman" />
+        <result column="email" property="email" />
+        <result column="chiefman" property="chiefman" />
+        <result column="bankname" property="bankname" />
+        <result column="bankAcctNo" property="bankAcctNo" />
+        <result column="businesstype" property="businesstype" />
+        <result column="settlementMode" property="settlementMode" />
+        <result column="settledays" property="settledays" />
+        <result column="paymethod" property="paymethod" />
+        <result column="stocktaking" property="stocktaking" />
+        <result column="orderWeekDay" property="orderWeekDay" />
+        <result column="sendweekday" property="sendweekday" />
+        <result column="predays" property="predays" />
+        <result column="limitdays" property="limitdays" />
+        <result column="createdate" property="createdate" />
+        <result column="updatedate" property="updatedate" />
+        <result column="status" property="status" />
+        <result column="remark" property="remark" />
+        <result column="purtype" property="purtype" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        supid, supname, address, tel, fax, contactman, email, chiefman, bankname, bankAcctNo, businesstype, settlementMode, settledays, paymethod, stocktaking, orderWeekDay, sendweekday, predays, limitdays, createdate, updatedate, status, remark, purtype, sync_time, sync_flag
+    </sql>
+
+</mapper>

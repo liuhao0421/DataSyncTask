@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.SaleProidSummaryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.SaleProidSummaryEntity">
+        <id column="braid" property="braid" />
+        <result column="saledate" property="saledate" />
+        <result column="proid" property="proid" />
+        <result column="supid" property="supid" />
+        <result column="returnrat" property="returnrat" />
+        <result column="saleqty" property="saleqty" />
+        <result column="saleamt" property="saleamt" />
+        <result column="avgsaleprice" property="avgsaleprice" />
+        <result column="salecostprice" property="salecostprice" />
+        <result column="salecostamt" property="salecostamt" />
+        <result column="saledisamt" property="saledisamt" />
+        <result column="saleprofit" property="saleprofit" />
+        <result column="pmtqty" property="pmtqty" />
+        <result column="pmtamt" property="pmtamt" />
+        <result column="pmtcostamt" property="pmtcostamt" />
+        <result column="pmtdisamt" property="pmtdisamt" />
+        <result column="pmtprofit" property="pmtprofit" />
+        <result column="memqty" property="memqty" />
+        <result column="memamt" property="memamt" />
+        <result column="memcostamt" property="memcostamt" />
+        <result column="memdisamt" property="memdisamt" />
+        <result column="memprofit" property="memprofit" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        braid, saledate, proid, supid, returnrat, saleqty, saleamt, avgsaleprice, salecostprice, salecostamt, saledisamt, saleprofit, pmtqty, pmtamt, pmtcostamt, pmtdisamt, pmtprofit, memqty, memamt, memcostamt, memdisamt, memprofit, sync_time, sync_flag
+    </sql>
+
+</mapper>

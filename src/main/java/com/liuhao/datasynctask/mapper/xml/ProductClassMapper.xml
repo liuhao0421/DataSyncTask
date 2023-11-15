@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.ProductClassMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.ProductClassEntity">
+        <id column="classid" property="classid" />
+        <result column="id" property="id" />
+        <result column="classname" property="classname" />
+        <result column="parentcode" property="parentcode" />
+        <result column="level" property="level" />
+        <result column="haschild" property="haschild" />
+        <result column="potflag" property="potflag" />
+        <result column="status" property="status" />
+        <result column="points" property="points" />
+        <result column="createdate" property="createdate" />
+        <result column="updatedate" property="updatedate" />
+        <result column="status1" property="status1" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, classid, classname, parentcode, level, haschild, potflag, status, points, createdate, updatedate, status1, sync_time, sync_flag
+    </sql>
+
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.ProductBarcodeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.ProductBarcodeEntity">
+        <id column="proid" property="proid" />
+        <result column="barcode" property="barcode" />
+        <result column="pluno" property="pluno" />
+        <result column="labelformat" property="labelformat" />
+        <result column="mainflag" property="mainflag" />
+        <result column="createdate" property="createdate" />
+        <result column="updatedate" property="updatedate" />
+        <result column="barmode" property="barmode" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        proid, barcode, pluno, labelformat, mainflag, createdate, updatedate, barmode, sync_time, sync_flag
+    </sql>
+
+</mapper>

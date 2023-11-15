@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.GoodssupplierMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.GoodssupplierEntity">
+        <id column="company_id" property="companyId" />
+        <result column="supId" property="supId" />
+        <result column="supName" property="supName" />
+        <result column="addr" property="addr" />
+        <result column="phone" property="phone" />
+        <result column="fax" property="fax" />
+        <result column="contacts" property="contacts" />
+        <result column="email" property="email" />
+        <result column="legalperson" property="legalperson" />
+        <result column="BusinessLicence" property="BusinessLicence" />
+        <result column="bankName" property="bankName" />
+        <result column="bankAccount" property="bankAccount" />
+        <result column="bankPhone" property="bankPhone" />
+        <result column="supplyMode" property="supplyMode" />
+        <result column="SettlementMode" property="SettlementMode" />
+        <result column="SettlementDays" property="SettlementDays" />
+        <result column="payMode" property="payMode" />
+        <result column="stockType" property="stockType" />
+        <result column="orderWeekDay" property="orderWeekDay" />
+        <result column="deliveryWeekDay" property="deliveryWeekDay" />
+        <result column="deliveryDays" property="deliveryDays" />
+        <result column="orderExpireDays" property="orderExpireDays" />
+        <result column="operId" property="operId" />
+        <result column="createDate" property="createDate" />
+        <result column="updateUser" property="updateUser" />
+        <result column="updateDate" property="updateDate" />
+        <result column="status" property="status" />
+        <result column="remark" property="remark" />
+        <result column="isStrongRelation" property="isStrongRelation" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        company_id, supId, supName, addr, phone, fax, contacts, email, legalperson, BusinessLicence, bankName, bankAccount, bankPhone, supplyMode, SettlementMode, SettlementDays, payMode, stockType, orderWeekDay, deliveryWeekDay, deliveryDays, orderExpireDays, operId, createDate, updateUser, updateDate, status, remark, isStrongRelation, sync_time, sync_flag
+    </sql>
+
+</mapper>

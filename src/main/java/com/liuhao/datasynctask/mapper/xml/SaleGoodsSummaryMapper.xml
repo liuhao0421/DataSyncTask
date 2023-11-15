@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.SaleGoodsSummaryMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.SaleGoodsSummaryEntity">
+        <id column="company_id" property="companyId" />
+        <result column="storeId" property="storeId" />
+        <result column="saledate" property="saledate" />
+        <result column="goodsId" property="goodsId" />
+        <result column="supid" property="supid" />
+        <result column="retType" property="retType" />
+        <result column="retRate" property="retRate" />
+        <result column="saleQty" property="saleQty" />
+        <result column="saleAmt" property="saleAmt" />
+        <result column="salePrice" property="salePrice" />
+        <result column="avgSalePrice" property="avgSalePrice" />
+        <result column="saleCostPrice" property="saleCostPrice" />
+        <result column="saleCostAmt" property="saleCostAmt" />
+        <result column="saleDisAmt" property="saleDisAmt" />
+        <result column="saleProfit" property="saleProfit" />
+        <result column="promtQty" property="promtQty" />
+        <result column="promtAmt" property="promtAmt" />
+        <result column="promtCostAmt" property="promtCostAmt" />
+        <result column="promtDisAmt" property="promtDisAmt" />
+        <result column="promtProfit" property="promtProfit" />
+        <result column="vipQty" property="vipQty" />
+        <result column="vipAmt" property="vipAmt" />
+        <result column="vipCostAmt" property="vipCostAmt" />
+        <result column="vipDisAmt" property="vipDisAmt" />
+        <result column="vipProfit" property="vipProfit" />
+        <result column="retQty" property="retQty" />
+        <result column="retAmt" property="retAmt" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        company_id, storeId, saledate, goodsId, supid, retType, retRate, saleQty, saleAmt, salePrice, avgSalePrice, saleCostPrice, saleCostAmt, saleDisAmt, saleProfit, promtQty, promtAmt, promtCostAmt, promtDisAmt, promtProfit, vipQty, vipAmt, vipCostAmt, vipDisAmt, vipProfit, retQty, retAmt, sync_time, sync_flag
+    </sql>
+
+</mapper>

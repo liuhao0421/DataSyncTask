@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.MemberPointMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.MemberPointEntity">
+        <id column="company_id" property="companyId" />
+        <result column="point_id" property="pointId" />
+        <result column="braid" property="braid" />
+        <result column="mem_id" property="memId" />
+        <result column="card_id" property="cardId" />
+        <result column="appid" property="appid" />
+        <result column="appname" property="appname" />
+        <result column="point_type" property="pointType" />
+        <result column="amount_id" property="amountId" />
+        <result column="amount" property="amount" />
+        <result column="points" property="points" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="synch" property="synch" />
+        <result column="comment" property="comment" />
+        <result column="ischecked" property="ischecked" />
+        <result column="posno" property="posno" />
+        <result column="sendflag" property="sendflag" />
+        <result column="uploaddate" property="uploaddate" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        company_id, point_id, braid, mem_id, card_id, appid, appname, point_type, amount_id, amount, points, create_by, create_time, synch, comment, ischecked, posno, sendflag, uploaddate, sync_time, sync_flag
+    </sql>
+
+</mapper>

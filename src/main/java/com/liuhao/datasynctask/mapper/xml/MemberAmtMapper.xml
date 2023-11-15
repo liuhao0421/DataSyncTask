@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.MemberAmtMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.MemberAmtEntity">
+        <id column="company_id" property="companyId" />
+        <result column="amt_id" property="amtId" />
+        <result column="mem_id" property="memId" />
+        <result column="card_id" property="cardId" />
+        <result column="braid" property="braid" />
+        <result column="appid" property="appid" />
+        <result column="appname" property="appname" />
+        <result column="card_from" property="cardFrom" />
+        <result column="adjust_type" property="adjustType" />
+        <result column="oldamount" property="oldamount" />
+        <result column="amount" property="amount" />
+        <result column="preferential_type" property="preferentialType" />
+        <result column="preferential_amount" property="preferentialAmount" />
+        <result column="pay" property="pay" />
+        <result column="balance" property="balance" />
+        <result column="amount_id" property="amountId" />
+        <result column="create_by" property="createBy" />
+        <result column="create_time" property="createTime" />
+        <result column="comment" property="comment" />
+        <result column="isreturned" property="isreturned" />
+        <result column="paymethod" property="paymethod" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        company_id, amt_id, mem_id, card_id, braid, appid, appname, card_from, adjust_type, oldamount, amount, preferential_type, preferential_amount, pay, balance, amount_id, create_by, create_time, comment, isreturned, paymethod, sync_time, sync_flag
+    </sql>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.RedEnvelopeMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.RedEnvelopeEntity">
+        <id column="appid" property="appid" />
+        <result column="id" property="id" />
+        <result column="openid" property="openid" />
+        <result column="cardid" property="cardid" />
+        <result column="envelope_amt" property="envelopeAmt" />
+        <result column="envelope_type" property="envelopeType" />
+        <result column="envelope_status" property="envelopeStatus" />
+        <result column="envelope_source" property="envelopeSource" />
+        <result column="createdate" property="createdate" />
+        <result column="gettime" property="gettime" />
+        <result column="envelope_starttime" property="envelopeStarttime" />
+        <result column="envelope_endtime" property="envelopeEndtime" />
+        <result column="order_amt" property="orderAmt" />
+        <result column="awarduuid" property="awarduuid" />
+        <result column="remark" property="remark" />
+        <result column="award_id" property="awardId" />
+        <result column="updatedate" property="updatedate" />
+        <result column="use_date" property="useDate" />
+        <result column="company_id" property="companyId" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, appid, openid, cardid, envelope_amt, envelope_type, envelope_status, envelope_source, createdate, gettime, envelope_starttime, envelope_endtime, order_amt, awarduuid, remark, award_id, updatedate, use_date, company_id, sync_time, sync_flag
+    </sql>
+
+</mapper>

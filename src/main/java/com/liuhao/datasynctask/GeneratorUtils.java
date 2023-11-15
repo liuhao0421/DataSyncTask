@@ -35,10 +35,10 @@ public class GeneratorUtils {
         autoGenerator.execute();
     }
 
-    /**
+/*    *//**
      * 设置数据源
      * @return
-     */
+     *//*
     public static DataSourceConfig getDataSourceConfig(){
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:mysql://localhost:3306/data-sync-task?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&AllowPublicKeyRetrieval=True");
@@ -47,9 +47,9 @@ public class GeneratorUtils {
         dsc.setPassword("rootroot");
         dsc.setDbType(DbType.MYSQL);
         return dsc;
-    }
+    }*/
 
-/*    public static DataSourceConfig getDataSourceConfig(){
+    public static DataSourceConfig getDataSourceConfig(){
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=sync_data");
         dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -57,7 +57,7 @@ public class GeneratorUtils {
         dsc.setPassword("Root@1234");
         dsc.setDbType(DbType.SQL_SERVER);
         return dsc;
-    }*/
+    }
 
 
     /**
@@ -125,7 +125,7 @@ public class GeneratorUtils {
         strategy.setNaming(NamingStrategy.underline_to_camel);// 下划线转驼峰命名
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         // 设置映射的表名，多张表
-        strategy.setInclude("member_card");
+        strategy.setInclude("v_Coupon_List_Up");
 
         strategy.setEntityLombokModel(true);// 是否启用lombok开启注解
         strategy.setLogicDeleteFieldName("isAction");//设置逻辑删除字段
