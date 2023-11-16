@@ -34,6 +34,20 @@ public class DataSyncController {
     MemberPointXZSyncHandler memberPointXZSyncHandler;
     @Autowired
     MemberAmtXZSyncHandler memberAmtXZSyncHandler;
+    @Autowired
+    VCSyncToRedHandler vcSyncToRedHandler;
+    @Autowired
+    ProductSyncToGoodsHandler productSyncToGoodsHandler;
+    @Autowired
+    ProBarSyncToGoodsMCGoodsHandler proBarSyncToGoodsMCGoodsHandler;
+    @Autowired
+    SupplierSyncToGoodsSupplierHandler supplierSyncToGoodsSupplierHandler;
+    @Autowired
+    ProClassToGoodsClassHandler proClassToGoodsClassHandler;
+    @Autowired
+    SaleDToPosGFHandler saleDToPosGFHandler;
+    @Autowired
+    SalePToPosPFHandler salePToPosPFHandler;
 
 
 
@@ -61,4 +75,40 @@ public class DataSyncController {
     public void memberamtinsert(){
         memberAmtXZSyncHandler.syncTask();
     }
+
+    @RequestMapping("/vctoredsync")
+    public void vctoredsync(){
+        vcSyncToRedHandler.syncTask();
+    }
+
+    @RequestMapping("/producttogoodssync")
+    public void producttogoodssync(){
+        productSyncToGoodsHandler.syncTask();
+    }
+
+    @RequestMapping("/probartogoodsmcsync")
+    public void probartogoodsmcsync(){
+        proBarSyncToGoodsMCGoodsHandler.syncTask();
+    }
+
+    @RequestMapping("/suppliertogoodssuppliersync")
+    public void suppliertogoodssuppliersync(){
+        supplierSyncToGoodsSupplierHandler.syncTask();
+    }
+
+    @RequestMapping("/proclasstogoodsclasssync")
+    public void proclasstogoodsclasssync(){
+        proClassToGoodsClassHandler.syncTask();
+    }
+
+    @RequestMapping("/saledtoposgfsync")
+    public void saledtoposgfsync(){
+        saleDToPosGFHandler.syncTask();
+    }
+
+    @RequestMapping("/saleptopospfsync")
+    public void saleptopospfsync(){
+        salePToPosPFHandler.syncTask();
+    }
+
 }

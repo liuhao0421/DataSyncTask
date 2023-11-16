@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author liuhao
- * @since 2023-11-15
+ * @since 2023-11-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -30,11 +32,11 @@ public class SalePaymodeEntity implements Serializable {
 
     private String saletype;
 
-    private String saledate;
+    private LocalDateTime saledate;
 
-    private String inputdate;
+    private LocalDateTime inputdate;
 
-    private String uploaddate;
+    private LocalDateTime uploaddate;
 
     private String sendflag;
 
@@ -84,7 +86,7 @@ public class SalePaymodeEntity implements Serializable {
 
     private String payorderno;
 
-    private String syncTime;
+    private LocalDateTime syncTime;
 
     private String syncFlag;
 

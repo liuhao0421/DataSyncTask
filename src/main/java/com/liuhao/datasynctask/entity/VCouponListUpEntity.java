@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,7 +18,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author liuhao
- * @since 2023-11-15
+ * @since 2023-11-05
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -40,14 +42,14 @@ public class VCouponListUpEntity implements Serializable {
 
     private String source;
 
-    private String auditdate;
+    private LocalDateTime auditdate;
 
-    private String printdate;
+    private LocalDateTime printdate;
 
       @TableField(fill = FieldFill.INSERT)
-    private String startdate;
+    private LocalDateTime startdate;
 
-    private String enddate;
+    private LocalDateTime enddate;
 
     private Double fullamt;
 
@@ -59,13 +61,13 @@ public class VCouponListUpEntity implements Serializable {
     private Double awardId;
 
       @TableField(fill = FieldFill.UPDATE)
-    private String updatedate;
+    private LocalDateTime updatedate;
 
-    private String useddate;
+    private LocalDateTime useddate;
 
     private Double companyId;
 
-    private String syncTime;
+    private LocalDateTime syncTime;
 
     private String syncFlag;
 

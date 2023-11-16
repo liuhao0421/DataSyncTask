@@ -82,21 +82,21 @@ public class GeneratorUtils {
 //        gc.setServiceImplName("%sServiceImplMySQL");
 //        gc.setControllerName("%sControllerMySQL");
 
-/*        gc.setEntityName("%sEntitySQLserver");
+        gc.setEntityName("%sEntitySQLserver");
         gc.setMapperName("%sMapperSQLserver");
         gc.setXmlName("%sMapperSQLserver");
         gc.setServiceName("%sServiceSQLserver");
         gc.setServiceImplName("%sServiceImplSQLserver");
-        gc.setControllerName("%sControllerSQLserver");*/
+        gc.setControllerName("%sControllerSQLserver");
 
 
 
-        gc.setEntityName("%sEntity");
-        gc.setMapperName("%sMapper");
-        gc.setXmlName("%sMapper");
-        gc.setServiceName("%sService");
-        gc.setServiceImplName("%sServiceImpl");
-        gc.setControllerName("%sController");
+//        gc.setEntityName("%sEntity");
+//        gc.setMapperName("%sMapper");
+//        gc.setXmlName("%sMapper");
+//        gc.setServiceName("%sService");
+//        gc.setServiceImplName("%sServiceImpl");
+//        gc.setControllerName("%sController");
 
         return gc;
     }
@@ -125,7 +125,7 @@ public class GeneratorUtils {
         strategy.setNaming(NamingStrategy.underline_to_camel);// 下划线转驼峰命名
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         // 设置映射的表名，多张表
-        strategy.setInclude("v_Coupon_List_Up");
+        strategy.setInclude("sys_users");
 
         strategy.setEntityLombokModel(true);// 是否启用lombok开启注解
         strategy.setLogicDeleteFieldName("isAction");//设置逻辑删除字段

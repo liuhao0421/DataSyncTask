@@ -19,7 +19,7 @@ import java.util.List;
  */
 @Mapper
 public interface MemberCardMapper extends BaseMapper<MemberCardEntity> {
-    @Select("select * from member_card where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < update_time) limit 1000")
+    @Select("select * from member_card where sync_flag is null and sync_time is null  limit 1000")
     List<MemberCardEntity> getData();
 
     @Select("select * from member_card where sync_flag = '0' and sync_time < update_time limit 1000")

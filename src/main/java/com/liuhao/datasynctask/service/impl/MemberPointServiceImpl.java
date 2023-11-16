@@ -20,7 +20,7 @@ import java.util.List;
  * </p>
  *
  * @author liuhao
- * @since 2023-11-15
+ * @since 2023-11-05
  */
 @Service
 public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, MemberPointEntity> implements MemberPointService {

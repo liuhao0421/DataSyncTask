@@ -2,6 +2,7 @@ package com.liuhao.datasynctask.mapper;
 
 import com.liuhao.datasynctask.entity.GoodsmulticodeEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * <p>
@@ -9,8 +10,9 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * </p>
  *
  * @author liuhao
- * @since 2023-11-15
+ * @since 2023-11-05
  */
+@Mapper
 public interface GoodsmulticodeMapper extends BaseMapper<GoodsmulticodeEntity> {
 
 }

@@ -14,10 +14,10 @@ import java.util.List;
  * </p>
  *
  * @author liuhao
- * @since 2023-11-15
+ * @since 2023-11-05
  */
 @Mapper
 public interface MemberPointMapper extends BaseMapper<MemberPointEntity> {
-    @Select("select * from member_point where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < create_time) limit 1000")
+    @Select("select * from member_point where sync_flag is null  and sync_time is null limit 1000")
     List<MemberPointEntity> getData();
 }

@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -16,7 +18,7 @@ import lombok.EqualsAndHashCode;
  * </p>
  *
  * @author liuhao
- * @since 2023-11-15
+ * @since 2023-11-02
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
@@ -67,10 +69,10 @@ public class SupplierEntity implements Serializable {
 
     private String limitdays;
 
-    private String createdate;
+    private LocalDateTime createdate;
 
       @TableField(fill = FieldFill.UPDATE)
-    private String updatedate;
+    private LocalDateTime updatedate;
 
     private String status;
 
@@ -78,7 +80,7 @@ public class SupplierEntity implements Serializable {
 
     private String purtype;
 
-    private String syncTime;
+    private LocalDateTime syncTime;
 
     private String syncFlag;
 
