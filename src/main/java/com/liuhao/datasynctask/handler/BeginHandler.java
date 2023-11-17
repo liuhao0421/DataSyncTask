@@ -33,7 +33,7 @@ public class BeginHandler implements ApplicationRunner,Runnable{
 
         BeginHandler beginHandler = new BeginHandler();
 
-/*        Thread memberCardXZThread = new Thread(beginHandler);
+       Thread memberCardXZThread = new Thread(beginHandler);
         memberCardXZThread.setName("memberCardXZ");
         memberCardXZThread.start();
 
@@ -71,7 +71,7 @@ public class BeginHandler implements ApplicationRunner,Runnable{
 
           Thread proClassToGoodsClassSyncThread = new Thread(beginHandler);
         proClassToGoodsClassSyncThread.setName("proClassToGoodsClassSync");
-        proClassToGoodsClassSyncThread.start();*/
+        proClassToGoodsClassSyncThread.start();
 
 
        Thread sDailyToPosGFSyncThread = new Thread(beginHandler);
