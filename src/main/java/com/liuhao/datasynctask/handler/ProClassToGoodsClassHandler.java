@@ -22,6 +22,8 @@ public class ProClassToGoodsClassHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public ProductClassService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -40,7 +42,7 @@ public class ProClassToGoodsClassHandler {
                             //目标表中有该条数据，进行更新值操作
                             GoodsClassEntity goodsClassEntity = JSONObject.parseObject(result, GoodsClassEntity.class);
                             //TODO company_id需要另外写
-                            goodsClassEntity.setCompanyId("");
+                            goodsClassEntity.setCompanyId(beginHandler.getCompanId());
                             goodsClassEntity.setId(productClassEntity.getId());
                             goodsClassEntity.setClassId(productClassEntity.getClassid());
                             goodsClassEntity.setClassName(productClassEntity.getClassname());

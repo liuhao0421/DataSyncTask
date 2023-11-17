@@ -26,11 +26,12 @@ public class BeginHandler implements ApplicationRunner,Runnable{
     @Autowired
     CheckService checkService;
 
+    String companyId = "";
 
     @Override
     public void run(ApplicationArguments args) {
 
-
+        companyId = "1234";
         BeginHandler beginHandler = new BeginHandler();
 
        Thread memberCardXZThread = new Thread(beginHandler);
@@ -95,7 +96,7 @@ public class BeginHandler implements ApplicationRunner,Runnable{
 
 
 
-     /*   String companyId = checkService.getCompanyId();
+        /*companyId = checkService.getCompanyId();
         String status = checkService.getStatus(companyId);
         if("1".equals(status)){
 
@@ -160,9 +161,14 @@ public class BeginHandler implements ApplicationRunner,Runnable{
         sUSqlserverTosUMysqlSyncThread.start();
         }else{
             log.error("当前连接的商家，连接不合法");
-        }
+        }*/
 
-*/
+
+    }
+
+
+    public String getCompanId(){
+        return this.companyId;
     }
 
 

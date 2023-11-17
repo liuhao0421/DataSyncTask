@@ -22,6 +22,8 @@ public class ProBarSyncToGoodsMCGoodsHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public ProductBarcodeService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -39,8 +41,7 @@ public class ProBarSyncToGoodsMCGoodsHandler {
                         }else{
                             //目标表中有该条数据，进行更新值操作
                             GoodsmulticodeEntity goodsmulticodeEntity = JSONObject.parseObject(result, GoodsmulticodeEntity.class);
-                            //TODO company_id需要另外写
-                            goodsmulticodeEntity.setCompanyId("");
+                            goodsmulticodeEntity.setCompanyId(beginHandler.getCompanId());
                             goodsmulticodeEntity.setGoodsid(productBarcodeEntity.getProid());
                             goodsmulticodeEntity.setBarcode(productBarcodeEntity.getBarcode());
                             goodsmulticodeEntity.setPluno(productBarcodeEntity.getPluno());

@@ -22,6 +22,8 @@ public class SProidToSGSHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public SaleProidSummaryService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -40,7 +42,7 @@ public class SProidToSGSHandler {
                             //目标表中有该条数据，进行更新值操作
                             SaleGoodsSummaryEntity saleGoodsSummaryEntity = JSONObject.parseObject(result, SaleGoodsSummaryEntity.class);
                             //TODO company_id需要另外写
-                            saleGoodsSummaryEntity.setCompanyId("");
+                            saleGoodsSummaryEntity.setCompanyId(beginHandler.getCompanId());
                             saleGoodsSummaryEntity.setStoreId(saleProidSummaryEntity.getBraid());
                             saleGoodsSummaryEntity.setSaledate(saleProidSummaryEntity.getSaledate());
                             saleGoodsSummaryEntity.setGoodsId(saleProidSummaryEntity.getProid());

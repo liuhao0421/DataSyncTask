@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.SaleGoodsSummaryEntity;
 import com.liuhao.datasynctask.entity.SaleProidSummaryEntity;
 import com.liuhao.datasynctask.entity.SysUsersEntity;
 import com.liuhao.datasynctask.entity.SysUsersEntitySQLserver;
+import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.SaleGoodsSummaryMapper;
 import com.liuhao.datasynctask.mapper.SaleProidSummaryMapper;
 import com.liuhao.datasynctask.mapper.SysUsersMapper;
@@ -37,6 +38,8 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
 
     @Autowired
     private SysUsersMapper sysUsersMapper;
+    @Autowired
+    BeginHandler beginHandler;
 
     //获取数据源新增的数据
     @Override
@@ -89,7 +92,7 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
             SysUsersEntitySQLserver sysUsersEntitySQLserver  = JSONObject.parseObject(sourceData, SysUsersEntitySQLserver.class);
             SysUsersEntity sysUsersEntity = new SysUsersEntity();
             //TODO company_id需要另外写
-            sysUsersEntity.setCompanyId("");
+            sysUsersEntity.setCompanyId(beginHandler.getCompanId());
             sysUsersEntity.setStoreId(sysUsersEntitySQLserver.getStoreId());
             sysUsersEntity.setUserId(sysUsersEntitySQLserver.getUserId());
             sysUsersEntity.setUserName(sysUsersEntitySQLserver.getUserName());

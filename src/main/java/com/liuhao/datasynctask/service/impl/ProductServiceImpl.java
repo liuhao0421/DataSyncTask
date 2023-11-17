@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.GoodsEntity;
 import com.liuhao.datasynctask.entity.ProductEntity;
 import com.liuhao.datasynctask.entity.RedEnvelopeEntity;
 import com.liuhao.datasynctask.entity.VCouponListUpEntity;
+import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.GoodsMapper;
 import com.liuhao.datasynctask.mapper.ProductMapper;
 import com.liuhao.datasynctask.mapper.RedEnvelopeMapper;
@@ -38,6 +39,8 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
 
     @Autowired
     private GoodsMapper goodsMapper;
+    @Autowired
+    BeginHandler beginHandler;
 
     //获取数据源新增的数据
     @Override
@@ -90,7 +93,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
             ProductEntity productEntity = JSONObject.parseObject(sourceData, ProductEntity.class);
             GoodsEntity goodsEntity = new GoodsEntity();
             //TODO company_id需要另外写
-            goodsEntity.setCompanyId("");
+            goodsEntity.setCompanyId(beginHandler.getCompanId());
             goodsEntity.setGoodsid(productEntity.getProid());
             goodsEntity.setBarcode(productEntity.getBarcode());
             goodsEntity.setGoodsname(productEntity.getProname());

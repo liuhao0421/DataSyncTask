@@ -22,6 +22,8 @@ public class SaleDToPosGFHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public SaleDailyService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -40,7 +42,7 @@ public class SaleDToPosGFHandler {
                             //目标表中有该条数据，进行更新值操作
                             PosGoodsFlowEntity posGoodsFlowEntity = JSONObject.parseObject(result, PosGoodsFlowEntity.class);
                             //TODO company_id需要另外写
-                            posGoodsFlowEntity.setCompanyId("");
+                            posGoodsFlowEntity.setCompanyId(beginHandler.getCompanId());
                             posGoodsFlowEntity.setStoreId(saleDailyEntity.getBraid());
                             posGoodsFlowEntity.setSaleId(saleDailyEntity.getSaleid());
                             posGoodsFlowEntity.setSaleType(saleDailyEntity.getSaletype());

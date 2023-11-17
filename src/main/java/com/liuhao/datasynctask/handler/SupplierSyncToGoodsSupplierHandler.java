@@ -22,6 +22,8 @@ public class SupplierSyncToGoodsSupplierHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public SupplierService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -40,7 +42,7 @@ public class SupplierSyncToGoodsSupplierHandler {
                             //目标表中有该条数据，进行更新值操作
                             GoodssupplierEntity goodssupplierEntity = JSONObject.parseObject(result, GoodssupplierEntity.class);
                             //TODO company_id需要另外写
-                            goodssupplierEntity.setCompanyId("");
+                            goodssupplierEntity.setCompanyId(beginHandler.getCompanId());
                             goodssupplierEntity.setSupId(supplierEntity.getSupid());
                             goodssupplierEntity.setSupName(supplierEntity.getSupname());
                             goodssupplierEntity.setAddr(supplierEntity.getAddress());

@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.GoodsClassEntity;
 import com.liuhao.datasynctask.entity.PosGoodsFlowEntity;
 import com.liuhao.datasynctask.entity.ProductClassEntity;
 import com.liuhao.datasynctask.entity.SaleDailyEntity;
+import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.GoodsClassMapper;
 import com.liuhao.datasynctask.mapper.PosGoodsFlowMapper;
 import com.liuhao.datasynctask.mapper.ProductClassMapper;
@@ -37,6 +38,8 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
 
     @Autowired
     private PosGoodsFlowMapper posGoodsFlowMapper;
+    @Autowired
+    BeginHandler beginHandler;
 
     //获取数据源新增的数据
     @Override
@@ -92,7 +95,7 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
             SaleDailyEntity saleDailyEntity = JSONObject.parseObject(sourceData, SaleDailyEntity.class);
             PosGoodsFlowEntity posGoodsFlowEntity = new PosGoodsFlowEntity();
             //TODO company_id需要另外写
-            posGoodsFlowEntity.setCompanyId("");
+            posGoodsFlowEntity.setCompanyId(beginHandler.getCompanId());
             posGoodsFlowEntity.setStoreId(saleDailyEntity.getBraid());
             posGoodsFlowEntity.setSaleId(saleDailyEntity.getSaleid());
             posGoodsFlowEntity.setSaleType(saleDailyEntity.getSaletype());

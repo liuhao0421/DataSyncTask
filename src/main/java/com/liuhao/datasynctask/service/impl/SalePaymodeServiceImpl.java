@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.PosGoodsFlowEntity;
 import com.liuhao.datasynctask.entity.PosPayFlowEntity;
 import com.liuhao.datasynctask.entity.SaleDailyEntity;
 import com.liuhao.datasynctask.entity.SalePaymodeEntity;
+import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.PosGoodsFlowMapper;
 import com.liuhao.datasynctask.mapper.PosPayFlowMapper;
 import com.liuhao.datasynctask.mapper.SaleDailyMapper;
@@ -37,6 +38,8 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
 
     @Autowired
     private PosPayFlowMapper posPayFlowMapper;
+    @Autowired
+    BeginHandler beginHandler;
 
     //获取数据源新增的数据
     @Override
@@ -90,7 +93,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             SalePaymodeEntity salePaymodeEntity = JSONObject.parseObject(sourceData, SalePaymodeEntity.class);
             PosPayFlowEntity posPayFlowEntity = new PosPayFlowEntity();
             //TODO company_id需要另外写
-            posPayFlowEntity.setCompanyId("");
+            posPayFlowEntity.setCompanyId(beginHandler.getCompanId());
             posPayFlowEntity.setStoreid(salePaymodeEntity.getBraid());
             posPayFlowEntity.setSaleId(salePaymodeEntity.getSaleid());
             posPayFlowEntity.setSaleType(salePaymodeEntity.getSaletype());

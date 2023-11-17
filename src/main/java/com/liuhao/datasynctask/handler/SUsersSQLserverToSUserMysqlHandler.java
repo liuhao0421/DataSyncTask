@@ -22,6 +22,8 @@ public class SUsersSQLserverToSUserMysqlHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public SysUsersServiceImplSQLserver dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -40,7 +42,7 @@ public class SUsersSQLserverToSUserMysqlHandler {
                             //目标表中有该条数据，进行更新值操作
                             SysUsersEntity sysUsersEntity = JSONObject.parseObject(result, SysUsersEntity.class);
                             //TODO company_id需要另外写
-                            sysUsersEntity.setCompanyId("");
+                            sysUsersEntity.setCompanyId(beginHandler.getCompanId());
                             sysUsersEntity.setStoreId(sysUsersEntitySQLserver.getStoreId());
                             sysUsersEntity.setUserId(sysUsersEntitySQLserver.getUserId());
                             sysUsersEntity.setUserName(sysUsersEntitySQLserver.getUserName());

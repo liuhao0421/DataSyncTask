@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.GoodsmulticodeEntity;
 import com.liuhao.datasynctask.entity.GoodssupplierEntity;
 import com.liuhao.datasynctask.entity.ProductBarcodeEntity;
 import com.liuhao.datasynctask.entity.SupplierEntity;
+import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.GoodsmulticodeMapper;
 import com.liuhao.datasynctask.mapper.GoodssupplierMapper;
 import com.liuhao.datasynctask.mapper.ProductBarcodeMapper;
@@ -37,6 +38,8 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
 
     @Autowired
     private GoodssupplierMapper goodssupplierMapper;
+    @Autowired
+    BeginHandler beginHandler;
 
     //获取数据源新增的数据
     @Override
@@ -89,7 +92,7 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
             SupplierEntity supplierEntity = JSONObject.parseObject(sourceData, SupplierEntity.class);
             GoodssupplierEntity goodssupplierEntity = new GoodssupplierEntity();
             //TODO company_id需要另外写
-            goodssupplierEntity.setCompanyId("");
+            goodssupplierEntity.setCompanyId(beginHandler.getCompanId());
             goodssupplierEntity.setSupId(supplierEntity.getSupid());
             goodssupplierEntity.setSupName(supplierEntity.getSupname());
             goodssupplierEntity.setAddr(supplierEntity.getAddress());

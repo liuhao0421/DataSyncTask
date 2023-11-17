@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.PosPayFlowEntity;
 import com.liuhao.datasynctask.entity.SaleGoodsSummaryEntity;
 import com.liuhao.datasynctask.entity.SalePaymodeEntity;
 import com.liuhao.datasynctask.entity.SaleProidSummaryEntity;
+import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.PosPayFlowMapper;
 import com.liuhao.datasynctask.mapper.SaleGoodsSummaryMapper;
 import com.liuhao.datasynctask.mapper.SalePaymodeMapper;
@@ -37,6 +38,8 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
 
     @Autowired
     private SaleGoodsSummaryMapper saleGoodsSummaryMapper;
+    @Autowired
+    BeginHandler beginHandler;
 
     //获取数据源新增的数据
     @Override
@@ -91,7 +94,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             SaleProidSummaryEntity saleProidSummaryEntity  = JSONObject.parseObject(sourceData, SaleProidSummaryEntity.class);
             SaleGoodsSummaryEntity saleGoodsSummaryEntity = new SaleGoodsSummaryEntity();
             //TODO company_id需要另外写
-            saleGoodsSummaryEntity.setCompanyId("");
+            saleGoodsSummaryEntity.setCompanyId(beginHandler.getCompanId());
             saleGoodsSummaryEntity.setStoreId(saleProidSummaryEntity.getBraid());
             saleGoodsSummaryEntity.setSaledate(saleProidSummaryEntity.getSaledate());
             saleGoodsSummaryEntity.setGoodsId(saleProidSummaryEntity.getProid());

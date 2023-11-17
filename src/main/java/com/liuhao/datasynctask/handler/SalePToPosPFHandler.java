@@ -24,6 +24,8 @@ public class SalePToPosPFHandler {
     
     @Autowired
     public SalePaymodeService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -42,7 +44,7 @@ public class SalePToPosPFHandler {
                             //目标表中有该条数据，进行更新值操作
                             PosPayFlowEntity posPayFlowEntity = JSONObject.parseObject(result, PosPayFlowEntity.class);
                             //TODO company_id需要另外写
-                            posPayFlowEntity.setCompanyId("");
+                            posPayFlowEntity.setCompanyId(beginHandler.getCompanId());
                             posPayFlowEntity.setStoreid(salePaymodeEntity.getBraid());
                             posPayFlowEntity.setSaleId(salePaymodeEntity.getSaleid());
                             posPayFlowEntity.setSaleType(salePaymodeEntity.getSaletype());
