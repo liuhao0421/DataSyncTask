@@ -17,6 +17,6 @@ import java.util.List;
  */
 @Mapper
 public interface ProductBarcodeMapper extends BaseMapper<ProductBarcodeEntity> {
-    @Select("select * from product_barcode where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < updatedate) limit 1000")
+    @Select("select TOP (1000)  * from product_barcode where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < updatedate)")
     List<ProductBarcodeEntity> getData();
 }

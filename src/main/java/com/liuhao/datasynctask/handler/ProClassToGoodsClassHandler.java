@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.ProductClassEntity;
 import com.liuhao.datasynctask.entity.SupplierEntity;
 import com.liuhao.datasynctask.service.ProductClassService;
 import com.liuhao.datasynctask.service.SupplierService;
+import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import java.util.List;
 @Component
 @Service
 public class ProClassToGoodsClassHandler {
+    @Autowired
+    SendMessageServcice sendMessageServcice;
     @Autowired
     public ProductClassService dataSyncService;
     //修改同步
@@ -62,6 +65,7 @@ public class ProClassToGoodsClassHandler {
             }
         }catch (Exception e){
             e.printStackTrace();
+            sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

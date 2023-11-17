@@ -57,7 +57,7 @@
 //                        .handleType(handleType)
 //                        .build();
 //                log.info("【Debezium-" + name + "】" + build.toString());
-//                messageService.sendMessage(build);
+//                messageService.SendMessageServcice(build);
 //            }
 //        }
 //    }

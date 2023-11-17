@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.ProductBarcodeEntity;
 import com.liuhao.datasynctask.entity.ProductEntity;
 import com.liuhao.datasynctask.service.ProductBarcodeService;
 import com.liuhao.datasynctask.service.ProductService;
+import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import java.util.List;
 @Component
 @Service
 public class ProBarSyncToGoodsMCGoodsHandler {
+    @Autowired
+    SendMessageServcice sendMessageServcice;
     @Autowired
     public ProductBarcodeService dataSyncService;
     //修改同步
@@ -58,6 +61,7 @@ public class ProBarSyncToGoodsMCGoodsHandler {
             }
         }catch (Exception e){
             e.printStackTrace();
+            sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

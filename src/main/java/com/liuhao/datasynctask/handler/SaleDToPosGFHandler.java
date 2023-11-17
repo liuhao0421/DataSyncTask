@@ -7,6 +7,7 @@ import com.liuhao.datasynctask.entity.ProductClassEntity;
 import com.liuhao.datasynctask.entity.SaleDailyEntity;
 import com.liuhao.datasynctask.service.ProductClassService;
 import com.liuhao.datasynctask.service.SaleDailyService;
+import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,8 @@ import java.util.List;
 @Component
 @Service
 public class SaleDToPosGFHandler {
+    @Autowired
+    SendMessageServcice sendMessageServcice;
     @Autowired
     public SaleDailyService dataSyncService;
     //修改同步
@@ -96,6 +99,7 @@ public class SaleDToPosGFHandler {
             }
         }catch (Exception e){
             e.printStackTrace();
+            sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

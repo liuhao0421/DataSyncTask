@@ -26,8 +26,10 @@ public class ConvertUtil {
                 t = clazz.newInstance();
             } catch (InstantiationException e) {
                 e.printStackTrace();
+            
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
+            
             }
             //获得某个类的所有声明的字段，即包括public、private和proteced
             Field[] fields = clazz.getDeclaredFields();
@@ -69,8 +71,10 @@ public class ConvertUtil {
                 t = clazz.newInstance();
             } catch (InstantiationException e) {
                 e.printStackTrace();
+            
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
+            
             }
             //遍历Map的key和value
             Iterator entrys = convertMap.entrySet().iterator();
@@ -93,8 +97,10 @@ public class ConvertUtil {
                 }
             } catch (NoSuchFieldException e) {
                 e.printStackTrace();
+            
             } catch (IllegalAccessException e) {
                 e.printStackTrace();
+            
             }
         }
         return t;

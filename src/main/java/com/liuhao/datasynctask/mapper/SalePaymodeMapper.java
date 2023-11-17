@@ -18,6 +18,6 @@ import java.util.List;
  */
 @Mapper
 public interface SalePaymodeMapper extends BaseMapper<SalePaymodeEntity> {
-    @Select("select * from sale_paymode where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < uploaddate) limit 1000")
+    @Select("select TOP (1000) * from sale_paymode where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < uploaddate)")
     List<SalePaymodeEntity> getData();
 }

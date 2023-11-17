@@ -3,6 +3,7 @@ package com.liuhao.datasynctask.handler;
 import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.entity.MemberAmtEntity;
 import com.liuhao.datasynctask.service.MemberAmtService;
+import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,8 @@ import java.util.List;
 @Component
 @Service
 public class MemberAmtXZSyncHandler {
+    @Autowired
+    SendMessageServcice sendMessageServcice;
     @Autowired
     public MemberAmtService dataSyncService;
     //新增同步
@@ -32,6 +35,7 @@ public class MemberAmtXZSyncHandler {
             }
         }catch (Exception e){
             e.printStackTrace();
+            sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

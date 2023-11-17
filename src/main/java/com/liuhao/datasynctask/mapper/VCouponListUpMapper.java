@@ -18,6 +18,6 @@ import java.util.List;
  */
 @Mapper
 public interface VCouponListUpMapper extends BaseMapper<VCouponListUpEntity> {
-    @Select("select * from v_Coupon_List_Up where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < updatedate) limit 1000")
+    @Select("select TOP (1000) * from v_Coupon_List_Up where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < updatedate)")
     List<VCouponListUpEntity> getData();
 }

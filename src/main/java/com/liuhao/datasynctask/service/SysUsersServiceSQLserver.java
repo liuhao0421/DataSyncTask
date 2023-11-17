@@ -1,6 +1,6 @@
 package com.liuhao.datasynctask.service;
 
-import com.liuhao.datasynctask.entity.SaleProidSummaryEntity;
+import com.liuhao.datasynctask.entity.SysUsersEntitySQLserver;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -11,7 +11,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author liuhao
  * @since 2023-11-05
  */
-public interface SaleProidSummaryService extends IService<SaleProidSummaryEntity> {
+public interface SysUsersServiceSQLserver extends IService<SysUsersEntitySQLserver> {
     //从数据源读取数据,并做标志位标记
     String getDataFromSource();
 

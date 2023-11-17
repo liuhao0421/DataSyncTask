@@ -1,29 +1,27 @@
 package com.liuhao.datasynctask.controller;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.extension.toolkit.SqlRunner;
 import com.liuhao.datasynctask.handler.*;
 import com.liuhao.datasynctask.service.MemberCardService;
+import com.liuhao.datasynctask.service.impl.WeChatMessageService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/dataSync")
 @Slf4j
 @ResponseBody
 public class DataSyncController {
-
-    @Value("${person.name}")
-    private String name;
-    @Autowired
-    private RestTemplate template;
-
-    @Autowired
-    private MemberCardService dataSyncService;
-
     @Autowired
     MemberCardXGSyncHandler memberCardXGSyncHandler;
     @Autowired
@@ -48,6 +46,12 @@ public class DataSyncController {
     SaleDToPosGFHandler saleDToPosGFHandler;
     @Autowired
     SalePToPosPFHandler salePToPosPFHandler;
+    @Autowired
+    SProidToSGSHandler sProidToSGSHandler;
+    @Autowired
+    SUsersSQLserverToSUserMysqlHandler sUsersSQLserverToSUserMysqlHandler;
+
+
 
 
 
@@ -56,7 +60,7 @@ public class DataSyncController {
         memberCardXZSyncHandler.syncTask();
     }
 
-    @RequestMapping("/membaercardupdate")
+    @RequestMapping("/membercardupdate")
     public void membaercardupdate(){
         memberCardXGSyncHandler.syncTask();
     }
@@ -110,5 +114,16 @@ public class DataSyncController {
     public void saleptopospfsync(){
         salePToPosPFHandler.syncTask();
     }
+
+    @RequestMapping("/salepstosalegssync")
+    public void salepstosalegssync(){
+        salePToPosPFHandler.syncTask();
+    }
+
+    @RequestMapping("/susqlservertosumysqlsync")
+    public void susqlservertosumysqlsync(){
+        sUsersSQLserverToSUserMysqlHandler.syncTask();
+    }
+
 
 }

@@ -18,6 +18,6 @@ import java.util.List;
  */
 @Mapper
 public interface ProductMapper extends BaseMapper<ProductEntity> {
-    @Select("select * from product where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < updatedate) limit 1000")
+    @Select("select TOP (1000) * from product where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < updatedate)")
     List<ProductEntity> getData();
 }

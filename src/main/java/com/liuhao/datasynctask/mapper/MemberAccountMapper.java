@@ -18,6 +18,6 @@ import java.util.List;
  */
 @Mapper
 public interface MemberAccountMapper extends BaseMapper<MemberAccountEntity> {
-    @Select("select * from member_account where sync_flag = 0 and  sync_time < lastupdate limit 1000")
+    @Select("select TOP (1000)  * from member_account where (sync_flag = 0 or sync_flag is null) and  (sync_time < lastupdate or sync_time is null)")
     List<MemberAccountEntity> getUpdateData();
 }

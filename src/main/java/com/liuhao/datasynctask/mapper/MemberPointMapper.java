@@ -18,6 +18,6 @@ import java.util.List;
  */
 @Mapper
 public interface MemberPointMapper extends BaseMapper<MemberPointEntity> {
-    @Select("select * from member_point where sync_flag is null  and sync_time is null limit 1000")
+    @Select("select TOP (1000)  * from member_point where (sync_flag = 0 or sync_flag is null) and  (sync_time < create_time or sync_time is null)")
     List<MemberPointEntity> getData();
 }

@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.entity.MemberCardEntity;
 import com.liuhao.datasynctask.service.MemberCardService;
 import com.liuhao.datasynctask.service.impl.MemberCardServiceImpl;
+import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import org.junit.jupiter.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -16,6 +17,8 @@ import java.util.List;
 @Component
 @Service
 public class MemberCardXZSyncHandler {
+    @Autowired
+    SendMessageServcice sendMessageServcice;
     @Autowired
     public MemberCardService dataSyncService;
     //新增同步
@@ -36,6 +39,7 @@ public class MemberCardXZSyncHandler {
             }
         }catch (Exception e){
             e.printStackTrace();
+            sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

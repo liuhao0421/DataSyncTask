@@ -6,6 +6,7 @@ import com.liuhao.datasynctask.entity.RedEnvelopeEntity;
 import com.liuhao.datasynctask.entity.VCouponListUpEntity;
 import com.liuhao.datasynctask.service.MemberCardService;
 import com.liuhao.datasynctask.service.VCouponListUpService;
+import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -15,6 +16,8 @@ import java.util.List;
 @Component
 @Service
 public class VCSyncToRedHandler {
+    @Autowired
+    SendMessageServcice sendMessageServcice;
     @Autowired
     public VCouponListUpService dataSyncService;
     //修改同步
@@ -46,6 +49,7 @@ public class VCSyncToRedHandler {
             }
         }catch (Exception e){
             e.printStackTrace();
+            sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

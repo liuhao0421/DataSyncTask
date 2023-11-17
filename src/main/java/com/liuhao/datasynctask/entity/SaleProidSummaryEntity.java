@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.Version;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
+import java.time.LocalDateTime;
+
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -26,7 +28,7 @@ public class SaleProidSummaryEntity implements Serializable {
       @TableId(value = "braid", type = IdType.INPUT)
     private String braid;
 
-    private String saledate;
+    private LocalDateTime saledate;
 
     private String proid;
 
@@ -68,7 +70,7 @@ public class SaleProidSummaryEntity implements Serializable {
 
     private String memprofit;
 
-    private String syncTime;
+    private LocalDateTime syncTime;
 
     private String syncFlag;
 
