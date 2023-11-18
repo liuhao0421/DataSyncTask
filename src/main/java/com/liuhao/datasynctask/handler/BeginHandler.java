@@ -34,9 +34,9 @@ public class BeginHandler implements ApplicationRunner,Runnable{
         companyId = "888888";
         BeginHandler beginHandler = new BeginHandler();
 
-       Thread memberCardXZThread = new Thread(beginHandler);
+       /*Thread memberCardXZThread = new Thread(beginHandler);
         memberCardXZThread.setName("memberCardXZ");
-        memberCardXZThread.start();
+        memberCardXZThread.start();*/
 
        Thread memberCardXGThread = new Thread(beginHandler);
         memberCardXGThread.setName("memberCardXG");
