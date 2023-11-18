@@ -14,6 +14,7 @@ import com.liuhao.datasynctask.mapper.ProductClassMapper;
 import com.liuhao.datasynctask.mapper.SupplierMapper;
 import com.liuhao.datasynctask.service.ProductClassService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, ProductClassEntity> implements ProductClassService {
 
 
@@ -55,7 +57,7 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
                 productClassMapper.updateById(productClassEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(productClassEntityList==null||productClassEntityList.size()==0){
             return null;
@@ -78,7 +80,7 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
                 return JSONObject.toJSONString(goodsClassEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -110,7 +112,7 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
             goodsClassMapper.insert(goodsClassEntity);
             return JSONObject.toJSONString(productClassEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -124,7 +126,7 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
             goodsClassEntity.setSyncTime(LocalDateTime.now());
             goodsClassMapper.updateById(goodsClassEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -140,7 +142,7 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
             productClassEntity.setSyncFlag("0");
             productClassMapper.updateById(productClassEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

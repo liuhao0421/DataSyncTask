@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.entity.MemberAccountEntity;
 import com.liuhao.datasynctask.service.MemberAccountService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Component
 @Service
+@Slf4j
 public class MemberAccountXGSyncHandler {
     @Autowired
     SendMessageServcice sendMessageServcice;
@@ -29,13 +31,13 @@ public class MemberAccountXGSyncHandler {
                         dataSyncService.updateSourceData(syncedData);
                     }
                 }else{
-                    System.out.println("member_account无修改数据！！！！！！！");
-                    Thread.sleep(5000);
+                    log.info("member_account无修改数据！！！！！！！");
+                    Thread.sleep(30000);
                 }
             }
         }catch (Exception e){
-            e.printStackTrace();
-            sendMessageServcice.sendText(e.getMessage());
+            log.error(e.getMessage());
+            //sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

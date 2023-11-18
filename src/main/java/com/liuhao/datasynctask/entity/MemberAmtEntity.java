@@ -20,7 +20,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("member_amt")
+@TableName("member_amt_test")
 public class MemberAmtEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

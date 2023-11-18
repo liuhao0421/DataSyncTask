@@ -8,6 +8,7 @@ import com.liuhao.datasynctask.entity.VCouponListUpEntity;
 import com.liuhao.datasynctask.service.ProductService;
 import com.liuhao.datasynctask.service.VCouponListUpService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Component
 @Service
+@Slf4j
 public class ProductSyncToGoodsHandler {
     @Autowired
     SendMessageServcice sendMessageServcice;
@@ -89,13 +91,13 @@ public class ProductSyncToGoodsHandler {
                         }
                     }
                 }else{
-                    System.out.println("product无需要同步的数据！！！！！！！");
-                    Thread.sleep(5000);
+                    log.info("product无需要同步的数据！！！！！！！");
+                    Thread.sleep(30000);
                 }
             }
         }catch (Exception e){
-            e.printStackTrace();
-            sendMessageServcice.sendText(e.getMessage());
+            log.error(e.getMessage());
+            //sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

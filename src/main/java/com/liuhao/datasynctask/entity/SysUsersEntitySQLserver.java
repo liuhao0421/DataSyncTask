@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("sys_users")
+@TableName("SYS_Users")
 public class SysUsersEntitySQLserver implements Serializable {
 
     private static final long serialVersionUID = 1L;

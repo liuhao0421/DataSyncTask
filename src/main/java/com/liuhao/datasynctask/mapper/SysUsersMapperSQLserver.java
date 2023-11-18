@@ -18,6 +18,6 @@ import java.util.List;
  */
 @Mapper
 public interface SysUsersMapperSQLserver extends BaseMapper<SysUsersEntitySQLserver> {
-    @Select("select TOP (1000) * from sys_users where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < UpdateDate)")
+    @Select("select TOP (1000) * from SYS_Users where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < UpdateDate)")
     List<SysUsersEntitySQLserver> getData();
 }

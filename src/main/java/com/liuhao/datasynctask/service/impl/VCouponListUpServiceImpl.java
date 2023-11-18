@@ -11,6 +11,7 @@ import com.liuhao.datasynctask.mapper.RedEnvelopeMapper;
 import com.liuhao.datasynctask.mapper.VCouponListUpMapper;
 import com.liuhao.datasynctask.service.VCouponListUpService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, VCouponListUpEntity> implements VCouponListUpService {
 
 
@@ -51,7 +53,7 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
                 vCouponListUpMapper.updateById(vCouponListUpEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(vCouponListUpEntityList==null||vCouponListUpEntityList.size()==0){
             return null;
@@ -75,7 +77,7 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
                 return JSONObject.toJSONString(redEnvelopeEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -111,7 +113,7 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
             redEnvelopeMapper.insert(redEnvelopeEntity);
             return JSONObject.toJSONString(vCouponListUpEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -125,7 +127,7 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
             redEnvelopeEntity.setSyncTime(LocalDateTime.now());
             redEnvelopeMapper.updateById(redEnvelopeEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -141,7 +143,7 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
             vCouponListUpEntity.setSyncFlag("0");
             vCouponListUpMapper.updateById(vCouponListUpEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

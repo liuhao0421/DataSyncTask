@@ -14,6 +14,7 @@ import com.liuhao.datasynctask.mapper.ProductBarcodeMapper;
 import com.liuhao.datasynctask.mapper.SupplierMapper;
 import com.liuhao.datasynctask.service.SupplierService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEntity> implements SupplierService {
 
 
@@ -55,7 +57,7 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
                 supplierMapper.updateById(supplierEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(supplierEntityList==null||supplierEntityList.size()==0){
             return null;
@@ -78,7 +80,7 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
                 return JSONObject.toJSONString(goodssupplierEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -126,7 +128,7 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
             goodssupplierMapper.insert(goodssupplierEntity);
             return JSONObject.toJSONString(supplierEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -140,7 +142,7 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
             goodssupplierEntity.setSyncTime(LocalDateTime.now());
             goodssupplierMapper.updateById(goodssupplierEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -156,7 +158,7 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
             supplierEntity.setSyncFlag("0");
             supplierMapper.updateById(supplierEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

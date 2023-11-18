@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import cn.hutool.http.*;
 import com.alibaba.fastjson.*;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
  
@@ -17,6 +18,7 @@ import java.util.*;
  */
 @Data
 @Component
+@Slf4j
 public class WeChatMessageService {
     /**
      * 企业Id
@@ -97,7 +99,7 @@ public class WeChatMessageService {
             os.flush();
             os.close();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         JSONObject jsonObject = JSONObject.parseObject(result);
         return jsonObject.getString("userid");
@@ -122,7 +124,7 @@ public class WeChatMessageService {
             System.setProperty("sun.net.client.defaultReadTimeout", "30000");
             http.connect();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return http;
     }
@@ -142,7 +144,7 @@ public class WeChatMessageService {
                     .body(json)
                     .execute().body();
         } catch (Exception e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
             return "";
         }
     }

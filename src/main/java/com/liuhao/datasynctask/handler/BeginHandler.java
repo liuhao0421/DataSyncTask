@@ -31,18 +31,18 @@ public class BeginHandler implements ApplicationRunner,Runnable{
     @Override
     public void run(ApplicationArguments args) {
 
-        companyId = "1234";
+        companyId = "888888";
         BeginHandler beginHandler = new BeginHandler();
 
        Thread memberCardXZThread = new Thread(beginHandler);
         memberCardXZThread.setName("memberCardXZ");
         memberCardXZThread.start();
 
-        Thread memberCardXGThread = new Thread(beginHandler);
+       Thread memberCardXGThread = new Thread(beginHandler);
         memberCardXGThread.setName("memberCardXG");
         memberCardXGThread.start();
 
-       Thread memberAccountXGThread = new Thread(beginHandler);
+       /* Thread memberAccountXGThread = new Thread(beginHandler);
         memberAccountXGThread.setName("memberAccountXG");
         memberAccountXGThread.start();
 
@@ -90,7 +90,7 @@ public class BeginHandler implements ApplicationRunner,Runnable{
 
         Thread sUSqlserverTosUMysqlSyncThread = new Thread(beginHandler);
         sUSqlserverTosUMysqlSyncThread.setName("sUSqlserverTosUMysqlSync");
-        sUSqlserverTosUMysqlSyncThread.start();
+        sUSqlserverTosUMysqlSyncThread.start();*/
 
 
 
@@ -211,8 +211,8 @@ public class BeginHandler implements ApplicationRunner,Runnable{
             }
             template.postForObject(url, paramMap, String.class);
         } catch (Exception e) {
-            e.printStackTrace();
-            sendMessageServcice.sendText(e.getMessage());
+            log.error(e.getMessage());
+            //sendMessageServcice.sendText(e.getMessage());
         }
     }
 

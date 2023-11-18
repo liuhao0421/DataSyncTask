@@ -8,6 +8,7 @@ import com.liuhao.datasynctask.mapper.MemberPointMapper;
 import com.liuhao.datasynctask.mapper.MemberPointMapper;
 import com.liuhao.datasynctask.service.MemberPointService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, MemberPointEntity> implements MemberPointService {
 
     @Autowired
@@ -41,7 +43,7 @@ public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, Membe
                 memberPointMapper.updateById(memberPointEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(memberPointEntityList==null||memberPointEntityList.size()==0){
             return null;
@@ -61,7 +63,7 @@ public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, Membe
             memberPointMapper.insert(memberPointEntity);
             return JSONObject.toJSONString(memberPointEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -76,7 +78,7 @@ public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, Membe
             memberPointEntity.setSyncFlag("0");
             memberPointMapper.updateById(memberPointEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

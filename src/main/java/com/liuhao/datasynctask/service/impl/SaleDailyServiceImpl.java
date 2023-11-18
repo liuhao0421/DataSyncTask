@@ -14,6 +14,7 @@ import com.liuhao.datasynctask.mapper.ProductClassMapper;
 import com.liuhao.datasynctask.mapper.SaleDailyMapper;
 import com.liuhao.datasynctask.service.SaleDailyService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDailyEntity> implements SaleDailyService {
 
 
@@ -55,7 +57,7 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
                 saleDailyMapper.updateById(saleDailyEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(saleDailyEntityList==null||saleDailyEntityList.size()==0){
             return null;
@@ -81,7 +83,7 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
                 return JSONObject.toJSONString(posGoodsFlowEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -147,7 +149,7 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
             posGoodsFlowMapper.insert(posGoodsFlowEntity);
             return JSONObject.toJSONString(saleDailyEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -161,7 +163,7 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
             posGoodsFlowEntity.setSyncTime(LocalDateTime.now());
             posGoodsFlowMapper.updateById(posGoodsFlowEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -177,7 +179,7 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
             saleDailyEntity.setSyncFlag("0");
             saleDailyMapper.updateById(saleDailyEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

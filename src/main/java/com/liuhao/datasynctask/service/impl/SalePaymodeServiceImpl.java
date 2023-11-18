@@ -14,6 +14,7 @@ import com.liuhao.datasynctask.mapper.SaleDailyMapper;
 import com.liuhao.datasynctask.mapper.SalePaymodeMapper;
 import com.liuhao.datasynctask.service.SalePaymodeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SalePaymodeEntity> implements SalePaymodeService {
 
 
@@ -55,7 +57,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
                 salePaymodeMapper.updateById(salePaymodeEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(salePaymodeEntityList==null||salePaymodeEntityList.size()==0){
             return null;
@@ -79,7 +81,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
                 return JSONObject.toJSONString(posPayFlowEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -129,7 +131,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             posPayFlowMapper.insert(posPayFlowEntity);
             return JSONObject.toJSONString(salePaymodeEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -143,7 +145,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             posPayFlowEntity.setSyncTime(LocalDateTime.now());
             posPayFlowMapper.updateById(posPayFlowEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -159,7 +161,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             salePaymodeEntity.setSyncFlag("0");
             salePaymodeMapper.updateById(salePaymodeEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

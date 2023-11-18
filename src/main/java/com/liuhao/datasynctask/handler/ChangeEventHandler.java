@@ -9,6 +9,7 @@ import io.debezium.engine.DebeziumEngine;
 import io.debezium.engine.RecordChangeEvent;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.Pair;
 import org.apache.kafka.connect.data.Field;
 import org.apache.kafka.connect.data.Struct;
@@ -27,7 +28,7 @@ import static java.util.stream.Collectors.toMap;
 
 
 @Service
-@Log4j2
+@Slf4j
 @ConditionalOnProperty(name = "timely.switch", havingValue = "true")
 public class ChangeEventHandler {
 
@@ -107,7 +108,7 @@ public class ChangeEventHandler {
         try {
             recordCommitter.markBatchFinished();
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 

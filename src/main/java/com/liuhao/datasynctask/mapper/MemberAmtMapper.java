@@ -18,6 +18,6 @@ import java.util.List;
  */
 @Mapper
 public interface MemberAmtMapper extends BaseMapper<MemberAmtEntity> {
-    @Select("select  * from member_amt where (sync_flag = 0 or sync_flag is null) and  (sync_time < create_time or sync_time is null) limit 1000")
+    @Select("select  * from member_amt_test where (sync_flag = 0 or sync_flag is null) and  (sync_time < create_time or sync_time is null) limit 1000")
     List<MemberAmtEntity> getData();
 }

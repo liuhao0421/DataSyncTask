@@ -8,6 +8,7 @@ import com.liuhao.datasynctask.entity.SupplierEntity;
 import com.liuhao.datasynctask.service.ProductClassService;
 import com.liuhao.datasynctask.service.SupplierService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,7 @@ import java.util.List;
 
 @Component
 @Service
+@Slf4j
 public class ProClassToGoodsClassHandler {
     @Autowired
     SendMessageServcice sendMessageServcice;
@@ -61,13 +63,13 @@ public class ProClassToGoodsClassHandler {
                         }
                     }
                 }else{
-                    System.out.println("Product_Class无需要同步的数据！！！！！！！");
-                    Thread.sleep(5000);
+                    log.info("Product_Class无需要同步的数据！！！！！！！");
+                    Thread.sleep(30000);
                 }
             }
         }catch (Exception e){
-            e.printStackTrace();
-            sendMessageServcice.sendText(e.getMessage());
+            log.error(e.getMessage());
+            //sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

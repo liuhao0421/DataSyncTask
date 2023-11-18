@@ -2,52 +2,10 @@ server:
   port: 23850
 logging:
   file:
-    path: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/logs
-    name: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/logs/DataSyncTask-1.logs
+    path: ./logs
+    name: ./logs/DataSyncTask.logs
   level:
-    root: error
-
-debezium:
-  database:
-    - name: qm
-      enabled: true
-      serverId: 1
-      host: 127.0.0.1
-      port: 13306
-      username: root
-      password: 123456
-      offset-path: debezium/qm/offset.dat
-      history-path: debezium/qm/dbhistory.dat
-      table:
-        - qm.user
-
-#Debezium数据同步配置
-timely:
-  # 是否开启
-  switch: true
-  # 偏移量文件
-  offset-file-name: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/tmp/offsets.dat
-  # 是否启动时清除偏移量文件
-  offset-file-clean: true
-  # 偏移量提交时间 单位ms
-  offset-time: 1
-  # 读取历史记录文件
-  history-file-name: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/tmp/dbhistory.dat
-  # 读取的数据库信息
-  offline:
-    ip: 47.98.248.199
-    port: 1433
-    username: SA
-    password: Root@1234
-    # 保证每个数据库读取的 instance-name  logic-name 不能相同
-    # 实例名
-    instance-name: sc-mssql-connector
-    # 逻辑名
-    logic-name: sc-mssql-customer
-    # 读取的表
-    include-table: dbo.member_card
-    # 读取的库
-    include-db: liuhao
+    root: info
 
 
 spring:
@@ -55,14 +13,14 @@ spring:
     dynamic:
       datasource:
         mysql:
-          url: jdbc:mysql://localhost:3306/data-sync-task?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&AllowPublicKeyRetrieval=True
+          url: jdbc:mysql://116.62.188.148:3306/wx?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&AllowPublicKeyRetrieval=True
           username: root
-          password: rootroot
+          password: smf2020-
           driver-class-name: com.mysql.jdbc.Driver
         sqlserver:
-          url: jdbc:sqlserver://localhost:1433;DatabaseName=sync_data
-          username: SA
-          password: Root@1234
+          url: jdbc:sqlserver://localhost:1433;DatabaseName=newideav1
+          username: sa
+          password: smf2020-
           driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
 
 mybatis-plus:
@@ -73,11 +31,6 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
     map-underscore-to-camel-case: true
   type-aliases-package: com.liuhao.datasynctask.entity
-
-
-person:
-  name: liuhao
-  age: 100
 
 
 wechat:
@@ -101,3 +54,47 @@ wechat:
   getDepartmentListUrl: https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token=ACCESS_TOKEN
   #获取部门成员详情地址(企业微信api地址)
   getUserListUrl: https://qyapi.weixin.qq.com/cgi-bin/user/list
+
+#debezium:
+#  database:
+#    - name: qm
+#      enabled: true
+#      serverId: 1
+#      host: 127.0.0.1
+#      port: 13306
+#      username: root
+#      password: 123456
+#      offset-path: debezium/qm/offset.dat
+#      history-path: debezium/qm/dbhistory.dat
+#      table:
+#        - qm.user
+#
+##Debezium数据同步配置
+#timely:
+#  # 是否开启
+#  switch: true
+#  # 偏移量文件
+#  offset-file-name: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/tmp/offsets.dat
+#  # 是否启动时清除偏移量文件
+#  offset-file-clean: true
+#  # 偏移量提交时间 单位ms
+#  offset-time: 1
+#  # 读取历史记录文件
+#  history-file-name: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/tmp/dbhistory.dat
+#  # 读取的数据库信息
+#  offline:
+#    ip: 47.98.248.199
+#    port: 1433
+#    username: SA
+#    password: Root@1234
+#    # 保证每个数据库读取的 instance-name  logic-name 不能相同
+#    # 实例名
+#    instance-name: sc-mssql-connector
+#    # 逻辑名
+#    logic-name: sc-mssql-customer
+#    # 读取的表
+#    include-table: dbo.member_card_test
+#    # 读取的库
+#    include-db: liuhao
+
+

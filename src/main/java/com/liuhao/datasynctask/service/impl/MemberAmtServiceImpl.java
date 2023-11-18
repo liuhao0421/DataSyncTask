@@ -8,6 +8,7 @@ import com.liuhao.datasynctask.mapper.MemberAmtMapper;
 import com.liuhao.datasynctask.mapper.MemberAmtMapper;
 import com.liuhao.datasynctask.service.MemberAmtService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmtEntity> implements MemberAmtService {
 
     @Autowired
@@ -41,7 +43,7 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
                 memberAmtMapper.updateById(memberAmtEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(memberAmtEntityList==null||memberAmtEntityList.size()==0){
             return null;
@@ -60,7 +62,7 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
             memberAmtMapper.insert(memberAmtEntity);
             return JSONObject.toJSONString(memberAmtEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -75,7 +77,7 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
             memberAmtEntity.setSyncFlag("0");
             memberAmtMapper.updateById(memberAmtEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 

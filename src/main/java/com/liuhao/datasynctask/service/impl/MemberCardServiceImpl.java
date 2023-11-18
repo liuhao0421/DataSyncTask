@@ -6,6 +6,7 @@ import com.liuhao.datasynctask.entity.MemberCardEntity;
 import com.liuhao.datasynctask.mapper.MemberCardMapper;
 import com.liuhao.datasynctask.service.MemberCardService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,7 @@ import java.util.List;
  * @since 2023-11-14
  */
 @Service
+@Slf4j
 public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberCardEntity> implements MemberCardService {
 
     @Autowired
@@ -40,7 +42,7 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
                 memberCardMapper.updateById(memberCardEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(memberCardEntityList==null||memberCardEntityList.size()==0){
             return null;
@@ -63,7 +65,7 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
                 memberCardMapper.updateById(memberCardEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(memberCardEntityList==null||memberCardEntityList.size()==0){
             return null;
@@ -82,7 +84,7 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
             memberCardMapper.insert(memberCardEntity);
             return JSONObject.toJSONString(memberCardEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -97,7 +99,7 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
             memberCardEntity.setSyncFlag("0");
             memberCardMapper.updateById(memberCardEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -112,7 +114,7 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
             memberCardMapper.updateById(memberCardEntity);
             return JSONObject.toJSONString(memberCardEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }

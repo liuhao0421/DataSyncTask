@@ -5,6 +5,7 @@ import com.liuhao.datasynctask.entity.MemberCardEntity;
 import com.liuhao.datasynctask.service.MemberCardService;
 import com.liuhao.datasynctask.service.impl.MemberCardServiceImpl;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @Component
 @Service
+@Slf4j
 public class MemberCardXGSyncHandler{
     @Autowired
     SendMessageServcice sendMessageServcice;
@@ -33,13 +35,13 @@ public class MemberCardXGSyncHandler{
                         dataSyncService.updateSourceData(syncedData);
                     }
                 }else{
-                    System.out.println("member_card无修改数据！！！！！！！");
-                    Thread.sleep(5000);
+                    log.info("member_card_test无修改数据！！！！！！！");
+                    Thread.sleep(30000);
                 }
             }
         }catch (Exception e){
-            e.printStackTrace();
-            sendMessageServcice.sendText(e.getMessage());
+            log.error(e.getMessage());
+            //sendMessageServcice.sendText(e.getMessage());
         }
     }
 }

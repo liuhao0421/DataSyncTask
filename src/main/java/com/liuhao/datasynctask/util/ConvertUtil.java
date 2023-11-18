@@ -1,5 +1,6 @@
 package com.liuhao.datasynctask.util;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
@@ -7,6 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 @Component
+@Slf4j
 public class ConvertUtil {
     /**
      * dxg
@@ -25,10 +27,10 @@ public class ConvertUtil {
                 //创建新对象
                 t = clazz.newInstance();
             } catch (InstantiationException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             
             }
             //获得某个类的所有声明的字段，即包括public、private和proteced
@@ -45,7 +47,7 @@ public class ConvertUtil {
                     Object val = field1.get(object);
                     field.set(t, val);
                 } catch (Exception e) {
-                    //System.out.println(object.getClass().getName() + "没有该属性: " + key);
+                    //log.info(object.getClass().getName() + "没有该属性: " + key);
                 }
             }
         }
@@ -70,10 +72,10 @@ public class ConvertUtil {
                 //创建新对象
                 t = clazz.newInstance();
             } catch (InstantiationException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             
             }
             //遍历Map的key和value
@@ -96,10 +98,10 @@ public class ConvertUtil {
                     fieldTo.set(t, val);
                 }
             } catch (NoSuchFieldException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             
             } catch (IllegalAccessException e) {
-                e.printStackTrace();
+                log.error(e.getMessage());
             
             }
         }

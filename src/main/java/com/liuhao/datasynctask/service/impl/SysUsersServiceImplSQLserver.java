@@ -14,6 +14,7 @@ import com.liuhao.datasynctask.mapper.SysUsersMapper;
 import com.liuhao.datasynctask.mapper.SysUsersMapperSQLserver;
 import com.liuhao.datasynctask.service.SysUsersServiceSQLserver;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLserver, SysUsersEntitySQLserver> implements SysUsersServiceSQLserver {
 
 
@@ -55,7 +57,7 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
                 sysUsersMapperSQLserver.updateById(sysUsersEntitySQLserver);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(sysUsersEntitySQLserverList==null||sysUsersEntitySQLserverList.size()==0){
             return null;
@@ -78,7 +80,7 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
                 return JSONObject.toJSONString(sysUsersEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -117,7 +119,7 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
             sysUsersMapper.insert(sysUsersEntity);
             return JSONObject.toJSONString(sysUsersEntitySQLserver);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -131,7 +133,7 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
             sysUsersEntity.setSyncTime(LocalDateTime.now());
             sysUsersMapper.updateById(sysUsersEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -147,7 +149,7 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
             sysUsersEntitySQLserver.setSyncFlag("0");
             sysUsersMapperSQLserver.updateById(sysUsersEntitySQLserver);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

@@ -8,6 +8,7 @@ import com.liuhao.datasynctask.mapper.MemberAccountMapper;
 import com.liuhao.datasynctask.mapper.MemberAccountMapper;
 import com.liuhao.datasynctask.service.MemberAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, MemberAccountEntity> implements MemberAccountService {
 
 
@@ -45,7 +47,7 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
                 memberAccountMapper.updateById(memberAccountEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(memberAccountEntityList==null||memberAccountEntityList.size()==0){
             return null;
@@ -66,7 +68,7 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
             memberAccountEntity.setSyncFlag("0");
             memberAccountMapper.updateById(memberAccountEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -81,7 +83,7 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
             memberAccountMapper.updateById(memberAccountEntity);
             return JSONObject.toJSONString(memberAccountEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }

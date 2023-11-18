@@ -14,6 +14,7 @@ import com.liuhao.datasynctask.mapper.SalePaymodeMapper;
 import com.liuhao.datasynctask.mapper.SaleProidSummaryMapper;
 import com.liuhao.datasynctask.service.SaleProidSummaryService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +30,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMapper, SaleProidSummaryEntity> implements SaleProidSummaryService {
 
 
@@ -55,7 +57,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
                 saleProidSummaryMapper.updateById(saleProidSummaryEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(saleProidSummaryEntityList==null||saleProidSummaryEntityList.size()==0){
             return null;
@@ -80,7 +82,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
                 return JSONObject.toJSONString(saleGoodsSummaryEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -126,7 +128,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             saleGoodsSummaryMapper.insert(saleGoodsSummaryEntity);
             return JSONObject.toJSONString(saleProidSummaryEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -140,7 +142,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             saleGoodsSummaryEntity.setSyncTime(LocalDateTime.now());
             saleGoodsSummaryMapper.updateById(saleGoodsSummaryEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -156,7 +158,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             saleProidSummaryEntity.setSyncFlag("0");
             saleProidSummaryMapper.updateById(saleProidSummaryEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

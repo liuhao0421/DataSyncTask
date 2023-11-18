@@ -14,6 +14,7 @@ import com.liuhao.datasynctask.mapper.RedEnvelopeMapper;
 import com.liuhao.datasynctask.mapper.VCouponListUpMapper;
 import com.liuhao.datasynctask.service.ProductService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +31,7 @@ import java.util.List;
  * @since 2023-11-05
  */
 @Service
+@Slf4j
 public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity> implements ProductService {
 
 
@@ -56,7 +58,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
                 productMapper.updateById(productEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         if(productEntityList==null||productEntityList.size()==0){
             return null;
@@ -79,7 +81,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
                 return JSONObject.toJSONString(goodsEntity);
             }
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -140,7 +142,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
             goodsMapper.insert(goodsEntity);
             return JSONObject.toJSONString(productEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
         return null;
     }
@@ -154,7 +156,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
             goodsEntity.setSyncTime(LocalDateTime.now());
             goodsMapper.updateById(goodsEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 
@@ -170,7 +172,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
             productEntity.setSyncFlag("0");
             productMapper.updateById(productEntity);
         }catch(Exception e){
-            e.printStackTrace();
+            log.error(e.getMessage());
         }
     }
 }

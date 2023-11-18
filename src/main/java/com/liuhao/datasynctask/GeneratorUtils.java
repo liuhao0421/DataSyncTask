@@ -35,21 +35,20 @@ public class GeneratorUtils {
         autoGenerator.execute();
     }
 
-/*    *//**
-     * 设置数据源
-     * @return
-     *//*
-    public static DataSourceConfig getDataSourceConfig(){
-        DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/data-sync-task?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&AllowPublicKeyRetrieval=True");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("rootroot");
-        dsc.setDbType(DbType.MYSQL);
-        return dsc;
-    }*/
+
+
 
     public static DataSourceConfig getDataSourceConfig(){
+        DataSourceConfig dsc = new DataSourceConfig();
+        dsc.setUrl("jdbc:mysql://116.62.188.148:3306/wx?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&AllowPublicKeyRetrieval=True");
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
+        dsc.setUsername("root");
+        dsc.setPassword("smf2020-");
+        dsc.setDbType(DbType.MYSQL);
+        return dsc;
+    }
+
+/*    public static DataSourceConfig getDataSourceConfig(){
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=sync_data");
         dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -57,7 +56,7 @@ public class GeneratorUtils {
         dsc.setPassword("Root@1234");
         dsc.setDbType(DbType.SQL_SERVER);
         return dsc;
-    }
+    }*/
 
 
     /**
