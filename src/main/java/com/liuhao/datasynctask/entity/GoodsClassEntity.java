@@ -54,7 +54,7 @@ public class GoodsClassEntity implements Serializable {
 
     private String status;
 
-    private String pointrate;
+    private Double pointrate;
 
     @TableField("CreateDate")
     private LocalDateTime CreateDate;

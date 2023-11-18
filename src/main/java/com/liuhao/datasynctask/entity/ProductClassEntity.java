@@ -44,7 +44,7 @@ public class ProductClassEntity implements Serializable {
 
     private String status;
 
-    private String points;
+    private Double points;
 
     private LocalDateTime createdate;
 

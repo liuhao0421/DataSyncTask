@@ -58,28 +58,28 @@ public class SaleDailyEntity implements Serializable {
 
     private String batchrowid;
 
-    private String saleqty;
+    private Double saleqty;
 
-    private String saleamt;
+    private Double saleamt;
 
-    private String saledisamt;
+    private Double saledisamt;
 
     @TableField("LastcostPrice")
-    private String LastcostPrice;
+    private Double LastcostPrice;
 
     @TableField("costPrice")
-    private String costPrice;
+    private Double costPrice;
 
-    private String normalprice;
+    private Double normalprice;
 
-    private String ncostprice;
+    private Double ncostprice;
 
     @TableField("curPrice")
-    private String curPrice;
+    private Double curPrice;
 
-    private String points1;
+    private Double points1;
 
-    private String classid;
+    private Double classid;
 
     private String brandid;
 
@@ -89,9 +89,9 @@ public class SaleDailyEntity implements Serializable {
 
     private String stockflag;
 
-    private String returnrat;
+    private Double returnrat;
 
-    private String points;
+    private Double points;
 
     private String memcardno;
 
@@ -103,7 +103,7 @@ public class SaleDailyEntity implements Serializable {
 
     private String donatetype;
 
-    private String pmtqty;
+    private Double pmtqty;
 
     @TableField("disExchange")
     private String disExchange;

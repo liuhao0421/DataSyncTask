@@ -36,13 +36,13 @@ public class ProductEntity implements Serializable {
 
     private String measureid;
 
-    private String taxprice;
+    private Double taxprice;
 
-    private String normalprice;
+    private Double normalprice;
 
-    private String memberprice;
+    private Double memberprice;
 
-    private String cardpoint;
+    private Double cardpoint;
 
     private String spec;
 
@@ -56,16 +56,16 @@ public class ProductEntity implements Serializable {
 
     private String supid;
 
-    private String intax;
+    private Double intax;
 
-    private String saletax;
+    private Double saletax;
 
     @TableField("Helpcode")
     private String Helpcode;
 
-    private String packetqty;
+    private Double packetqty;
 
-    private String minorderqty;
+    private Double minorderqty;
 
     private String barmode;
 
@@ -79,7 +79,7 @@ public class ProductEntity implements Serializable {
     private String potflag;
 
     @TableField("MinDisrate")
-    private String MinDisrate;
+    private Double MinDisrate;
 
     private String weightflag;
 
@@ -91,13 +91,13 @@ public class ProductEntity implements Serializable {
     @TableField("Returntype")
     private String Returntype;
 
-    private String returnrat;
+    private Double returnrat;
 
     private String alarmdays;
 
     private String cpstype;
 
-    private String cpsrate;
+    private Double cpsrate;
 
     private String stocktaking;
 

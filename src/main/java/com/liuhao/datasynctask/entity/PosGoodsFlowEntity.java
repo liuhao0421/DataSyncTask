@@ -70,33 +70,33 @@ public class PosGoodsFlowEntity implements Serializable {
     private String rowid;
 
     @TableField("saleQty")
-    private String saleQty;
+    private Double saleQty;
 
     @TableField("saleAmt")
-    private String saleAmt;
+    private Double saleAmt;
 
     @TableField("saleDisAmt")
-    private String saleDisAmt;
+    private Double saleDisAmt;
 
     @TableField("inPrice")
-    private String inPrice;
+    private Double inPrice;
 
     @TableField("costPrice")
-    private String costPrice;
+    private Double costPrice;
 
     @TableField("salePrice")
-    private String salePrice;
+    private Double salePrice;
 
     @TableField("vipPrice")
-    private String vipPrice;
+    private Double vipPrice;
 
     @TableField("curPrice")
-    private String curPrice;
+    private Double curPrice;
 
     @TableField("curPoint")
-    private String curPoint;
+    private Double curPoint;
 
-    private String classid;
+    private Double classid;
 
     private String brandid;
 
@@ -111,10 +111,10 @@ public class PosGoodsFlowEntity implements Serializable {
     private String retType;
 
     @TableField("retRate")
-    private String retRate;
+    private Double retRate;
 
     @TableField("vipPoint")
-    private String vipPoint;
+    private Double vipPoint;
 
     @TableField("memId")
     private String memId;
@@ -132,7 +132,7 @@ public class PosGoodsFlowEntity implements Serializable {
     private String promtType;
 
     @TableField("promtQty")
-    private String promtQty;
+    private Double promtQty;
 
     @TableField("promtDisType")
     private String promtDisType;

@@ -46,43 +46,43 @@ public class SalePaymodeEntity implements Serializable {
 
     private String saleamt;
 
-    private String disamt;
+    private Double disamt;
 
-    private String payamt;
+    private Double payamt;
 
-    private String paydibs;
+    private Double paydibs;
 
-    private String cash;
+    private Double cash;
 
-    private String creditcard;
+    private Double creditcard;
 
-    private String prepaycard;
+    private Double prepaycard;
 
-    private String mempay;
+    private Double mempay;
 
-    private String shoppingticket;
+    private Double shoppingticket;
 
-    private String points;
+    private Double points;
 
-    private String alipay;
+    private Double alipay;
 
-    private String wxpay;
+    private Double wxpay;
 
-    private String bestpay;
+    private Double bestpay;
 
-    private String otheramt;
+    private Double otheramt;
 
-    private String othermemo;
+    private Double othermemo;
 
-    private String reccash;
+    private Double reccash;
 
-    private String retamt;
+    private Double retamt;
 
-    private String clearamt;
+    private Double clearamt;
 
-    private String iccardDisamt;
+    private Double iccardDisamt;
 
-    private String membalance;
+    private Double membalance;
 
     private String payorderno;
 

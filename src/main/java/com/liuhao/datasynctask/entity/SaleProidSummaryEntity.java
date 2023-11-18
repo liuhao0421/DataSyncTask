@@ -34,41 +34,41 @@ public class SaleProidSummaryEntity implements Serializable {
 
     private String supid;
 
-    private String returnrat;
+    private Double returnrat;
 
-    private String saleqty;
+    private Double saleqty;
 
-    private String saleamt;
+    private Double saleamt;
 
-    private String avgsaleprice;
+    private Double avgsaleprice;
 
-    private String salecostprice;
+    private Double salecostprice;
 
-    private String salecostamt;
+    private Double salecostamt;
 
-    private String saledisamt;
+    private Double saledisamt;
 
-    private String saleprofit;
+    private Double saleprofit;
 
-    private String pmtqty;
+    private Double pmtqty;
 
-    private String pmtamt;
+    private Double pmtamt;
 
-    private String pmtcostamt;
+    private Double pmtcostamt;
 
-    private String pmtdisamt;
+    private Double pmtdisamt;
 
-    private String pmtprofit;
+    private Double pmtprofit;
 
-    private String memqty;
+    private Double memqty;
 
-    private String memamt;
+    private Double memamt;
 
-    private String memcostamt;
+    private Double memcostamt;
 
-    private String memdisamt;
+    private Double memdisamt;
 
-    private String memprofit;
+    private Double memprofit;
 
     private LocalDateTime syncTime;
 

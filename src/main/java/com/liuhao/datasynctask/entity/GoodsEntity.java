@@ -37,15 +37,15 @@ public class GoodsEntity implements Serializable {
 
     private String unitno;
 
-    private String inprice;
+    private Double inprice;
 
-    private String saleprice;
+    private Double saleprice;
 
     @TableField("vipPrice")
-    private String vipPrice;
+    private Double vipPrice;
 
     @TableField("vipPoint")
-    private String vipPoint;
+    private Double vipPoint;
 
     private String spec;
 
@@ -59,17 +59,17 @@ public class GoodsEntity implements Serializable {
 
     private String supid;
 
-    private String intax;
+    private Double intax;
 
-    private String saletax;
+    private Double saletax;
 
     @TableField("helpCode")
     private String helpCode;
 
-    private String boxrate;
+    private Double boxrate;
 
     @TableField("minOrderQty")
-    private String minOrderQty;
+    private Double minOrderQty;
 
     @TableField("barType")
     private String barType;
@@ -87,7 +87,7 @@ public class GoodsEntity implements Serializable {
     private String vipDisType;
 
     @TableField("minDisrate")
-    private String minDisrate;
+    private Double minDisrate;
 
     @TableField("printMode")
     private String printMode;
@@ -101,13 +101,13 @@ public class GoodsEntity implements Serializable {
     private String retType;
 
     @TableField("retRate")
-    private String retRate;
+    private Double retRate;
 
     @TableField("alarmDays")
     private String alarmDays;
 
     @TableField("cpsType")
-    private String cpsType;
+    private Double cpsType;
 
     @TableField("cpsRate")
     private String cpsRate;

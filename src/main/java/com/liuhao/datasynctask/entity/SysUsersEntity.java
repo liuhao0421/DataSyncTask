@@ -60,10 +60,10 @@ public class SysUsersEntity implements Serializable {
     private String Mobile;
 
     @TableField("DiscountRate")
-    private String DiscountRate;
+    private Double DiscountRate;
 
     @TableField("ChangePriceRate")
-    private String ChangePriceRate;
+    private Double ChangePriceRate;
 
     @TableField("Remark")
     private String Remark;
@@ -81,7 +81,7 @@ public class SysUsersEntity implements Serializable {
 
     private String outCashierid;
 
-    private String cardsalerate;
+    private Double cardsalerate;
 
     private LocalDateTime syncTime;
 

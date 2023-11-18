@@ -60,61 +60,61 @@ public class PosPayFlowEntity implements Serializable {
     private String saleAmt;
 
     @TableField("disAmt")
-    private String disAmt;
+    private Double disAmt;
 
     @TableField("payAmt")
-    private String payAmt;
+    private Double payAmt;
 
     @TableField("roundAmt")
-    private String roundAmt;
+    private Double roundAmt;
 
     @TableField("cashAmt")
-    private String cashAmt;
+    private Double cashAmt;
 
     @TableField("bankAmt")
-    private String bankAmt;
+    private Double bankAmt;
 
     @TableField("cardAmt")
-    private String cardAmt;
+    private Double cardAmt;
 
     @TableField("vipAmt")
-    private String vipAmt;
+    private Double vipAmt;
 
     @TableField("couponAmt")
-    private String couponAmt;
+    private Double couponAmt;
 
     @TableField("pointAmt")
-    private String pointAmt;
+    private Double pointAmt;
 
     @TableField("aliPay")
-    private String aliPay;
+    private Double aliPay;
 
     @TableField("wechatPay")
-    private String wechatPay;
+    private Double wechatPay;
 
     @TableField("bestPay")
-    private String bestPay;
+    private Double bestPay;
 
     @TableField("otherAmt")
-    private String otherAmt;
+    private Double otherAmt;
 
     @TableField("otherMemo")
-    private String otherMemo;
+    private Double otherMemo;
 
     @TableField("recCash")
-    private String recCash;
+    private Double recCash;
 
     @TableField("retCash")
-    private String retCash;
+    private Double retCash;
 
     @TableField("cardClearAmt")
-    private String cardClearAmt;
+    private Double cardClearAmt;
 
     @TableField("cardDisAmt")
-    private String cardDisAmt;
+    private Double cardDisAmt;
 
     @TableField("vipBalance")
-    private String vipBalance;
+    private Double vipBalance;
 
     @TableField("outTradeNo")
     private String outTradeNo;

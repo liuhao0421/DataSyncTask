@@ -53,7 +53,7 @@ public class SProidToSGSHandler {
                             saleGoodsSummaryEntity.setRetRate(saleProidSummaryEntity.getReturnrat());
                             saleGoodsSummaryEntity.setSaleQty(saleProidSummaryEntity.getSaleqty());
                             saleGoodsSummaryEntity.setSaleAmt(saleProidSummaryEntity.getSaleamt());
-                            saleGoodsSummaryEntity.setSalePrice("");//无值，传空
+                            saleGoodsSummaryEntity.setSalePrice(null);//无值，传空
                             saleGoodsSummaryEntity.setAvgSalePrice(saleProidSummaryEntity.getAvgsaleprice());
                             saleGoodsSummaryEntity.setSaleCostPrice(saleProidSummaryEntity.getSalecostprice());
                             saleGoodsSummaryEntity.setSaleCostAmt(saleProidSummaryEntity.getSalecostamt());

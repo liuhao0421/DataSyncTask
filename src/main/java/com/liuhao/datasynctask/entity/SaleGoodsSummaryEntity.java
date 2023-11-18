@@ -42,61 +42,61 @@ public class SaleGoodsSummaryEntity implements Serializable {
     private String retType;
 
     @TableField("retRate")
-    private String retRate;
+    private Double retRate;
 
     @TableField("saleQty")
-    private String saleQty;
+    private Double saleQty;
 
     @TableField("saleAmt")
-    private String saleAmt;
+    private Double saleAmt;
 
     @TableField("salePrice")
-    private String salePrice;
+    private Double salePrice;
 
     @TableField("avgSalePrice")
-    private String avgSalePrice;
+    private Double avgSalePrice;
 
     @TableField("saleCostPrice")
-    private String saleCostPrice;
+    private Double saleCostPrice;
 
     @TableField("saleCostAmt")
-    private String saleCostAmt;
+    private Double saleCostAmt;
 
     @TableField("saleDisAmt")
-    private String saleDisAmt;
+    private Double saleDisAmt;
 
     @TableField("saleProfit")
-    private String saleProfit;
+    private Double saleProfit;
 
     @TableField("promtQty")
-    private String promtQty;
+    private Double promtQty;
 
     @TableField("promtAmt")
-    private String promtAmt;
+    private Double promtAmt;
 
     @TableField("promtCostAmt")
-    private String promtCostAmt;
+    private Double promtCostAmt;
 
     @TableField("promtDisAmt")
-    private String promtDisAmt;
+    private Double promtDisAmt;
 
     @TableField("promtProfit")
-    private String promtProfit;
+    private Double promtProfit;
 
     @TableField("vipQty")
-    private String vipQty;
+    private Double vipQty;
 
     @TableField("vipAmt")
-    private String vipAmt;
+    private Double vipAmt;
 
     @TableField("vipCostAmt")
-    private String vipCostAmt;
+    private Double vipCostAmt;
 
     @TableField("vipDisAmt")
-    private String vipDisAmt;
+    private Double vipDisAmt;
 
     @TableField("vipProfit")
-    private String vipProfit;
+    private Double vipProfit;
 
     @TableField("retQty")
     private String retQty;
