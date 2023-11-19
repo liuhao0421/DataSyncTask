@@ -31,76 +31,11 @@ public class BeginHandler implements ApplicationRunner,Runnable{
     @Override
     public void run(ApplicationArguments args) {
 
-        companyId = "888888";
-        BeginHandler beginHandler = new BeginHandler();
-
-       /*Thread memberCardXZThread = new Thread(beginHandler);
-        memberCardXZThread.setName("memberCardXZ");
-        memberCardXZThread.start();*/
-
-       Thread memberCardXGThread = new Thread(beginHandler);
-        memberCardXGThread.setName("memberCardXG");
-        memberCardXGThread.start();
-
-       /* Thread memberAccountXGThread = new Thread(beginHandler);
-        memberAccountXGThread.setName("memberAccountXG");
-        memberAccountXGThread.start();
-
-       Thread memberPointXZThread = new Thread(beginHandler);
-        memberPointXZThread.setName("memberPointXZ");
-        memberPointXZThread.start();
-
-         Thread memberAmtXZThread = new Thread(beginHandler);
-        memberAmtXZThread.setName("memberAmtXZ");
-        memberAmtXZThread.start();
-
-      Thread vcToRedSyncThread = new Thread(beginHandler);
-        vcToRedSyncThread.setName("vcToRedSync");
-        vcToRedSyncThread.start();
-
-        Thread productToGoodsSyncThread = new Thread(beginHandler);
-        productToGoodsSyncThread.setName("productToGoodsSync");
-        productToGoodsSyncThread.start();
-
-       Thread proBarToGoodsMCSyncThread = new Thread(beginHandler);
-        proBarToGoodsMCSyncThread.setName("proBarToGoodsMCSync");
-        proBarToGoodsMCSyncThread.start();
-
-        Thread supplierToGoodsSupplierSyncThread = new Thread(beginHandler);
-        supplierToGoodsSupplierSyncThread.setName("supplierToGoodsSupplierSync");
-        supplierToGoodsSupplierSyncThread.start();
-
-          Thread proClassToGoodsClassSyncThread = new Thread(beginHandler);
-        proClassToGoodsClassSyncThread.setName("proClassToGoodsClassSync");
-        proClassToGoodsClassSyncThread.start();
-
-
-       Thread sDailyToPosGFSyncThread = new Thread(beginHandler);
-        sDailyToPosGFSyncThread.setName("sDailyToPosGFSync");
-        sDailyToPosGFSyncThread.start();
-
-        Thread sPayModeToPosPFSyncThread = new Thread(beginHandler);
-        sPayModeToPosPFSyncThread.setName("sPayModeToPosPFSync");
-        sPayModeToPosPFSyncThread.start();
-
-        Thread salePSToSaleGSSyncThread = new Thread(beginHandler);
-        salePSToSaleGSSyncThread.setName("salePSToSaleGSSync");
-        salePSToSaleGSSyncThread.start();
-
-
-        Thread sUSqlserverTosUMysqlSyncThread = new Thread(beginHandler);
-        sUSqlserverTosUMysqlSyncThread.setName("sUSqlserverTosUMysqlSync");
-        sUSqlserverTosUMysqlSyncThread.start();*/
-
-
-
-
-
-        /*companyId = checkService.getCompanyId();
+        companyId = checkService.getCompanyId();
         String status = checkService.getStatus(companyId);
         if("1".equals(status)){
-
-        BeginHandler beginHandler = new BeginHandler();
+           log.error("当前门店的company_id是==="+ companyId+"&&& 当前门店的company_stautus是==="+status);
+        /*BeginHandler beginHandler = new BeginHandler();
 
         Thread memberCardXZThread = new Thread(beginHandler);
         memberCardXZThread.setName("memberCardXZ");
@@ -142,7 +77,6 @@ public class BeginHandler implements ApplicationRunner,Runnable{
         proClassToGoodsClassSyncThread.setName("proClassToGoodsClassSync");
         proClassToGoodsClassSyncThread.start();
 
-
         Thread sDailyToPosGFSyncThread = new Thread(beginHandler);
         sDailyToPosGFSyncThread.setName("sDailyToPosGFSync");
         sDailyToPosGFSyncThread.start();
@@ -155,13 +89,14 @@ public class BeginHandler implements ApplicationRunner,Runnable{
         salePSToSaleGSSyncThread.setName("salePSToSaleGSSync");
         salePSToSaleGSSyncThread.start();
 
-
         Thread sUSqlserverTosUMysqlSyncThread = new Thread(beginHandler);
         sUSqlserverTosUMysqlSyncThread.setName("sUSqlserverTosUMysqlSync");
-        sUSqlserverTosUMysqlSyncThread.start();
+        sUSqlserverTosUMysqlSyncThread.start();*/
+
         }else{
             log.error("当前连接的商家，连接不合法");
-        }*/
+            log.error("当前门店的company_id是==="+ companyId+"&&& 当前门店的company_stautus是==="+status);
+        }
 
 
     }

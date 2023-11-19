@@ -1,11 +1,12 @@
 server:
-  port: 37283
+  port: 23850
 logging:
   file:
-    path: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/logs
-    name: /Users/liuhao/Downloads/JavaProjects/DataSyncTask/logs/DataSyncTask-1.logs
+    path: ./logs
+    name: ./logs/DataSyncTask.logs
   level:
     root: info
+
 
 spring:
   datasource:

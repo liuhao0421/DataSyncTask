@@ -2,8 +2,11 @@ package com.liuhao.datasynctask.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.liuhao.datasynctask.entity.GoodsClassEntity;
 import com.liuhao.datasynctask.entity.MemberAmtEntity;
 import com.liuhao.datasynctask.entity.MemberAmtEntity;
+import com.liuhao.datasynctask.entity.ProductClassEntity;
 import com.liuhao.datasynctask.mapper.MemberAmtMapper;
 import com.liuhao.datasynctask.mapper.MemberAmtMapper;
 import com.liuhao.datasynctask.service.MemberAmtService;
@@ -39,8 +42,11 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
             memberAmtEntityList =  memberAmtMapper.getData();
             //将读取了的数据，做标志
             for (MemberAmtEntity memberAmtEntity : memberAmtEntityList) {
+                QueryWrapper<MemberAmtEntity> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq("company_id",memberAmtEntity.getCompanyId());
+                queryWrapper.eq("amt_id",memberAmtEntity.getAmtId());
                 memberAmtEntity.setSyncFlag("1");
-                memberAmtMapper.updateById(memberAmtEntity);
+                memberAmtMapper.update(memberAmtEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -51,6 +57,31 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
             return JSONObject.toJSONString(memberAmtEntityList);
         }
     }
+
+
+
+
+    @Override
+    @DS("sqlserver")
+    public String selectIsExist(String sourceData) {
+        try{
+            MemberAmtEntity memberAmtEntity = JSONObject.parseObject(sourceData, MemberAmtEntity.class);
+            QueryWrapper<MemberAmtEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",memberAmtEntity.getCompanyId());
+            queryWrapper.eq("amt_id",memberAmtEntity.getAmtId());
+            MemberAmtEntity memberAmtEntityResult = memberAmtMapper.selectOne(queryWrapper);
+            if(memberAmtEntityResult==null){
+                return null;
+            }else{
+                return JSONObject.toJSONString(memberAmtEntityResult);
+            }
+        }catch(Exception e){
+            log.error(e.getMessage());
+        }
+        return null;
+    }
+
+
 
     //将新增的数据同步至目标表
     @Override
@@ -75,7 +106,10 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
             MemberAmtEntity memberAmtEntity = JSONObject.parseObject(sourceData, MemberAmtEntity.class);
             memberAmtEntity.setSyncTime(LocalDateTime.now());
             memberAmtEntity.setSyncFlag("0");
-            memberAmtMapper.updateById(memberAmtEntity);
+            QueryWrapper<MemberAmtEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",memberAmtEntity.getCompanyId());
+            queryWrapper.eq("amt_id",memberAmtEntity.getAmtId());
+            memberAmtMapper.update(memberAmtEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

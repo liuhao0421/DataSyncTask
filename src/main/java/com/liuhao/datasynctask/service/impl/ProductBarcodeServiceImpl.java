@@ -54,7 +54,9 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
             //将读取了的数据，做标志
             for (ProductBarcodeEntity productBarcodeEntity : productBarcodeEntityList) {
                 productBarcodeEntity.setSyncFlag("1");
-                productBarcodeMapper.updateById(productBarcodeEntity);
+                QueryWrapper<ProductBarcodeEntity> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("proid",productBarcodeEntity.getProid());
+                productBarcodeMapper.update(productBarcodeEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -72,6 +74,7 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
         try{
             ProductBarcodeEntity productBarcodeEntity = JSONObject.parseObject(sourceData, ProductBarcodeEntity.class);
             QueryWrapper<GoodsmulticodeEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("goodsid",productBarcodeEntity.getProid());
             GoodsmulticodeEntity goodsmulticodeEntity = goodsmulticodeMapper.selectOne(queryWrapper);
             if(goodsmulticodeEntity==null){
@@ -120,7 +123,10 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
         try{
             GoodsmulticodeEntity goodsmulticodeEntity = JSONObject.parseObject(sourceData, GoodsmulticodeEntity.class);
             goodsmulticodeEntity.setSyncTime(LocalDateTime.now());
-            goodsmulticodeMapper.updateById(goodsmulticodeEntity);
+            QueryWrapper<GoodsmulticodeEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",goodsmulticodeEntity.getCompanyId());
+            queryWrapper.eq("goodsid",goodsmulticodeEntity.getGoodsid());
+            goodsmulticodeMapper.update(goodsmulticodeEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -136,7 +142,9 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
             ProductBarcodeEntity productBarcodeEntity = JSONObject.parseObject(sourceData, ProductBarcodeEntity.class);
             productBarcodeEntity.setSyncTime(LocalDateTime.now());
             productBarcodeEntity.setSyncFlag("0");
-            productBarcodeMapper.updateById(productBarcodeEntity);
+            QueryWrapper<ProductBarcodeEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("proid",productBarcodeEntity.getProid());
+            productBarcodeMapper.update(productBarcodeEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

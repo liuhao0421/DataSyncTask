@@ -3,10 +3,7 @@ package com.liuhao.datasynctask.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.liuhao.datasynctask.entity.PosPayFlowEntity;
-import com.liuhao.datasynctask.entity.SaleGoodsSummaryEntity;
-import com.liuhao.datasynctask.entity.SalePaymodeEntity;
-import com.liuhao.datasynctask.entity.SaleProidSummaryEntity;
+import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.PosPayFlowMapper;
 import com.liuhao.datasynctask.mapper.SaleGoodsSummaryMapper;
@@ -54,7 +51,11 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             //将读取了的数据，做标志
             for (SaleProidSummaryEntity saleProidSummaryEntity : saleProidSummaryEntityList) {
                 saleProidSummaryEntity.setSyncFlag("1");
-                saleProidSummaryMapper.updateById(saleProidSummaryEntity);
+                QueryWrapper<SaleProidSummaryEntity> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("braid",saleProidSummaryEntity.getBraid());
+                queryWrapper.eq("saledate",saleProidSummaryEntity.getSaledate());
+                queryWrapper.eq("proid",saleProidSummaryEntity.getProid());
+                saleProidSummaryMapper.update(saleProidSummaryEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -72,6 +73,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
         try{
             SaleProidSummaryEntity saleProidSummaryEntity  = JSONObject.parseObject(sourceData, SaleProidSummaryEntity.class);
             QueryWrapper<SaleGoodsSummaryEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("storeId",saleProidSummaryEntity.getBraid());
             queryWrapper.eq("goodsId",saleProidSummaryEntity.getProid());
             queryWrapper.eq("saledate",saleProidSummaryEntity.getSaledate());
@@ -105,7 +107,7 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             saleGoodsSummaryEntity.setRetRate(saleProidSummaryEntity.getReturnrat());
             saleGoodsSummaryEntity.setSaleQty(saleProidSummaryEntity.getSaleqty());
             saleGoodsSummaryEntity.setSaleAmt(saleProidSummaryEntity.getSaleamt());
-            saleGoodsSummaryEntity.setSalePrice("");//无值，传空
+            saleGoodsSummaryEntity.setSalePrice(null);//无值，传空
             saleGoodsSummaryEntity.setAvgSalePrice(saleProidSummaryEntity.getAvgsaleprice());
             saleGoodsSummaryEntity.setSaleCostPrice(saleProidSummaryEntity.getSalecostprice());
             saleGoodsSummaryEntity.setSaleCostAmt(saleProidSummaryEntity.getSalecostamt());
@@ -140,7 +142,12 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
         try{
             SaleGoodsSummaryEntity saleGoodsSummaryEntity = JSONObject.parseObject(sourceData, SaleGoodsSummaryEntity.class);
             saleGoodsSummaryEntity.setSyncTime(LocalDateTime.now());
-            saleGoodsSummaryMapper.updateById(saleGoodsSummaryEntity);
+            QueryWrapper<SaleGoodsSummaryEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",saleGoodsSummaryEntity.getCompanyId());
+            queryWrapper.eq("storeId",saleGoodsSummaryEntity.getStoreId());
+            queryWrapper.eq("goodsId",saleGoodsSummaryEntity.getGoodsId());
+            queryWrapper.eq("saledate",saleGoodsSummaryEntity.getSaledate());
+            saleGoodsSummaryMapper.update(saleGoodsSummaryEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -156,7 +163,11 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             SaleProidSummaryEntity saleProidSummaryEntity = JSONObject.parseObject(sourceData, SaleProidSummaryEntity.class);
             saleProidSummaryEntity.setSyncTime(LocalDateTime.now());
             saleProidSummaryEntity.setSyncFlag("0");
-            saleProidSummaryMapper.updateById(saleProidSummaryEntity);
+            QueryWrapper<SaleProidSummaryEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("braid",saleProidSummaryEntity.getBraid());
+            queryWrapper.eq("saledate",saleProidSummaryEntity.getSaledate());
+            queryWrapper.eq("proid",saleProidSummaryEntity.getProid());
+            saleProidSummaryMapper.update(saleProidSummaryEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

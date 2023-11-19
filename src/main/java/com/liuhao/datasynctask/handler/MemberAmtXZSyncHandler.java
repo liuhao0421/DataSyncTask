@@ -27,8 +27,15 @@ public class MemberAmtXZSyncHandler {
                 if(sourceData!=null){
                     List<MemberAmtEntity> memberAmtEntityList = JSONObject.parseArray(sourceData, MemberAmtEntity.class);
                     for (MemberAmtEntity memberAmtEntity : memberAmtEntityList) {
-                        String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberAmtEntity));
-                        dataSyncService.updateSourceData(syncedData);
+                        String result = dataSyncService.selectIsExist(JSONObject.toJSONString(memberAmtEntity));
+                        if(result==null||result.length()==0){
+                            //目标表中没有该条数据，进行插入操作
+                            String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberAmtEntity));
+                            dataSyncService.updateSourceData(syncedData);
+                        }else{
+                            //重复的跳过，将sync_flag重新置为0以及更新sync_time
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(memberAmtEntity));
+                        }
                     }
                 }else{
                     log.info("member_amt_test无新增数据！！！！！！！");

@@ -3,10 +3,7 @@ package com.liuhao.datasynctask.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.liuhao.datasynctask.entity.SaleGoodsSummaryEntity;
-import com.liuhao.datasynctask.entity.SaleProidSummaryEntity;
-import com.liuhao.datasynctask.entity.SysUsersEntity;
-import com.liuhao.datasynctask.entity.SysUsersEntitySQLserver;
+import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.SaleGoodsSummaryMapper;
 import com.liuhao.datasynctask.mapper.SaleProidSummaryMapper;
@@ -54,7 +51,9 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
             //将读取了的数据，做标志
             for (SysUsersEntitySQLserver sysUsersEntitySQLserver : sysUsersEntitySQLserverList) {
                 sysUsersEntitySQLserver.setSyncFlag("1");
-                sysUsersMapperSQLserver.updateById(sysUsersEntitySQLserver);
+                QueryWrapper<SysUsersEntitySQLserver> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("UserId",sysUsersEntitySQLserver.getUserId());
+                sysUsersMapperSQLserver.update(sysUsersEntitySQLserver,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -72,6 +71,7 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
         try{
             SysUsersEntitySQLserver sysUsersEntitySQLserver = JSONObject.parseObject(sourceData, SysUsersEntitySQLserver.class);
             QueryWrapper<SysUsersEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("UserId",sysUsersEntitySQLserver.getUserId());
             SysUsersEntity sysUsersEntity = sysUsersMapper.selectOne(queryWrapper);
             if(sysUsersEntity==null){
@@ -131,7 +131,10 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
         try{
             SysUsersEntity sysUsersEntity = JSONObject.parseObject(sourceData, SysUsersEntity.class);
             sysUsersEntity.setSyncTime(LocalDateTime.now());
-            sysUsersMapper.updateById(sysUsersEntity);
+            QueryWrapper<SysUsersEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",sysUsersEntity.getCompanyId());
+            queryWrapper.eq("UserId",sysUsersEntity.getUserId());
+            sysUsersMapper.update(sysUsersEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -147,7 +150,9 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
             SysUsersEntitySQLserver sysUsersEntitySQLserver = JSONObject.parseObject(sourceData, SysUsersEntitySQLserver.class);
             sysUsersEntitySQLserver.setSyncTime(LocalDateTime.now());
             sysUsersEntitySQLserver.setSyncFlag("0");
-            sysUsersMapperSQLserver.updateById(sysUsersEntitySQLserver);
+            QueryWrapper<SysUsersEntitySQLserver> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("UserId",sysUsersEntitySQLserver.getUserId());
+            sysUsersMapperSQLserver.update(sysUsersEntitySQLserver,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

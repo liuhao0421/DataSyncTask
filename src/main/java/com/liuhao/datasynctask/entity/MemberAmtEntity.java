@@ -66,7 +66,7 @@ public class MemberAmtEntity implements Serializable {
 
     private String isreturned;
 
-    private String paymethod;
+    private String paymothed;
 
     private LocalDateTime syncTime;
 

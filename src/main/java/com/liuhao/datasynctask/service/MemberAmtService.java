@@ -22,4 +22,7 @@ public interface MemberAmtService extends IService<MemberAmtEntity> {
 
     //更新数据源表的更新时间
     void updateSourceData(String sourceData);
+
+    //判断目标表是否存在该记录
+    String selectIsExist(String sourceData);
 }

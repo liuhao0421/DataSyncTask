@@ -2,8 +2,11 @@ package com.liuhao.datasynctask.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.liuhao.datasynctask.entity.GoodsClassEntity;
 import com.liuhao.datasynctask.entity.MemberPointEntity;
 import com.liuhao.datasynctask.entity.MemberPointEntity;
+import com.liuhao.datasynctask.entity.ProductClassEntity;
 import com.liuhao.datasynctask.mapper.MemberPointMapper;
 import com.liuhao.datasynctask.mapper.MemberPointMapper;
 import com.liuhao.datasynctask.service.MemberPointService;
@@ -39,8 +42,12 @@ public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, Membe
             memberPointEntityList =  memberPointMapper.getData();
             //将读取了的数据，做标志
             for (MemberPointEntity memberPointEntity : memberPointEntityList) {
+                QueryWrapper<MemberPointEntity> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq("company_id",memberPointEntity.getCompanyId());
+                queryWrapper.eq("point_id",memberPointEntity.getPointId());
+                queryWrapper.eq("braid",memberPointEntity.getBraid());
                 memberPointEntity.setSyncFlag("1");
-                memberPointMapper.updateById(memberPointEntity);
+                memberPointMapper.update(memberPointEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -50,6 +57,27 @@ public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, Membe
         }else{
             return JSONObject.toJSONString(memberPointEntityList);
         }
+    }
+
+    @Override
+    @DS("mysql")
+    public String selectIsExist(String sourceData) {
+        try{
+            MemberPointEntity memberPointEntity = JSONObject.parseObject(sourceData, MemberPointEntity.class);
+            QueryWrapper<MemberPointEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",memberPointEntity.getCompanyId());
+            queryWrapper.eq("point_id",memberPointEntity.getPointId());
+            queryWrapper.eq("braid",memberPointEntity.getBraid());
+            MemberPointEntity memberPointEntityResult = memberPointMapper.selectOne(queryWrapper);
+            if(memberPointEntityResult==null){
+                return null;
+            }else{
+                return JSONObject.toJSONString(memberPointEntityResult);
+            }
+        }catch(Exception e){
+            log.error(e.getMessage());
+        }
+        return null;
     }
 
 
@@ -76,7 +104,11 @@ public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, Membe
             MemberPointEntity memberPointEntity = JSONObject.parseObject(sourceData, MemberPointEntity.class);
             memberPointEntity.setSyncTime(LocalDateTime.now());
             memberPointEntity.setSyncFlag("0");
-            memberPointMapper.updateById(memberPointEntity);
+            QueryWrapper<MemberPointEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",memberPointEntity.getCompanyId());
+            queryWrapper.eq("point_id",memberPointEntity.getPointId());
+            queryWrapper.eq("braid",memberPointEntity.getBraid());
+            memberPointMapper.update(memberPointEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

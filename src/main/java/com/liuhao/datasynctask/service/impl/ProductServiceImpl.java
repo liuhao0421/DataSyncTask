@@ -55,7 +55,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
             //将读取了的数据，做标志
             for (ProductEntity productEntity : productEntityList) {
                 productEntity.setSyncFlag("1");
-                productMapper.updateById(productEntity);
+                QueryWrapper<ProductEntity> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("proid",productEntity.getProid());
+                productMapper.update(productEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -73,6 +75,7 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
         try{
             ProductEntity productEntity = JSONObject.parseObject(sourceData, ProductEntity.class);
             QueryWrapper<GoodsEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("goodsid",productEntity.getProid());
             GoodsEntity goodsEntity = goodsMapper.selectOne(queryWrapper);
             if(goodsEntity==null){
@@ -154,7 +157,10 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
         try{
             GoodsEntity goodsEntity = JSONObject.parseObject(sourceData, GoodsEntity.class);
             goodsEntity.setSyncTime(LocalDateTime.now());
-            goodsMapper.updateById(goodsEntity);
+            QueryWrapper<GoodsEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("company_id",goodsEntity.getCompanyId());
+            queryWrapper.eq("goodsid",goodsEntity.getGoodsid());
+            goodsMapper.update(goodsEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -170,7 +176,9 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
             ProductEntity productEntity = JSONObject.parseObject(sourceData, ProductEntity.class);
             productEntity.setSyncTime(LocalDateTime.now());
             productEntity.setSyncFlag("0");
-            productMapper.updateById(productEntity);
+            QueryWrapper<ProductEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("proid",productEntity.getProid());
+            productMapper.update(productEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

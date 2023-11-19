@@ -3,10 +3,7 @@ package com.liuhao.datasynctask.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.liuhao.datasynctask.entity.PosGoodsFlowEntity;
-import com.liuhao.datasynctask.entity.PosPayFlowEntity;
-import com.liuhao.datasynctask.entity.SaleDailyEntity;
-import com.liuhao.datasynctask.entity.SalePaymodeEntity;
+import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.PosGoodsFlowMapper;
 import com.liuhao.datasynctask.mapper.PosPayFlowMapper;
@@ -54,7 +51,10 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             //将读取了的数据，做标志
             for (SalePaymodeEntity salePaymodeEntity : salePaymodeEntityList) {
                 salePaymodeEntity.setSyncFlag("1");
-                salePaymodeMapper.updateById(salePaymodeEntity);
+                QueryWrapper<SalePaymodeEntity> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("braid",salePaymodeEntity.getBraid());
+                queryWrapper.eq("saleid",salePaymodeEntity.getSaleid());
+                salePaymodeMapper.update(salePaymodeEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -72,6 +72,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
         try{
             SalePaymodeEntity salePaymodeEntity = JSONObject.parseObject(sourceData, SalePaymodeEntity.class);
             QueryWrapper<PosPayFlowEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("storeid",salePaymodeEntity.getBraid());
             queryWrapper.eq("saleId",salePaymodeEntity.getSaleid());
             PosPayFlowEntity posPayFlowEntity = posPayFlowMapper.selectOne(queryWrapper);
@@ -143,7 +144,11 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
         try{
             PosPayFlowEntity posPayFlowEntity = JSONObject.parseObject(sourceData, PosPayFlowEntity.class);
             posPayFlowEntity.setSyncTime(LocalDateTime.now());
-            posPayFlowMapper.updateById(posPayFlowEntity);
+            QueryWrapper<PosPayFlowEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",posPayFlowEntity.getCompanyId());
+            queryWrapper.eq("storeid",posPayFlowEntity.getStoreid());
+            queryWrapper.eq("saleId",posPayFlowEntity.getSaleId());
+            posPayFlowMapper.update(posPayFlowEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -159,7 +164,10 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             SalePaymodeEntity salePaymodeEntity = JSONObject.parseObject(sourceData, SalePaymodeEntity.class);
             salePaymodeEntity.setSyncTime(LocalDateTime.now());
             salePaymodeEntity.setSyncFlag("0");
-            salePaymodeMapper.updateById(salePaymodeEntity);
+            QueryWrapper<SalePaymodeEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("braid",salePaymodeEntity.getBraid());
+            queryWrapper.eq("saleid",salePaymodeEntity.getSaleid());
+            salePaymodeMapper.update(salePaymodeEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

@@ -50,7 +50,11 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
             //将读取了的数据，做标志
             for (VCouponListUpEntity vCouponListUpEntity : vCouponListUpEntityList) {
                 vCouponListUpEntity.setSyncFlag("1");
-                vCouponListUpMapper.updateById(vCouponListUpEntity);
+                QueryWrapper<VCouponListUpEntity> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq("appid",vCouponListUpEntity.getAppid());
+                queryWrapper.eq("couponid",vCouponListUpEntity.getCouponid());
+                queryWrapper.eq("pcashvalue",vCouponListUpEntity.getPcashvalue());
+                vCouponListUpMapper.update(vCouponListUpEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -70,6 +74,7 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
             QueryWrapper<RedEnvelopeEntity> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("appid",vCouponListUpEntity.getAppid());
             queryWrapper.eq("cardid",vCouponListUpEntity.getCouponid());
+            queryWrapper.eq("envelope_amt",vCouponListUpEntity.getPcashvalue());
             RedEnvelopeEntity redEnvelopeEntity = redEnvelopeMapper.selectOne(queryWrapper);
             if(redEnvelopeEntity==null){
                 return null;
@@ -125,7 +130,11 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
         try{
             RedEnvelopeEntity redEnvelopeEntity = JSONObject.parseObject(sourceData, RedEnvelopeEntity.class);
             redEnvelopeEntity.setSyncTime(LocalDateTime.now());
-            redEnvelopeMapper.updateById(redEnvelopeEntity);
+            QueryWrapper<RedEnvelopeEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("appid",redEnvelopeEntity.getAppid());
+            queryWrapper.eq("cardid",redEnvelopeEntity.getCardid());
+            queryWrapper.eq("envelope_amt",redEnvelopeEntity.getEnvelopeAmt());
+            redEnvelopeMapper.update(redEnvelopeEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -141,7 +150,11 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
             VCouponListUpEntity vCouponListUpEntity = JSONObject.parseObject(sourceData, VCouponListUpEntity.class);
             vCouponListUpEntity.setSyncTime(LocalDateTime.now());
             vCouponListUpEntity.setSyncFlag("0");
-            vCouponListUpMapper.updateById(vCouponListUpEntity);
+            QueryWrapper<VCouponListUpEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("appid",vCouponListUpEntity.getAppid());
+            queryWrapper.eq("couponid",vCouponListUpEntity.getCouponid());
+            queryWrapper.eq("pcashvalue",vCouponListUpEntity.getPcashvalue());
+            vCouponListUpMapper.update(vCouponListUpEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

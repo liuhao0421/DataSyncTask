@@ -3,10 +3,7 @@ package com.liuhao.datasynctask.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.liuhao.datasynctask.entity.GoodsmulticodeEntity;
-import com.liuhao.datasynctask.entity.GoodssupplierEntity;
-import com.liuhao.datasynctask.entity.ProductBarcodeEntity;
-import com.liuhao.datasynctask.entity.SupplierEntity;
+import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.GoodsmulticodeMapper;
 import com.liuhao.datasynctask.mapper.GoodssupplierMapper;
@@ -54,7 +51,9 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
             //将读取了的数据，做标志
             for (SupplierEntity supplierEntity : supplierEntityList) {
                 supplierEntity.setSyncFlag("1");
-                supplierMapper.updateById(supplierEntity);
+                QueryWrapper<SupplierEntity> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("supid",supplierEntity.getSupid());
+                supplierMapper.update(supplierEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -72,6 +71,7 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
         try{
             SupplierEntity supplierEntity = JSONObject.parseObject(sourceData, SupplierEntity.class);
             QueryWrapper<GoodssupplierEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("supId",supplierEntity.getSupid());
             GoodssupplierEntity goodssupplierEntity = goodssupplierMapper.selectOne(queryWrapper);
             if(goodssupplierEntity==null){
@@ -140,7 +140,10 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
         try{
             GoodssupplierEntity goodssupplierEntity = JSONObject.parseObject(sourceData, GoodssupplierEntity.class);
             goodssupplierEntity.setSyncTime(LocalDateTime.now());
-            goodssupplierMapper.updateById(goodssupplierEntity);
+            QueryWrapper<GoodssupplierEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",goodssupplierEntity.getCompanyId());
+            queryWrapper.eq("supId",goodssupplierEntity.getSupId());
+            goodssupplierMapper.update(goodssupplierEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -156,7 +159,9 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
             SupplierEntity supplierEntity = JSONObject.parseObject(sourceData, SupplierEntity.class);
             supplierEntity.setSyncTime(LocalDateTime.now());
             supplierEntity.setSyncFlag("0");
-            supplierMapper.updateById(supplierEntity);
+            QueryWrapper<SupplierEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("supid",supplierEntity.getSupid());
+            supplierMapper.update(supplierEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

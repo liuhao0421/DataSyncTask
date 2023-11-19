@@ -3,10 +3,7 @@ package com.liuhao.datasynctask.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.liuhao.datasynctask.entity.GoodsClassEntity;
-import com.liuhao.datasynctask.entity.GoodssupplierEntity;
-import com.liuhao.datasynctask.entity.ProductClassEntity;
-import com.liuhao.datasynctask.entity.SupplierEntity;
+import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.GoodsClassMapper;
 import com.liuhao.datasynctask.mapper.GoodssupplierMapper;
@@ -54,7 +51,9 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
             //将读取了的数据，做标志
             for (ProductClassEntity productClassEntity : productClassEntityList) {
                 productClassEntity.setSyncFlag("1");
-                productClassMapper.updateById(productClassEntity);
+                QueryWrapper<ProductClassEntity> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("classid",productClassEntity.getClassid());
+                productClassMapper.update(productClassEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -72,6 +71,7 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
         try{
             ProductClassEntity productClassEntity = JSONObject.parseObject(sourceData, ProductClassEntity.class);
             QueryWrapper<GoodsClassEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("ClassId",productClassEntity.getClassid());
             GoodsClassEntity goodsClassEntity = goodsClassMapper.selectOne(queryWrapper);
             if(goodsClassEntity==null){
@@ -124,7 +124,10 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
         try{
             GoodsClassEntity goodsClassEntity = JSONObject.parseObject(sourceData, GoodsClassEntity.class);
             goodsClassEntity.setSyncTime(LocalDateTime.now());
-            goodsClassMapper.updateById(goodsClassEntity);
+            QueryWrapper<GoodsClassEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",goodsClassEntity.getCompanyId());
+            queryWrapper.eq("ClassId",goodsClassEntity.getClassId());
+            goodsClassMapper.update(goodsClassEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -140,7 +143,9 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
             ProductClassEntity productClassEntity = JSONObject.parseObject(sourceData, ProductClassEntity.class);
             productClassEntity.setSyncTime(LocalDateTime.now());
             productClassEntity.setSyncFlag("0");
-            productClassMapper.updateById(productClassEntity);
+            QueryWrapper<ProductClassEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("classid",productClassEntity.getClassid());
+            productClassMapper.update(productClassEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }

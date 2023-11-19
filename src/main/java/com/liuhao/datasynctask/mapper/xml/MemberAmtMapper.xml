@@ -24,14 +24,14 @@
         <result column="create_time" property="createTime" />
         <result column="comment" property="comment" />
         <result column="isreturned" property="isreturned" />
-        <result column="paymethod" property="paymethod" />
+        <result column="paymothed" property="paymothed" />
         <result column="sync_time" property="syncTime" />
         <result column="sync_flag" property="syncFlag" />
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        company_id, amt_id, mem_id, card_id, braid, appid, appname, card_from, adjust_type, oldamount, amount, preferential_type, preferential_amount, pay, balance, amount_id, create_by, create_time, comment, isreturned, paymethod, sync_time, sync_flag
+        company_id, amt_id, mem_id, card_id, braid, appid, appname, card_from, adjust_type, oldamount, amount, preferential_type, preferential_amount, pay, balance, amount_id, create_by, create_time, comment, isreturned, paymothed, sync_time, sync_flag
     </sql>
 
 </mapper>

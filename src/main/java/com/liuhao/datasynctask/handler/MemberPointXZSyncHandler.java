@@ -27,8 +27,15 @@ public class MemberPointXZSyncHandler {
                 if(sourceData!=null){
                     List<MemberPointEntity> memberPointEntityList = JSONObject.parseArray(sourceData, MemberPointEntity.class);
                     for (MemberPointEntity memberPointEntity : memberPointEntityList) {
-                        String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberPointEntity));
-                        dataSyncService.updateSourceData(syncedData);
+                        String result = dataSyncService.selectIsExist(JSONObject.toJSONString(memberPointEntity));
+                        if(result==null||result.length()==0){
+                            //目标表中没有该条数据，进行插入操作
+                            String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberPointEntity));
+                            dataSyncService.updateSourceData(syncedData);
+                        }else{
+                            //重复的跳过，将sync_flag重新置为0以及更新sync_time
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(memberPointEntity));
+                        }
                     }
                 }else{
                     log.info("member_point无新增数据！！！！！！！");

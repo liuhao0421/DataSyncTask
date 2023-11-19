@@ -3,10 +3,7 @@ package com.liuhao.datasynctask.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.liuhao.datasynctask.entity.GoodsClassEntity;
-import com.liuhao.datasynctask.entity.PosGoodsFlowEntity;
-import com.liuhao.datasynctask.entity.ProductClassEntity;
-import com.liuhao.datasynctask.entity.SaleDailyEntity;
+import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.handler.BeginHandler;
 import com.liuhao.datasynctask.mapper.GoodsClassMapper;
 import com.liuhao.datasynctask.mapper.PosGoodsFlowMapper;
@@ -54,7 +51,12 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
             //将读取了的数据，做标志
             for (SaleDailyEntity saleDailyEntity : saleDailyEntityList) {
                 saleDailyEntity.setSyncFlag("1");
-                saleDailyMapper.updateById(saleDailyEntity);
+                QueryWrapper<SaleDailyEntity> queryWrapper = new QueryWrapper();
+                queryWrapper.eq("braid",saleDailyEntity.getBraid());
+                queryWrapper.eq("saleid",saleDailyEntity.getSaleid());
+                queryWrapper.eq("batch",saleDailyEntity.getBatch());
+                queryWrapper.eq("proid",saleDailyEntity.getProid());
+                saleDailyMapper.update(saleDailyEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -72,6 +74,7 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
         try{
             SaleDailyEntity saleDailyEntity = JSONObject.parseObject(sourceData, SaleDailyEntity.class);
             QueryWrapper<PosGoodsFlowEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("storeId",saleDailyEntity.getBraid());
             queryWrapper.eq("saleId",saleDailyEntity.getSaleid());
             queryWrapper.eq("batchid",saleDailyEntity.getBatch());
@@ -161,7 +164,13 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
         try{
             PosGoodsFlowEntity posGoodsFlowEntity = JSONObject.parseObject(sourceData, PosGoodsFlowEntity.class);
             posGoodsFlowEntity.setSyncTime(LocalDateTime.now());
-            posGoodsFlowMapper.updateById(posGoodsFlowEntity);
+            QueryWrapper<PosGoodsFlowEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("company_id",posGoodsFlowEntity.getCompanyId());
+            queryWrapper.eq("storeId",posGoodsFlowEntity.getStoreId());
+            queryWrapper.eq("saleId",posGoodsFlowEntity.getSaleId());
+            queryWrapper.eq("batchid",posGoodsFlowEntity.getBatchid());
+            queryWrapper.eq("goodsId",posGoodsFlowEntity.getGoodsId());
+            posGoodsFlowMapper.update(posGoodsFlowEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
@@ -177,7 +186,12 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
             SaleDailyEntity saleDailyEntity = JSONObject.parseObject(sourceData, SaleDailyEntity.class);
             saleDailyEntity.setSyncTime(LocalDateTime.now());
             saleDailyEntity.setSyncFlag("0");
-            saleDailyMapper.updateById(saleDailyEntity);
+            QueryWrapper<SaleDailyEntity> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("braid",saleDailyEntity.getBraid());
+            queryWrapper.eq("saleid",saleDailyEntity.getSaleid());
+            queryWrapper.eq("batch",saleDailyEntity.getBatch());
+            queryWrapper.eq("proid",saleDailyEntity.getProid());
+            saleDailyMapper.update(saleDailyEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
