@@ -5,7 +5,7 @@ logging:
     path: ./logs
     name: ./logs/DataSyncTask.logs
   level:
-    root: info
+    root: error
 
 
 spring:
@@ -22,6 +22,21 @@ spring:
           username: sa
           password: smf2020-
           driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+debezium:
+  database:
+    - name: wx
+      enabled: true
+      serverId: 1
+      host: 116.62.188.148
+      port: 3306
+      username: root
+      password: smf2020-
+      offset-path: offset.dat
+      history-path: dbhistory.dat
+      table:
+        - wx.member_card
+
 
 mybatis-plus:
   global-config:
@@ -54,3 +69,5 @@ wechat:
   getDepartmentListUrl: https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token=ACCESS_TOKEN
   #获取部门成员详情地址(企业微信api地址)
   getUserListUrl: https://qyapi.weixin.qq.com/cgi-bin/user/list
+
+

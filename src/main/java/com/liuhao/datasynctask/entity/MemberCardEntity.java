@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("member_card_test")
+@TableName("member_card")
 public class MemberCardEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -154,5 +154,55 @@ public class MemberCardEntity implements Serializable {
 
     private String syncFlag;
 
-
+    @Override
+    public String toString() {
+        return "MemberCardEntity{" +
+                "memId='" + memId + '\'' +
+                ", cardId='" + cardId + '\'' +
+                ", companyId=" + companyId +
+                ", sourceId=" + sourceId +
+                ", braid='" + braid + '\'' +
+                ", cardFrom='" + cardFrom + '\'' +
+                ", cardStatus='" + cardStatus + '\'' +
+                ", appid='" + appid + '\'' +
+                ", appname='" + appname + '\'' +
+                ", cardType='" + cardType + '\'' +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", nation='" + nation + '\'' +
+                ", birthday=" + birthday +
+                ", idcardAddress='" + idcardAddress + '\'' +
+                ", address='" + address + '\'' +
+                ", idcardno='" + idcardno + '\'' +
+                ", occupation='" + occupation + '\'' +
+                ", phone1='" + phone1 + '\'' +
+                ", phone2='" + phone2 + '\'' +
+                ", totalcredit=" + totalcredit +
+                ", totaldebit=" + totaldebit +
+                ", balance=" + balance +
+                ", debitnumber=" + debitnumber +
+                ", totalpoint=" + totalpoint +
+                ", exchangepoint=" + exchangepoint +
+                ", overduepoint=" + overduepoint +
+                ", usefulpoint=" + usefulpoint +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", comment='" + comment + '\'' +
+                ", openid='" + openid + '\'' +
+                ", province='" + province + '\'' +
+                ", city='" + city + '\'' +
+                ", county='" + county + '\'' +
+                ", validTime=" + validTime +
+                ", initpoint=" + initpoint +
+                ", userSalt='" + userSalt + '\'' +
+                ", shareCode='" + shareCode + '\'' +
+                ", inviteMemId='" + inviteMemId + '\'' +
+                ", userpwd='" + userpwd + '\'' +
+                ", pwdenabled='" + pwdenabled + '\'' +
+                ", syncTime=" + syncTime +
+                ", syncFlag='" + syncFlag + '\'' +
+                '}';
+    }
 }

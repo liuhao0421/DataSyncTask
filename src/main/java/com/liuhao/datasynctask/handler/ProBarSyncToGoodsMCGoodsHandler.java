@@ -53,6 +53,7 @@ public class ProBarSyncToGoodsMCGoodsHandler {
                             goodsmulticodeEntity.setUpdateDate(productBarcodeEntity.getUpdatedate());
                             goodsmulticodeEntity.setBarType(productBarcodeEntity.getBarmode());
                             goodsmulticodeEntity.setSyncFlag(productBarcodeEntity.getSyncFlag());
+                            goodsmulticodeEntity.setSyncTime(LocalDateTime.now());
                             dataSyncService.updateTargetData(JSONObject.toJSONString(goodsmulticodeEntity));
                             dataSyncService.updateSourceData(JSONObject.toJSONString(productBarcodeEntity));
                         }

@@ -1,12 +1,10 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liuhao.datasynctask.entity.PosGoodsFlowEntity;
-import com.liuhao.datasynctask.entity.PosPayFlowEntity;
-import com.liuhao.datasynctask.entity.SaleDailyEntity;
-import com.liuhao.datasynctask.entity.SalePaymodeEntity;
+import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.service.SaleDailyService;
 import com.liuhao.datasynctask.service.SalePaymodeService;
+import com.liuhao.datasynctask.service.SaleProidSummaryService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +54,7 @@ public class SalePToPosPFHandler {
                             posPayFlowEntity.setNetStatus(salePaymodeEntity.getSendflag());
                             posPayFlowEntity.setPosno(salePaymodeEntity.getPosno());
                             posPayFlowEntity.setCashierId(salePaymodeEntity.getSalerid());
-                            posPayFlowEntity.setMemId("");//无值，传空
+                            posPayFlowEntity.setMemId(salePaymodeEntity.getMemId());//无值，传空
                             posPayFlowEntity.setSaleAmt(salePaymodeEntity.getSaleamt());
                             posPayFlowEntity.setDisAmt(salePaymodeEntity.getDisamt());
                             posPayFlowEntity.setPayAmt(salePaymodeEntity.getPayamt());
@@ -77,13 +75,14 @@ public class SalePToPosPFHandler {
                             posPayFlowEntity.setCardDisAmt(salePaymodeEntity.getIccardDisamt());
                             posPayFlowEntity.setVipBalance(salePaymodeEntity.getMembalance());
                             posPayFlowEntity.setOutTradeNo(salePaymodeEntity.getPayorderno());
+                            posPayFlowEntity.setSyncTime(LocalDateTime.now());
                             posPayFlowEntity.setSyncFlag(salePaymodeEntity.getSyncFlag());
                             dataSyncService.updateTargetData(JSONObject.toJSONString(posPayFlowEntity));
                             dataSyncService.updateSourceData(JSONObject.toJSONString(salePaymodeEntity));
                         }
                     }
                 }else{
-                    log.info("sale_paymode无需要同步的数据！！！！！！！");
+                    log.info("sale_proid_summary无需要同步的数据！！！！！！！");
                     Thread.sleep(30000);
                 }
             }

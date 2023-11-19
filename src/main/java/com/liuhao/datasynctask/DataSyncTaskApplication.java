@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 public class DataSyncTaskApplication {
     public static void main(String[] args) {
         SpringApplication.run(DataSyncTaskApplication.class, args);
-        log.info(" = = = = DataSyncTask = = = = 启动成功 ！！！");
+        log.error(" = = = = DataSyncTask = = = = 启动成功 ！！！");
     }
 
     @Bean

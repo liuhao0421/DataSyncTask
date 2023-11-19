@@ -56,6 +56,7 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
                 productBarcodeEntity.setSyncFlag("1");
                 QueryWrapper<ProductBarcodeEntity> queryWrapper = new QueryWrapper();
                 queryWrapper.eq("proid",productBarcodeEntity.getProid());
+                queryWrapper.eq("barcode",productBarcodeEntity.getBarcode());
                 productBarcodeMapper.update(productBarcodeEntity,queryWrapper);
             }
         }catch(Exception e){
@@ -76,6 +77,7 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
             QueryWrapper<GoodsmulticodeEntity> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("company_id",beginHandler.getCompanId());
             queryWrapper.eq("goodsid",productBarcodeEntity.getProid());
+            queryWrapper.eq("barcode",productBarcodeEntity.getBarcode());
             GoodsmulticodeEntity goodsmulticodeEntity = goodsmulticodeMapper.selectOne(queryWrapper);
             if(goodsmulticodeEntity==null){
                 return null;
@@ -126,6 +128,7 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
             QueryWrapper<GoodsmulticodeEntity> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("company_id",goodsmulticodeEntity.getCompanyId());
             queryWrapper.eq("goodsid",goodsmulticodeEntity.getGoodsid());
+            queryWrapper.eq("barcode",goodsmulticodeEntity.getBarcode());
             goodsmulticodeMapper.update(goodsmulticodeEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
@@ -144,6 +147,7 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
             productBarcodeEntity.setSyncFlag("0");
             QueryWrapper<ProductBarcodeEntity> queryWrapper = new QueryWrapper();
             queryWrapper.eq("proid",productBarcodeEntity.getProid());
+            queryWrapper.eq("barcode",productBarcodeEntity.getBarcode());
             productBarcodeMapper.update(productBarcodeEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());

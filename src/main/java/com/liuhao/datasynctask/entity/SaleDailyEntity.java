@@ -79,7 +79,7 @@ public class SaleDailyEntity implements Serializable {
 
     private Double points1;
 
-    private Double classid;
+    private String classid;
 
     private String brandid;
 

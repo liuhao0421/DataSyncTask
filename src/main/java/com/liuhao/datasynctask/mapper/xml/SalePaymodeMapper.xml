@@ -13,6 +13,7 @@
         <result column="sendflag" property="sendflag" />
         <result column="posno" property="posno" />
         <result column="salerid" property="salerid" />
+        <result column="memId" property="memId" />
         <result column="saleamt" property="saleamt" />
         <result column="disamt" property="disamt" />
         <result column="payamt" property="payamt" />
@@ -40,7 +41,7 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        braid, saleid, saletype, saledate, inputdate, uploaddate, sendflag, posno, salerid, saleamt, disamt, payamt, paydibs, cash, creditcard, prepaycard, mempay, shoppingticket, points, alipay, wxpay, bestpay, otheramt, othermemo, reccash, retamt, clearamt, iccard_disamt, membalance, payorderno, sync_time, sync_flag
+        braid, saleid, saletype, saledate, inputdate, uploaddate, sendflag, posno, salerid, memId, saleamt, disamt, payamt, paydibs, cash, creditcard, prepaycard, mempay, shoppingticket, points, alipay, wxpay, bestpay, otheramt, othermemo, reccash, retamt, clearamt, iccard_disamt, membalance, payorderno, sync_time, sync_flag
     </sql>
 
 </mapper>

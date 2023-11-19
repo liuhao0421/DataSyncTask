@@ -96,7 +96,7 @@ public class PosGoodsFlowEntity implements Serializable {
     @TableField("curPoint")
     private Double curPoint;
 
-    private Double classid;
+    private String classid;
 
     private String brandid;
 

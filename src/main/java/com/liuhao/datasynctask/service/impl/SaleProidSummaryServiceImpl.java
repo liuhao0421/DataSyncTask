@@ -123,8 +123,8 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             saleGoodsSummaryEntity.setVipCostAmt(saleProidSummaryEntity.getMemcostamt());
             saleGoodsSummaryEntity.setVipDisAmt(saleProidSummaryEntity.getMemdisamt());
             saleGoodsSummaryEntity.setVipProfit(saleProidSummaryEntity.getMemprofit());
-            saleGoodsSummaryEntity.setRetQty("");//无值，传空
-            saleGoodsSummaryEntity.setRetAmt("");//无值，传空
+            saleGoodsSummaryEntity.setRetQty(null);//无值，传空
+            saleGoodsSummaryEntity.setRetAmt(null);//无值，传空
             saleGoodsSummaryEntity.setSyncTime(LocalDateTime.now());
             saleGoodsSummaryEntity.setSyncFlag(saleProidSummaryEntity.getSyncFlag());
             saleGoodsSummaryMapper.insert(saleGoodsSummaryEntity);

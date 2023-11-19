@@ -1,9 +1,7 @@
 package com.liuhao.datasynctask.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.Version;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
@@ -43,6 +41,9 @@ public class SalePaymodeEntity implements Serializable {
     private String posno;
 
     private String salerid;
+
+    @TableField("memId")
+    private String memId;
 
     private String saleamt;
 

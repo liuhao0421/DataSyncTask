@@ -92,6 +92,7 @@ public class SaleDToPosGFHandler {
                             posGoodsFlowEntity.setRetAccId(saleDailyEntity.getAccreditReturn());
                             posGoodsFlowEntity.setDisAmtAccId(saleDailyEntity.getAccreditDisamt());
                             posGoodsFlowEntity.setSyncFlag(saleDailyEntity.getSyncFlag());
+                            posGoodsFlowEntity.setSyncTime(LocalDateTime.now());
                             dataSyncService.updateTargetData(JSONObject.toJSONString(posGoodsFlowEntity));
                             dataSyncService.updateSourceData(JSONObject.toJSONString(saleDailyEntity));
                         }
