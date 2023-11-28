@@ -118,4 +118,10 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
         }
         return null;
     }
+
+    @Override
+    @DS("mysql")
+    public void backSyncFalg() {
+        memberCardMapper.backSyncFalg();
+    }
 }

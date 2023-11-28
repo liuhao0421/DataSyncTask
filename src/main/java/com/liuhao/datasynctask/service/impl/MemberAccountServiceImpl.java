@@ -2,8 +2,10 @@ package com.liuhao.datasynctask.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.liuhao.datasynctask.entity.MemberAccountEntity;
 import com.liuhao.datasynctask.entity.MemberAccountEntity;
+import com.liuhao.datasynctask.entity.MemberPointEntity;
 import com.liuhao.datasynctask.mapper.MemberAccountMapper;
 import com.liuhao.datasynctask.mapper.MemberAccountMapper;
 import com.liuhao.datasynctask.service.MemberAccountService;
@@ -58,6 +60,25 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
 
 
 
+    @Override
+    @DS("mysql")
+    public String selectIsExist(String sourceData) {
+        try{
+            MemberAccountEntity memberAccountEntity = JSONObject.parseObject(sourceData, MemberAccountEntity.class);
+            QueryWrapper<MemberAccountEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("mem_id",memberAccountEntity.getMemId());
+            MemberAccountEntity MemberAccountEntityResult = memberAccountMapper.selectOne(queryWrapper);
+            if(MemberAccountEntityResult==null){
+                return null;
+            }else{
+                return JSONObject.toJSONString(MemberAccountEntityResult);
+            }
+        }catch(Exception e){
+            log.error(e.getMessage());
+        }
+        return null;
+    }
+
     //同步结束后修改数据源表的状态
     @Override
     @DS("sqlserver")
@@ -86,5 +107,25 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
             log.error(e.getMessage());
         }
         return null;
+    }
+
+    @Override
+    @DS("mysql")
+    public String pushDataToTarget(String sourceData) {
+        try{
+            MemberAccountEntity memberAccountEntity = JSONObject.parseObject(sourceData, MemberAccountEntity.class);
+            memberAccountEntity.setSyncTime(LocalDateTime.now());
+            memberAccountMapper.insert(memberAccountEntity);
+            return JSONObject.toJSONString(memberAccountEntity);
+        }catch(Exception e){
+            log.error(e.getMessage());
+        }
+        return null;
+    }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        memberAccountMapper.backSyncFalg();
     }
 }

@@ -83,6 +83,7 @@ public class SalePToPosPFHandler {
                     }
                 }else{
                     log.info("sale_proid_summary无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

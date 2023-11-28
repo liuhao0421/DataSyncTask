@@ -172,4 +172,10 @@ public class SaleProidSummaryServiceImpl extends ServiceImpl<SaleProidSummaryMap
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        saleProidSummaryMapper.backSyncFalg();
+    }
 }

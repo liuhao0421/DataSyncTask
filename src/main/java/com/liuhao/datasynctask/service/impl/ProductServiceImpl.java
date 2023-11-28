@@ -183,4 +183,10 @@ public class ProductServiceImpl extends ServiceImpl<ProductMapper, ProductEntity
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        productMapper.backSyncFalg();
+    }
 }

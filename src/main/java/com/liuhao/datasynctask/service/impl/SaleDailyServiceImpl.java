@@ -196,4 +196,10 @@ public class SaleDailyServiceImpl extends ServiceImpl<SaleDailyMapper, SaleDaily
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        saleDailyMapper.backSyncFalg();
+    }
 }

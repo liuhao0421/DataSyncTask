@@ -5,6 +5,7 @@ import com.liuhao.datasynctask.entity.SysUsersEntitySQLserver;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -20,4 +21,6 @@ import java.util.List;
 public interface SysUsersMapperSQLserver extends BaseMapper<SysUsersEntitySQLserver> {
     @Select("select TOP (1000) * from SYS_Users where (sync_flag is null OR sync_flag = 0) and (sync_time is null or sync_time < UpdateDate)")
     List<SysUsersEntitySQLserver> getData();
+    @Update("update SYS_Users set sync_flag = 0 where sync_flag = 1")
+    void backSyncFalg();
 }

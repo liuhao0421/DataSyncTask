@@ -115,4 +115,10 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
         }
     }
 
+    @Override
+    @DS("mysql")
+    public void backSyncFalg() {
+        memberAmtMapper.backSyncFalg();
+    }
+
 }

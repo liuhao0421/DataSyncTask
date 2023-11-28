@@ -5,6 +5,7 @@ import com.liuhao.datasynctask.entity.MemberPointEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -20,4 +21,7 @@ import java.util.List;
 public interface MemberPointMapper extends BaseMapper<MemberPointEntity> {
     @Select("select TOP (1000)  * from member_point where (sync_flag = 0 or sync_flag is null) and  (sync_time < create_time or sync_time is null)")
     List<MemberPointEntity> getData();
+
+    @Update("update member_point set sync_flag = 0 where sync_flag = 1")
+    void backSyncFalg();
 }

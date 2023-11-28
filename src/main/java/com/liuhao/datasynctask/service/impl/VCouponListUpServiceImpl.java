@@ -4,9 +4,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.liuhao.datasynctask.entity.MemberCardEntity;
+import com.liuhao.datasynctask.entity.PseudocashPosPrintListEntity;
 import com.liuhao.datasynctask.entity.RedEnvelopeEntity;
 import com.liuhao.datasynctask.entity.VCouponListUpEntity;
 import com.liuhao.datasynctask.mapper.MemberCardMapper;
+import com.liuhao.datasynctask.mapper.PseudocashPosPrintListMapper;
 import com.liuhao.datasynctask.mapper.RedEnvelopeMapper;
 import com.liuhao.datasynctask.mapper.VCouponListUpMapper;
 import com.liuhao.datasynctask.service.VCouponListUpService;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +38,8 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
 
     @Autowired
     private VCouponListUpMapper vCouponListUpMapper;
+    @Autowired
+    private PseudocashPosPrintListMapper pseudocashPosPrintListMapper;
 
     @Autowired
     private RedEnvelopeMapper redEnvelopeMapper;
@@ -49,12 +54,11 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
             vCouponListUpEntityList =  vCouponListUpMapper.getData();
             //将读取了的数据，做标志
             for (VCouponListUpEntity vCouponListUpEntity : vCouponListUpEntityList) {
-                vCouponListUpEntity.setSyncFlag("1");
-                QueryWrapper<VCouponListUpEntity> queryWrapper = new QueryWrapper<>();
-                queryWrapper.eq("appid",vCouponListUpEntity.getAppid());
-                queryWrapper.eq("couponid",vCouponListUpEntity.getCouponid());
-                queryWrapper.eq("pcashvalue",vCouponListUpEntity.getPcashvalue());
-                vCouponListUpMapper.update(vCouponListUpEntity,queryWrapper);
+                QueryWrapper<PseudocashPosPrintListEntity> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq("Couponid",vCouponListUpEntity.getCouponid());
+                PseudocashPosPrintListEntity pseudocashPosPrintListEntity = pseudocashPosPrintListMapper.selectList(queryWrapper).get(0);
+                pseudocashPosPrintListEntity.setSyncFlag("1");
+                pseudocashPosPrintListMapper.update(pseudocashPosPrintListEntity,queryWrapper);
             }
         }catch(Exception e){
             log.error(e.getMessage());
@@ -148,15 +152,20 @@ public class VCouponListUpServiceImpl extends ServiceImpl<VCouponListUpMapper, V
     public void updateSourceData(String sourceData) {
         try{
             VCouponListUpEntity vCouponListUpEntity = JSONObject.parseObject(sourceData, VCouponListUpEntity.class);
-            vCouponListUpEntity.setSyncTime(LocalDateTime.now());
-            vCouponListUpEntity.setSyncFlag("0");
-            QueryWrapper<VCouponListUpEntity> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("appid",vCouponListUpEntity.getAppid());
-            queryWrapper.eq("couponid",vCouponListUpEntity.getCouponid());
-            queryWrapper.eq("pcashvalue",vCouponListUpEntity.getPcashvalue());
-            vCouponListUpMapper.update(vCouponListUpEntity,queryWrapper);
+            QueryWrapper<PseudocashPosPrintListEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("Couponid",vCouponListUpEntity.getCouponid());
+            PseudocashPosPrintListEntity pseudocashPosPrintListEntity = pseudocashPosPrintListMapper.selectList(queryWrapper).get(0);
+            pseudocashPosPrintListEntity.setSyncFlag("0");
+            pseudocashPosPrintListEntity.setSyncTime(LocalDateTime.now());
+            pseudocashPosPrintListMapper.update(pseudocashPosPrintListEntity,queryWrapper);
         }catch(Exception e){
             log.error(e.getMessage());
         }
+    }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        pseudocashPosPrintListMapper.backSyncFalg();
     }
 }

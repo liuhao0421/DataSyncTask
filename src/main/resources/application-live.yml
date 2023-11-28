@@ -35,7 +35,7 @@ debezium:
       offset-path: offset.dat
       history-path: dbhistory.dat
       table:
-        - wx.member_card
+        - wx.member_card_test
 
 
 mybatis-plus:

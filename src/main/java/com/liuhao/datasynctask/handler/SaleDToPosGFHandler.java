@@ -99,6 +99,7 @@ public class SaleDToPosGFHandler {
                     }
                 }else{
                     log.info("sale_daily无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

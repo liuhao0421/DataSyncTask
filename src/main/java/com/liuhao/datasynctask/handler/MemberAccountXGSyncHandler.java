@@ -27,11 +27,20 @@ public class MemberAccountXGSyncHandler {
                 if(sourceData!=null){
                     List<MemberAccountEntity> memberAccountEntityList = JSONObject.parseArray(sourceData, MemberAccountEntity.class);
                     for (MemberAccountEntity memberAccountEntity : memberAccountEntityList) {
-                        String syncedData = dataSyncService.updateTargetData(JSONObject.toJSONString(memberAccountEntity));
-                        dataSyncService.updateSourceData(syncedData);
+                        String result = dataSyncService.selectIsExist(JSONObject.toJSONString(memberAccountEntity));
+                        if(result==null||result.length()==0){
+                            //新的，插入
+                            String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberAccountEntity));
+                            dataSyncService.updateSourceData(syncedData);
+                        }else{
+                            //已经存在的，修改
+                            String syncedData = dataSyncService.updateTargetData(JSONObject.toJSONString(memberAccountEntity));
+                            dataSyncService.updateSourceData(syncedData);
+                        }
                     }
                 }else{
                     log.info("member_account无修改数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

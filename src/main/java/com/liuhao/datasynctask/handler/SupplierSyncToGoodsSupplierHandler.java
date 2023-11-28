@@ -80,6 +80,7 @@ public class SupplierSyncToGoodsSupplierHandler {
                     }
                 }else{
                     log.info("supplier无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

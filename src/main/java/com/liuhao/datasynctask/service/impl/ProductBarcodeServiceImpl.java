@@ -153,4 +153,10 @@ public class ProductBarcodeServiceImpl extends ServiceImpl<ProductBarcodeMapper,
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        productBarcodeMapper.backSyncFalg();
+    }
 }

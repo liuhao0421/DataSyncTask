@@ -21,4 +21,11 @@ public interface MemberAccountService extends IService<MemberAccountEntity> {
 
     //将修改的数据同步到目标表
     String updateTargetData(String sourceData);
+
+    String pushDataToTarget(String sourceData);
+
+    //判断目标表是否存在该记录
+    String selectIsExist(String sourceData);
+    //恢复未同步数据
+    void backSyncFalg();
 }

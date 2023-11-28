@@ -150,4 +150,10 @@ public class ProductClassServiceImpl extends ServiceImpl<ProductClassMapper, Pro
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        productClassMapper.backSyncFalg();
+    }
 }

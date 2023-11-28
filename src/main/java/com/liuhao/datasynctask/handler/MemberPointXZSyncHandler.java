@@ -39,7 +39,9 @@ public class MemberPointXZSyncHandler {
                     }
                 }else{
                     log.info("member_point无新增数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
+
                 }
             }
         }catch (Exception e){

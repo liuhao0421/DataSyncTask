@@ -38,17 +38,17 @@ public class GeneratorUtils {
 
 
 
-    public static DataSourceConfig getDataSourceConfig(){
-        DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/data-sync-task?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&AllowPublicKeyRetrieval=True");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("rootroot");
-        dsc.setDbType(DbType.MYSQL);
-        return dsc;
-    }
+//    public static DataSourceConfig getDataSourceConfig(){
+//        DataSourceConfig dsc = new DataSourceConfig();
+//        dsc.setUrl("jdbc:mysql://localhost:3306/data-sync-task?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&AllowPublicKeyRetrieval=True");
+//        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
+//        dsc.setUsername("root");
+//        dsc.setPassword("rootroot");
+//        dsc.setDbType(DbType.MYSQL);
+//        return dsc;
+//    }
 
-/*    public static DataSourceConfig getDataSourceConfig(){
+    public static DataSourceConfig getDataSourceConfig(){
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setUrl("jdbc:sqlserver://localhost:1433;DatabaseName=sync_data");
         dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
@@ -56,7 +56,7 @@ public class GeneratorUtils {
         dsc.setPassword("Root@1234");
         dsc.setDbType(DbType.SQL_SERVER);
         return dsc;
-    }*/
+    }
 
 
     /**
@@ -124,7 +124,7 @@ public class GeneratorUtils {
         strategy.setNaming(NamingStrategy.underline_to_camel);// 下划线转驼峰命名
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
         // 设置映射的表名，多张表
-        strategy.setInclude("member_card_deleted");
+        strategy.setInclude("PseudoCash_POS_Print_List");
 
         strategy.setEntityLombokModel(true);// 是否启用lombok开启注解
         strategy.setLogicDeleteFieldName("isAction");//设置逻辑删除字段
@@ -138,16 +138,10 @@ public class GeneratorUtils {
         list.add(updateDate);
         strategy.setTableFillList(list);
 
-
-
         // 乐观锁配置
         strategy.setVersionFieldName("version");
         // rustful 格式
-
         strategy.setRestControllerStyle(true);
-
         return  strategy;
     }
-
-
 }

@@ -157,4 +157,10 @@ public class SysUsersServiceImplSQLserver extends ServiceImpl<SysUsersMapperSQLs
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        sysUsersMapperSQLserver.backSyncFalg();
+    }
 }

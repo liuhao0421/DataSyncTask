@@ -92,6 +92,7 @@ public class ProductSyncToGoodsHandler {
                     }
                 }else{
                     log.info("product无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

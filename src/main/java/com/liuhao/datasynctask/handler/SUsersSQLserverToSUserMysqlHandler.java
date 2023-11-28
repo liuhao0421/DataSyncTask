@@ -71,6 +71,7 @@ public class SUsersSQLserverToSUserMysqlHandler {
                     }
                 }else{
                     log.info("sys_users无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

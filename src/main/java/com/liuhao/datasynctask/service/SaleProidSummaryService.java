@@ -28,4 +28,7 @@ public interface SaleProidSummaryService extends IService<SaleProidSummaryEntity
 
     //更新数据源表的更新时间
     void updateSourceData(String sourceData);
+    //恢复未同步数据
+    void backSyncFalg();
+
 }

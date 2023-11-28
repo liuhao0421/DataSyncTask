@@ -113,4 +113,10 @@ public class MemberPointServiceImpl extends ServiceImpl<MemberPointMapper, Membe
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        memberPointMapper.backSyncFalg();
+    }
 }

@@ -166,4 +166,10 @@ public class SupplierServiceImpl extends ServiceImpl<SupplierMapper, SupplierEnt
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        supplierMapper.backSyncFalg();
+    }
 }

@@ -4,6 +4,7 @@ import com.liuhao.datasynctask.entity.MemberCardEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.context.annotation.Scope;
 
 import java.util.List;
@@ -24,4 +25,7 @@ public interface MemberCardMapper extends BaseMapper<MemberCardEntity> {
 
     @Select("select * from member_card_test where sync_flag = '0' and sync_time < update_time limit 1000")
     List<MemberCardEntity> getUpdateData();
+
+    @Update("update member_card_test set sync_flag = 0 where sync_flag = 1")
+    void backSyncFalg();
 }

@@ -36,7 +36,9 @@ public class MemberCardXZSyncHandler {
                     }
                 }else{
                     log.info("member_card_test无新增数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
+
                 }
             }
         }catch (Exception e){

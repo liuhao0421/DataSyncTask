@@ -29,4 +29,6 @@ public interface MemberCardService extends IService<MemberCardEntity> {
 
     //将修改的数据同步到目标表
     String updateTargetData(String sourceData);
+    //恢复未同步数据
+    void backSyncFalg();
 }

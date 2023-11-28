@@ -39,6 +39,7 @@ public class MemberAmtXZSyncHandler {
                     }
                 }else{
                     log.info("member_amt_test无新增数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

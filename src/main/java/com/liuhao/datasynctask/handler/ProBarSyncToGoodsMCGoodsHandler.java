@@ -60,7 +60,9 @@ public class ProBarSyncToGoodsMCGoodsHandler {
                     }
                 }else{
                     log.info("product_barcode无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
+
                 }
             }
         }catch (Exception e){

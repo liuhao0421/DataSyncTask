@@ -46,6 +46,7 @@ public class VCSyncToRedHandler {
                     }
                 }else{
                     log.info("v_Coupon_List_Up无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
                 }
             }

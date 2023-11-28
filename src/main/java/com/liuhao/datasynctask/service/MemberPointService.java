@@ -25,5 +25,7 @@ public interface MemberPointService extends IService<MemberPointEntity> {
 
     //判断目标表是否存在该记录
     String selectIsExist(String sourceData);
+    //恢复未同步数据
+    void backSyncFalg();
 
 }

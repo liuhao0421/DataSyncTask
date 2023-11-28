@@ -172,4 +172,10 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             log.error(e.getMessage());
         }
     }
+
+    @Override
+    @DS("sqlserver")
+    public void backSyncFalg() {
+        salePaymodeMapper.backSyncFalg();
+    }
 }

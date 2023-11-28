@@ -64,7 +64,9 @@ public class ProClassToGoodsClassHandler {
                     }
                 }else{
                     log.info("Product_Class无需要同步的数据！！！！！！！");
+                    dataSyncService.backSyncFalg();
                     Thread.sleep(30000);
+
                 }
             }
         }catch (Exception e){
