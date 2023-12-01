@@ -5,9 +5,11 @@ import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.liuhao.datasynctask.entity.MemberAccountEntity;
 import com.liuhao.datasynctask.entity.MemberAccountEntity;
+import com.liuhao.datasynctask.entity.MemberCardEntity;
 import com.liuhao.datasynctask.entity.MemberPointEntity;
 import com.liuhao.datasynctask.mapper.MemberAccountMapper;
 import com.liuhao.datasynctask.mapper.MemberAccountMapper;
+import com.liuhao.datasynctask.mapper.MemberCardMapper;
 import com.liuhao.datasynctask.service.MemberAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -32,6 +34,8 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
 
     @Autowired
     private MemberAccountMapper memberAccountMapper;
+    @Autowired
+    private MemberCardMapper memberCardMapper;
 
     
     
@@ -100,8 +104,14 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
     public String updateTargetData(String sourceData) {
         try{
             MemberAccountEntity memberAccountEntity = JSONObject.parseObject(sourceData, MemberAccountEntity.class);
-            memberAccountEntity.setSyncTime(LocalDateTime.now());
-            memberAccountMapper.updateById(memberAccountEntity);
+            QueryWrapper<MemberCardEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("mem_id",memberAccountEntity.getMemId());
+            MemberCardEntity memberCardEntity = memberCardMapper.selectOne(queryWrapper);
+            memberCardEntity.setInitpoint(memberAccountEntity.getInitpoint());
+            memberCardEntity.setTotalpoint(memberAccountEntity.getTotalpoint());
+            memberCardEntity.setUsefulpoint(memberAccountEntity.getUsefulpoint());
+            memberCardEntity.setUpdateTime(memberAccountEntity.getLastupdate());
+            memberCardMapper.updateById(memberCardEntity);
             return JSONObject.toJSONString(memberAccountEntity);
         }catch(Exception e){
             log.error(e.getMessage());

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.liuhao.datasynctask.mapper.PseudocashPosPrintListMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.liuhao.datasynctask.entity.PseudocashPosPrintListEntity">
+        <result column="braid" property="braid" />
+        <result column="PCashid" property="PCashid" />
+        <result column="pcashvalue" property="pcashvalue" />
+        <result column="POSNO" property="posno" />
+        <result column="saleid" property="saleid" />
+        <result column="salerid" property="salerid" />
+        <result column="saleamt" property="saleamt" />
+        <result column="maintext" property="maintext" />
+        <result column="printdate" property="printdate" />
+        <result column="sequenceid" property="sequenceid" />
+        <result column="reqamt" property="reqamt" />
+        <result column="Couponid" property="Couponid" />
+        <result column="status" property="status" />
+        <result column="LimitCount" property="LimitCount" />
+        <result column="UsedCount" property="UsedCount" />
+        <result column="seqamt" property="seqamt" />
+        <result column="mem_id" property="memId" />
+        <result column="formemberonly" property="formemberonly" />
+        <result column="updatedate" property="updatedate" />
+        <result column="useddate" property="useddate" />
+        <result column="limitsum" property="limitsum" />
+        <result column="pcashtype" property="pcashtype" />
+        <result column="max_amt" property="maxAmt" />
+        <result column="sync_time" property="syncTime" />
+        <result column="sync_flag" property="syncFlag" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        braid, PCashid, pcashvalue, POSNO, saleid, salerid, saleamt, maintext, printdate, sequenceid, reqamt, Couponid, status, LimitCount, UsedCount, seqamt, mem_id, formemberonly, updatedate, useddate, limitsum, pcashtype, max_amt, sync_time, sync_flag
+    </sql>
+
+</mapper>
