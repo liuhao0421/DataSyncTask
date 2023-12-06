@@ -42,7 +42,7 @@ public class SalePaymodeEntity implements Serializable {
 
     private String salerid;
 
-    @TableField("memId")
+    @TableField("mem_id")
     private String memId;
 
     private String saleamt;

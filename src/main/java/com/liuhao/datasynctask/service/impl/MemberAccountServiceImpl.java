@@ -107,12 +107,17 @@ public class MemberAccountServiceImpl extends ServiceImpl<MemberAccountMapper, M
             QueryWrapper<MemberCardEntity> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("mem_id",memberAccountEntity.getMemId());
             MemberCardEntity memberCardEntity = memberCardMapper.selectOne(queryWrapper);
-            memberCardEntity.setInitpoint(memberAccountEntity.getInitpoint());
-            memberCardEntity.setTotalpoint(memberAccountEntity.getTotalpoint());
-            memberCardEntity.setUsefulpoint(memberAccountEntity.getUsefulpoint());
-            memberCardEntity.setUpdateTime(memberAccountEntity.getLastupdate());
-            memberCardMapper.updateById(memberCardEntity);
-            return JSONObject.toJSONString(memberAccountEntity);
+            if(memberAccountEntity != null){
+                memberCardEntity.setInitpoint(memberAccountEntity.getInitpoint());
+                memberCardEntity.setTotalpoint(memberAccountEntity.getTotalpoint());
+                memberCardEntity.setUsefulpoint(memberAccountEntity.getUsefulpoint());
+                memberCardEntity.setUpdateTime(memberAccountEntity.getLastupdate());
+                memberCardMapper.updateById(memberCardEntity);
+                return JSONObject.toJSONString(memberAccountEntity);
+            }else{
+                return null;
+            }
+
         }catch(Exception e){
             log.error(e.getMessage());
         }

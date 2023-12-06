@@ -35,11 +35,11 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
     //获取数据源新增的数据
     @Override
     @DS("mysql")
-    public String getDataFromSource() {
+    public String getDataFromSource(String companyId) {
         List<MemberAmtEntity> memberAmtEntityList = null;
         try{
             //读取需要同步的数据
-            memberAmtEntityList =  memberAmtMapper.getData();
+            memberAmtEntityList =  memberAmtMapper.getData(companyId);
             //将读取了的数据，做标志
             for (MemberAmtEntity memberAmtEntity : memberAmtEntityList) {
                 QueryWrapper<MemberAmtEntity> queryWrapper = new QueryWrapper<>();
@@ -117,8 +117,8 @@ public class MemberAmtServiceImpl extends ServiceImpl<MemberAmtMapper, MemberAmt
 
     @Override
     @DS("mysql")
-    public void backSyncFalg() {
-        memberAmtMapper.backSyncFalg();
+    public void backSyncFalg(String companyId) {
+        memberAmtMapper.backSyncFalg(companyId);
     }
 
 }

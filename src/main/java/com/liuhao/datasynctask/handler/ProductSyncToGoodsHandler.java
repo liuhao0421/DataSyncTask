@@ -38,7 +38,7 @@ public class ProductSyncToGoodsHandler {
                         if(result==null||result.length()==0){
                             //目标表中没有该条数据，进行插入操作
                             String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(productEntity));
-                            dataSyncService.updateSourceData(syncedData);
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(productEntity));
                         }else{
                             //目标表中有该条数据，进行更新值操作
                             GoodsEntity goodsEntity = JSONObject.parseObject(result, GoodsEntity.class);
@@ -93,7 +93,7 @@ public class ProductSyncToGoodsHandler {
                 }else{
                     log.info("product无需要同步的数据！！！！！！！");
                     dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    Thread.sleep(450000);
                 }
             }
         }catch (Exception e){

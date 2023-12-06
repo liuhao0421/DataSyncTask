@@ -23,21 +23,32 @@ public class MemberCardXZSyncHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public MemberCardService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //新增同步
     public void syncTask(){
         try{
             while(true){
-                String sourceData = dataSyncService.getDataFromSource();
+                String sourceData = dataSyncService.getDataFromSource(beginHandler.getCompanId());
                 if(sourceData!=null){
                     List<MemberCardEntity> memberCardEntityList = JSONObject.parseArray(sourceData, MemberCardEntity.class);
                     for (MemberCardEntity memberCardEntity : memberCardEntityList) {
-                        String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberCardEntity));
-                        dataSyncService.updateSourceData(syncedData);
+                        String result = dataSyncService.selectIsExist(JSONObject.toJSONString(memberCardEntity));
+                        if(result==null||result.length()==0){
+                            //目标表中无该数据
+                            String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberCardEntity));
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(memberCardEntity));
+                        }else{
+                            //目标表中有该数据
+                            String syncedData = dataSyncService.updateTargetData(JSONObject.toJSONString(memberCardEntity));
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(memberCardEntity));
+                        }
+
                     }
                 }else{
-                    log.info("member_card_test无新增数据！！！！！！！");
-                    dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    log.info("member_card无新增数据！！！！！！！");
+                    dataSyncService.backSyncFalg(beginHandler.getCompanId());
+                    Thread.sleep(250000);
 
                 }
             }

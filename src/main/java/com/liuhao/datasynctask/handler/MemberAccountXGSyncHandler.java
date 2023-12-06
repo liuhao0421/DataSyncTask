@@ -29,12 +29,12 @@ public class MemberAccountXGSyncHandler {
                     for (MemberAccountEntity memberAccountEntity : memberAccountEntityList) {
                             //已经存在的，修改
                             String syncedData = dataSyncService.updateTargetData(JSONObject.toJSONString(memberAccountEntity));
-                            dataSyncService.updateSourceData(syncedData);
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(memberAccountEntity));
                     }
                 }else{
                     log.info("member_account无修改数据！！！！！！！");
                     dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    Thread.sleep(100000);
                 }
             }
         }catch (Exception e){

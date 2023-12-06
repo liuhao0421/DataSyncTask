@@ -1,5 +1,5 @@
 server:
-  port: 23850
+  port: 23851
 logging:
   file:
     path: ./logs
@@ -35,7 +35,7 @@ debezium:
       offset-path: offset.dat
       history-path: dbhistory.dat
       table:
-        - wx.member_card_test
+        - wx.member_card
 
 
 mybatis-plus:

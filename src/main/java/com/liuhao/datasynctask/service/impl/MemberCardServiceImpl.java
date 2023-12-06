@@ -2,7 +2,12 @@ package com.liuhao.datasynctask.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.dynamic.datasource.annotation.DS;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.liuhao.datasynctask.entity.MemberCardDeletedEntity;
 import com.liuhao.datasynctask.entity.MemberCardEntity;
+import com.liuhao.datasynctask.entity.MemberPointEntity;
+import com.liuhao.datasynctask.handler.BeginHandler;
+import com.liuhao.datasynctask.mapper.MemberCardDeletedMapper;
 import com.liuhao.datasynctask.mapper.MemberCardMapper;
 import com.liuhao.datasynctask.service.MemberCardService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -27,15 +32,19 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
 
     @Autowired
     private MemberCardMapper memberCardMapper;
+    @Autowired
+    private MemberCardDeletedMapper memberCardDeletedMapper;
+    @Autowired
+    BeginHandler beginHandler;
 
     //获取数据源修改的数据
     @Override
     @DS("mysql")
-    public String getUpdateDataFromSource() {
+    public String getUpdateDataFromSource(String companyId) {
         List<MemberCardEntity> memberCardEntityList = null;
         try{
             //读取需要同步的数据
-            memberCardEntityList =  memberCardMapper.getUpdateData();
+            memberCardEntityList =  memberCardMapper.getUpdateData(companyId);
             //将读取了的数据，做标志
             for (MemberCardEntity memberCardEntity : memberCardEntityList) {
                 memberCardEntity.setSyncFlag("1");
@@ -54,11 +63,11 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
     //获取数据源新增的数据
     @Override
     @DS("mysql")
-    public String getDataFromSource() {
+    public String getDataFromSource(String companyId) {
         List<MemberCardEntity> memberCardEntityList = null;
         try{
             //读取需要同步的数据
-            memberCardEntityList =  memberCardMapper.getData();
+            memberCardEntityList =  memberCardMapper.getData(companyId);
             //将读取了的数据，做标志
             for (MemberCardEntity memberCardEntity : memberCardEntityList) {
                 memberCardEntity.setSyncFlag("1");
@@ -72,6 +81,26 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
         }else{
             return JSONObject.toJSONString(memberCardEntityList);
         }
+    }
+
+
+    @Override
+    @DS("sqlserver")
+    public String selectIsExist(String sourceData) {
+        try{
+            MemberCardEntity memberCardEntity = JSONObject.parseObject(sourceData, MemberCardEntity.class);
+            QueryWrapper<MemberCardEntity> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("mem_id",memberCardEntity.getMemId());
+            MemberCardEntity memberCardEntityResult = memberCardMapper.selectOne(queryWrapper);
+            if(memberCardEntityResult==null){
+                return null;
+            }else{
+                return JSONObject.toJSONString(memberCardEntityResult);
+            }
+        }catch(Exception e){
+            log.error(e.getMessage());
+        }
+        return null;
     }
 
     //将新增的数据同步至目标表
@@ -121,7 +150,27 @@ public class MemberCardServiceImpl extends ServiceImpl<MemberCardMapper, MemberC
 
     @Override
     @DS("mysql")
-    public void backSyncFalg() {
-        memberCardMapper.backSyncFalg();
+    public void backSyncFalg(String companyId) {
+        memberCardMapper.backSyncFalg(companyId);
+    }
+
+    @Override
+    @DS("mysql")
+    public void beforeDelete(String Data) {
+        //在member_card_deleted表中将要删除的数据备份
+        MemberCardDeletedEntity memberCardDeletedEntity = JSONObject.parseObject(Data, MemberCardDeletedEntity.class);
+        if(beginHandler.getCompanId().equals(memberCardDeletedEntity.getCompanyId())){
+            memberCardDeletedMapper.insert(memberCardDeletedEntity);
+        }
+    }
+
+    @Override
+    @DS("sqlserver")
+    public void localDelete(String Data) {
+        //将member_card表中的该条记录删除
+        MemberCardEntity memberCardEntity = JSONObject.parseObject(Data, MemberCardEntity.class);
+        if(beginHandler.getCompanId().equals(memberCardEntity.getCompanyId())){
+            memberCardMapper.deleteById(memberCardEntity);
+        }
     }
 }

@@ -106,7 +106,7 @@ public class SalePaymodeServiceImpl extends ServiceImpl<SalePaymodeMapper, SaleP
             posPayFlowEntity.setNetStatus(salePaymodeEntity.getSendflag());
             posPayFlowEntity.setPosno(salePaymodeEntity.getPosno());
             posPayFlowEntity.setCashierId(salePaymodeEntity.getSalerid());
-            posPayFlowEntity.setMemId("");//无值，传空
+            posPayFlowEntity.setMemId(salePaymodeEntity.getMemId());//无值，传空
             posPayFlowEntity.setSaleAmt(salePaymodeEntity.getSaleamt());
             posPayFlowEntity.setDisAmt(salePaymodeEntity.getDisamt());
             posPayFlowEntity.setPayAmt(salePaymodeEntity.getPayamt());

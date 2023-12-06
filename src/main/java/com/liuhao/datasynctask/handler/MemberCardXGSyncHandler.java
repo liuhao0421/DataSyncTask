@@ -23,21 +23,23 @@ public class MemberCardXGSyncHandler{
     SendMessageServcice sendMessageServcice;
     @Autowired
     public MemberCardService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
             while(true){
-                String sourceData = dataSyncService.getUpdateDataFromSource();
+                String sourceData = dataSyncService.getUpdateDataFromSource(beginHandler.getCompanId());
                 if(sourceData!=null){
                     List<MemberCardEntity> memberCardEntityList = JSONObject.parseArray(sourceData, MemberCardEntity.class);
                     for (MemberCardEntity memberCardEntity : memberCardEntityList) {
                         String syncedData = dataSyncService.updateTargetData(JSONObject.toJSONString(memberCardEntity));
-                        dataSyncService.updateSourceData(syncedData);
+                        dataSyncService.updateSourceData(JSONObject.toJSONString(memberCardEntity));
                     }
                 }else{
-                    log.info("member_card_test无修改数据！！！！！！！");
-                    dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    log.info("member_card无修改数据！！！！！！！");
+                    dataSyncService.backSyncFalg(beginHandler.getCompanId());
+                    Thread.sleep(200000);
 
                 }
             }

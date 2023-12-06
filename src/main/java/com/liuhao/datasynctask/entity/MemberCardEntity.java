@@ -21,7 +21,7 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@TableName("member_card_test")
+@TableName("member_card")
 public class MemberCardEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;

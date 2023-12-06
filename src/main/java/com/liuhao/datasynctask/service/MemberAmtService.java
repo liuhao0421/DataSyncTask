@@ -15,7 +15,7 @@ public interface MemberAmtService extends IService<MemberAmtEntity> {
 
 
     //从数据源读取数据,并做标志位标记
-    String getDataFromSource();
+    String getDataFromSource(String companyId);
 
     //将读取的数据更新到目标数据表
     String pushDataToTarget(String sourceData);
@@ -26,5 +26,5 @@ public interface MemberAmtService extends IService<MemberAmtEntity> {
     //判断目标表是否存在该记录
     String selectIsExist(String sourceData);
     //恢复未同步数据
-    void backSyncFalg();
+    void backSyncFalg(String companyId);
 }

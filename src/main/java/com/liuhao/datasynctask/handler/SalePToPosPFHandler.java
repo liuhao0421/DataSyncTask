@@ -39,7 +39,7 @@ public class SalePToPosPFHandler {
                         if(result==null||result.length()==0){
                             //目标表中没有该条数据，进行插入操作
                             String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(salePaymodeEntity));
-                            dataSyncService.updateSourceData(syncedData);
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(salePaymodeEntity));
                         }else{
                             //目标表中有该条数据，进行更新值操作
                             PosPayFlowEntity posPayFlowEntity = JSONObject.parseObject(result, PosPayFlowEntity.class);
@@ -54,7 +54,7 @@ public class SalePToPosPFHandler {
                             posPayFlowEntity.setNetStatus(salePaymodeEntity.getSendflag());
                             posPayFlowEntity.setPosno(salePaymodeEntity.getPosno());
                             posPayFlowEntity.setCashierId(salePaymodeEntity.getSalerid());
-                            posPayFlowEntity.setMemId(salePaymodeEntity.getMemId());//无值，传空
+                            posPayFlowEntity.setMemId(salePaymodeEntity.getMemId()==null?"":salePaymodeEntity.getMemId());
                             posPayFlowEntity.setSaleAmt(salePaymodeEntity.getSaleamt());
                             posPayFlowEntity.setDisAmt(salePaymodeEntity.getDisamt());
                             posPayFlowEntity.setPayAmt(salePaymodeEntity.getPayamt());
@@ -84,7 +84,7 @@ public class SalePToPosPFHandler {
                 }else{
                     log.info("sale_proid_summary无需要同步的数据！！！！！！！");
                     dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    Thread.sleep(550000);
                 }
             }
         }catch (Exception e){

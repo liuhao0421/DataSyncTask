@@ -31,7 +31,7 @@ public class MemberPointXZSyncHandler {
                         if(result==null||result.length()==0){
                             //目标表中没有该条数据，进行插入操作
                             String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(memberPointEntity));
-                            dataSyncService.updateSourceData(syncedData);
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(memberPointEntity));
                         }else{
                             //重复的跳过，将sync_flag重新置为0以及更新sync_time
                             dataSyncService.updateSourceData(JSONObject.toJSONString(memberPointEntity));
@@ -40,7 +40,7 @@ public class MemberPointXZSyncHandler {
                 }else{
                     log.info("member_point无新增数据！！！！！！！");
                     dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    Thread.sleep(300000);
 
                 }
             }

@@ -117,33 +117,33 @@ public class BeginHandler implements ApplicationRunner,Runnable{
         try {
             String name = Thread.currentThread().getName();
             if("memberCardXZ".equals(name)){
-                url = "http://localhost:23850/dataSync/membercardinsert";
+                url = "http://localhost:23851/dataSync/membercardinsert";
             }else if("memberCardXG".equals(name)){
-                url = "http://localhost:23850/dataSync/membercardupdate";
+                url = "http://localhost:23851/dataSync/membercardupdate";
             }else if("memberAccountXG".equals(name)){
-                url = "http://localhost:23850/dataSync/membaeraccountupdate";
+                url = "http://localhost:23851/dataSync/membaeraccountupdate";
             }else if("memberPointXZ".equals(name)){
-                url = "http://localhost:23850/dataSync/memberpointinsert";
+                url = "http://localhost:23851/dataSync/memberpointinsert";
             }else if("memberAmtXZ".equals(name)){
-                url = "http://localhost:23850/dataSync/memberamtinsert";
+                url = "http://localhost:23851/dataSync/memberamtinsert";
             }else if("vcToRedSync".equals(name)){
-                url = "http://localhost:23850/dataSync/vctoredsync";
+                url = "http://localhost:23851/dataSync/vctoredsync";
             }else if("productToGoodsSync".equals(name)){
-                url = "http://localhost:23850/dataSync/producttogoodssync";
+                url = "http://localhost:23851/dataSync/producttogoodssync";
             }else if("proBarToGoodsMCSync".equals(name)){
-                url = "http://localhost:23850/dataSync/probartogoodsmcsync";
+                url = "http://localhost:23851/dataSync/probartogoodsmcsync";
             }else if("supplierToGoodsSupplierSync".equals(name)){
-                url = "http://localhost:23850/dataSync/suppliertogoodssuppliersync";
+                url = "http://localhost:23851/dataSync/suppliertogoodssuppliersync";
             }else if("proClassToGoodsClassSync".equals(name)){
-                url = "http://localhost:23850/dataSync/proclasstogoodsclasssync";
+                url = "http://localhost:23851/dataSync/proclasstogoodsclasssync";
             }else if("sDailyToPosGFSync".equals(name)){
-                url = "http://localhost:23850/dataSync/saledtoposgfsync";
+                url = "http://localhost:23851/dataSync/saledtoposgfsync";
             }else if("sPayModeToPosPFSync".equals(name)){
-                url = "http://localhost:23850/dataSync/saleptopospfsync";
+                url = "http://localhost:23851/dataSync/saleptopospfsync";
             }else if("salePSToSaleGSSync".equals(name)){
-                url = "http://localhost:23850/dataSync/salepstosalegssync";
+                url = "http://localhost:23851/dataSync/salepstosalegssync";
             }else if("sUSqlserverTosUMysqlSync".equals(name)){
-                url = "http://localhost:23850/dataSync/susqlservertosumysqlsync";
+                url = "http://localhost:23851/dataSync/susqlservertosumysqlsync";
             }
             template.postForObject(url, paramMap, String.class);
         } catch (Exception e) {

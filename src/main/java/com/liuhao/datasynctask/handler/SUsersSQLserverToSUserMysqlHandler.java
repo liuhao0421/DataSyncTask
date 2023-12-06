@@ -39,7 +39,7 @@ public class SUsersSQLserverToSUserMysqlHandler {
                         if(result==null||result.length()==0){
                             //目标表中没有该条数据，进行插入操作
                             String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(sysUsersEntitySQLserver));
-                            dataSyncService.updateSourceData(syncedData);
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(sysUsersEntitySQLserver));
                         }else{
                             //目标表中有该条数据，进行更新值操作
                             SysUsersEntity sysUsersEntity = JSONObject.parseObject(result, SysUsersEntity.class);
@@ -72,7 +72,7 @@ public class SUsersSQLserverToSUserMysqlHandler {
                 }else{
                     log.info("sys_users无需要同步的数据！！！！！！！");
                     dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    Thread.sleep(700000);
                 }
             }
         }catch (Exception e){

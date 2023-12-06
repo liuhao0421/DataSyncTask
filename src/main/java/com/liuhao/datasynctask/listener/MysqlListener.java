@@ -72,7 +72,7 @@ public class MysqlListener {
                             .table(String.valueOf(changeData.getSource().get("table")))
                             .handleType(handleType)
                             .build();
-                    if("member_card_test".equals(build.getTable())){
+                    if("member_card".equals(build.getTable())){
                         messageService.sendMessage(build);
                     }
                 }

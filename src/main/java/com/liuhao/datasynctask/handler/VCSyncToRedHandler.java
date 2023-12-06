@@ -35,7 +35,7 @@ public class VCSyncToRedHandler {
                         if(result==null||result.length()==0){
                             //目标表中没有该条数据，进行插入操作
                             String syncedData = dataSyncService.pushDataToTarget(JSONObject.toJSONString(vCouponListUpEntity));
-                            dataSyncService.updateSourceData(syncedData);
+                            dataSyncService.updateSourceData(JSONObject.toJSONString(vCouponListUpEntity));
                         }else{
                             //目标表中有该条数据，进行更新envelope_status值操作
                             RedEnvelopeEntity redEnvelopeEntity = JSONObject.parseObject(result, RedEnvelopeEntity.class);
@@ -47,7 +47,7 @@ public class VCSyncToRedHandler {
                 }else{
                     log.info("v_Coupon_List_Up无需要同步的数据！！！！！！！");
                     dataSyncService.backSyncFalg();
-                    Thread.sleep(30000);
+                    Thread.sleep(750000);
                 }
             }
         }catch (Exception e){
