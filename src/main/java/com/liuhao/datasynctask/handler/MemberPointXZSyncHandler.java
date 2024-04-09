@@ -1,6 +1,7 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.MemberPointEntity;
 import com.liuhao.datasynctask.service.MemberPointService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
@@ -19,6 +20,8 @@ public class MemberPointXZSyncHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public MemberPointService dataSyncService;
+    @Autowired
+    public BeginHandler beginHandler;
     //新增同步
     public void syncTask(){
         try{
@@ -46,7 +49,7 @@ public class MemberPointXZSyncHandler {
             }
         }catch (Exception e){
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
         }
     }
 }

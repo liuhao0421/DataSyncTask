@@ -1,6 +1,7 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.MemberAccountEntity;
 import com.liuhao.datasynctask.service.MemberAccountService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
@@ -19,6 +20,8 @@ public class MemberAccountXGSyncHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public MemberAccountService dataSyncService;
+    @Autowired
+    public BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -39,7 +42,7 @@ public class MemberAccountXGSyncHandler {
             }
         }catch (Exception e){
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步异常");
         }
     }
 }

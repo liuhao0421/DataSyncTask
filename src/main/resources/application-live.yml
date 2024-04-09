@@ -48,26 +48,4 @@ mybatis-plus:
   type-aliases-package: com.liuhao.datasynctask.entity
 
 
-wechat:
-  #企业Id
-  corpid: wwf63177e786ed5297
-  #应用私钥
-  corpsecret: flYV0dK_x0QMRsIwepCX-k37PgY-GOMvA7GXz269d0k
-  #应用ID
-  agentId: 1000003
-  #获取token地址
-  accessTokenUrl: https://qyapi.weixin.qq.com/cgi-bin/gettoken?corpid=CORPID&corpsecret=CORPSECRET
-  #发送消息地址
-  sendMessageUrl: https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=
-  #获取用户id地址
-  getUseridUrl: https://qyapi.weixin.qq.com/cgi-bin/user/getuserid?access_token=
-  #获取访问用户身份
-  getUserInfoUrl: https://qyapi.weixin.qq.com/cgi-bin/user/getuserinfo?access_token=ACCESS_TOKEN&code=CODE
-  #获取企业的jsapi_ticket
-  getJsapiTicketUrl: https://qyapi.weixin.qq.com/cgi-bin/get_jsapi_ticket?access_token=ACCESS_TOKEN
-  #获取部门列表地址(企业微信api地址)
-  getDepartmentListUrl: https://qyapi.weixin.qq.com/cgi-bin/department/list?access_token=ACCESS_TOKEN
-  #获取部门成员详情地址(企业微信api地址)
-  getUserListUrl: https://qyapi.weixin.qq.com/cgi-bin/user/list
-
 

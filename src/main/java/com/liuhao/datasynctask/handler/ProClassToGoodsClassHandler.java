@@ -1,19 +1,16 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.GoodsClassEntity;
-import com.liuhao.datasynctask.entity.GoodssupplierEntity;
 import com.liuhao.datasynctask.entity.ProductClassEntity;
-import com.liuhao.datasynctask.entity.SupplierEntity;
 import com.liuhao.datasynctask.service.ProductClassService;
-import com.liuhao.datasynctask.service.SupplierService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -71,7 +68,7 @@ public class ProClassToGoodsClassHandler {
             }
         }catch (Exception e){
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
         }
     }
 }

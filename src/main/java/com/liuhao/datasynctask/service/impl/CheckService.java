@@ -17,4 +17,8 @@ public class CheckService {
     public String getStatus(String companyId){
         return SqlRunner.db().selectOne("select company_status from company_list where company_id = "+"'"+companyId+"'").get("company_status").toString();
     }
+    @DS("mysql")
+    public String getCompanyName(String companyId){
+        return SqlRunner.db().selectOne("select company_name from company_list where company_id = "+"'"+companyId+"'").get("company_name").toString();
+    }
 }

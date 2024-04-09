@@ -1,23 +1,18 @@
 package com.liuhao.datasynctask.handler;
 
 //import com.liuhao.datasynctask.feign.LocalFeign;
-import com.baomidou.dynamic.datasource.annotation.DS;
-import com.baomidou.mybatisplus.extension.toolkit.SqlRunner;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.service.impl.CheckService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Map;
 @Slf4j
 @Component
 public class BeginHandler implements ApplicationRunner,Runnable{
@@ -27,12 +22,14 @@ public class BeginHandler implements ApplicationRunner,Runnable{
     CheckService checkService;
 
     String companyId = "";
+    String companyName = "";
 
     @Override
     public void run(ApplicationArguments args) {
 
         companyId = checkService.getCompanyId();
         String status = checkService.getStatus(companyId);
+        companyName = checkService.getCompanyName(companyId);
         if("1".equals(status)){
            log.error("当前门店的company_id是==="+ companyId+" &&& 当前门店的company_stautus是==="+status);
         BeginHandler beginHandler = new BeginHandler();
@@ -97,6 +94,7 @@ public class BeginHandler implements ApplicationRunner,Runnable{
         }else{
             log.error("当前连接的商家，连接不合法");
             log.error("当前门店的company_id是==="+ companyId+" &&& 当前门店的company_stautus是==="+status);
+            PushUtil.push(companyName+", 当前连接的商家，连接不合法");
         }
 
 
@@ -105,6 +103,9 @@ public class BeginHandler implements ApplicationRunner,Runnable{
 
     public String getCompanId(){
         return this.companyId;
+    }
+    public String getCompanName(){
+        return this.companyName;
     }
 
 
@@ -146,9 +147,10 @@ public class BeginHandler implements ApplicationRunner,Runnable{
                 url = "http://localhost:23851/dataSync/susqlservertosumysqlsync";
             }
             template.postForObject(url, paramMap, String.class);
+            PushUtil.push(companyName+", 数据同步任务启动成功");
         } catch (Exception e) {
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(companyName+", 数据同步任务启动存在异常");
         }
     }
 

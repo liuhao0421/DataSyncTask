@@ -1,11 +1,9 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liuhao.datasynctask.entity.SaleGoodsSummaryEntity;
-import com.liuhao.datasynctask.entity.SaleProidSummaryEntity;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.SysUsersEntity;
 import com.liuhao.datasynctask.entity.SysUsersEntitySQLserver;
-import com.liuhao.datasynctask.service.SaleProidSummaryService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import com.liuhao.datasynctask.service.impl.SysUsersServiceImplSQLserver;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Component
@@ -77,7 +74,7 @@ public class SUsersSQLserverToSUserMysqlHandler {
             }
         }catch (Exception e){
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
         }
     }
 }

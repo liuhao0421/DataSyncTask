@@ -1,15 +1,12 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.MemberCardEntity;
 import com.liuhao.datasynctask.service.MemberCardService;
-import com.liuhao.datasynctask.service.impl.MemberCardServiceImpl;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Order;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationArguments;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -54,7 +51,7 @@ public class MemberCardXZSyncHandler {
             }
         }catch (Exception e){
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
         }
     }
 }

@@ -1,9 +1,6 @@
 package com.liuhao.datasynctask.handler;
 
-import com.alibaba.fastjson.JSONObject;
-import com.baomidou.dynamic.datasource.annotation.DS;
-import com.liuhao.datasynctask.entity.MemberCardDeletedEntity;
-import com.liuhao.datasynctask.entity.MemberCardEntity;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.mapper.MemberCardDeletedMapper;
 import com.liuhao.datasynctask.mapper.MemberCardMapper;
 import com.liuhao.datasynctask.service.MemberCardService;
@@ -26,8 +23,12 @@ public class MemberCardDeleteHandler {
     @Autowired
     MemberCardService memberCardService;
    public void deleteFromMemberCard(String data){
-
-        memberCardService.beforeDelete(data);
-        memberCardService.localDelete(data);
+        try{
+            memberCardService.beforeDelete(data);
+            memberCardService.localDelete(data);
+        }catch(Exception e) {
+            log.error(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
+        }
     }
 }

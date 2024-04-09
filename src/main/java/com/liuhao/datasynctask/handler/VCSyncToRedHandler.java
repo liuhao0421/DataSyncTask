@@ -1,10 +1,9 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liuhao.datasynctask.entity.MemberCardEntity;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.RedEnvelopeEntity;
 import com.liuhao.datasynctask.entity.VCouponListUpEntity;
-import com.liuhao.datasynctask.service.MemberCardService;
 import com.liuhao.datasynctask.service.VCouponListUpService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
@@ -22,6 +21,8 @@ public class VCSyncToRedHandler {
     SendMessageServcice sendMessageServcice;
     @Autowired
     public VCouponListUpService dataSyncService;
+    @Autowired
+    BeginHandler beginHandler;
     //修改同步
     public void syncTask(){
         try{
@@ -52,7 +53,7 @@ public class VCSyncToRedHandler {
             }
         }catch (Exception e){
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
         }
     }
 }

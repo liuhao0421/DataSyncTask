@@ -1,11 +1,9 @@
 package com.liuhao.datasynctask.handler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.liuhao.datasynctask.entity.GoodsClassEntity;
+import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.PosGoodsFlowEntity;
-import com.liuhao.datasynctask.entity.ProductClassEntity;
 import com.liuhao.datasynctask.entity.SaleDailyEntity;
-import com.liuhao.datasynctask.service.ProductClassService;
 import com.liuhao.datasynctask.service.SaleDailyService;
 import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
@@ -105,7 +103,7 @@ public class SaleDToPosGFHandler {
             }
         }catch (Exception e){
             log.error(e.getMessage());
-            //sendMessageServcice.sendText(e.getMessage());
+            PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
         }
     }
 }
