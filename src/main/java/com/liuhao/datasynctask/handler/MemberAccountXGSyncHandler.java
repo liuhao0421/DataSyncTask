@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.MemberAccountEntity;
 import com.liuhao.datasynctask.service.MemberAccountService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,8 +15,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class MemberAccountXGSyncHandler {
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     public MemberAccountService dataSyncService;
     @Autowired

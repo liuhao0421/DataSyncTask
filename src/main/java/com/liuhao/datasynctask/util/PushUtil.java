@@ -24,7 +24,7 @@ public class PushUtil {
 
         // 推送消息
         WxMpTemplateMessage templateMessage = WxMpTemplateMessage.builder()
-                .toUser("omUfx6g2LheiAiQyGu4pmjDdRzUg")
+                .toUser("omUfx6l7uPLXXy8hgP5tAX9xH588")
                 .templateId("DMvygyEbgzvQtZa8KwxYfL1QlW64xYRPp09Ga75hbEM")
                 .build();
 

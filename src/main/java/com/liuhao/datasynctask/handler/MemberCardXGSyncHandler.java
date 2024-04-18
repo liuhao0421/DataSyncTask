@@ -4,20 +4,20 @@ import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.MemberCardEntity;
 import com.liuhao.datasynctask.service.MemberCardService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Component
 @Service
 @Slf4j
 public class MemberCardXGSyncHandler{
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     public MemberCardService dataSyncService;
     @Autowired
@@ -44,5 +44,16 @@ public class MemberCardXGSyncHandler{
             log.error(e.getMessage());
             PushUtil.push(beginHandler.getCompanName()+", 数据同步存在异常");
         }
+    }
+
+
+    @Test
+    public void test(){
+        try{
+            JSONObject.toJSONString(null);
+        }catch (Exception ex){
+            System.out.println(ex);
+        }
+
     }
 }

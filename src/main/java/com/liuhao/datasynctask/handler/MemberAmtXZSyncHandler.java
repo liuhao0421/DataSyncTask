@@ -4,9 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.MemberAmtEntity;
 import com.liuhao.datasynctask.service.MemberAmtService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -17,8 +15,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class MemberAmtXZSyncHandler {
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     public MemberAmtService dataSyncService;
     @Autowired

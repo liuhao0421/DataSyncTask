@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.SysUsersEntity;
 import com.liuhao.datasynctask.entity.SysUsersEntitySQLserver;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import com.liuhao.datasynctask.service.impl.SysUsersServiceImplSQLserver;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class SUsersSQLserverToSUserMysqlHandler {
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     public SysUsersServiceImplSQLserver dataSyncService;
     @Autowired

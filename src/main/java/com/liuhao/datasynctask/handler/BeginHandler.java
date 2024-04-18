@@ -3,7 +3,6 @@ package com.liuhao.datasynctask.handler;
 //import com.liuhao.datasynctask.feign.LocalFeign;
 import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.service.impl.CheckService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -16,8 +15,7 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 @Component
 public class BeginHandler implements ApplicationRunner,Runnable{
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     CheckService checkService;
 

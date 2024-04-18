@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.*;
 import com.liuhao.datasynctask.service.SalePaymodeService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,8 +17,7 @@ import java.util.List;
 @Slf4j
 public class SalePToPosPFHandler {
     
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     
     @Autowired
     public SalePaymodeService dataSyncService;

@@ -5,7 +5,6 @@ import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.RedEnvelopeEntity;
 import com.liuhao.datasynctask.entity.VCouponListUpEntity;
 import com.liuhao.datasynctask.service.VCouponListUpService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,8 +16,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class VCSyncToRedHandler {
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     public VCouponListUpService dataSyncService;
     @Autowired

@@ -5,7 +5,6 @@ import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.GoodsEntity;
 import com.liuhao.datasynctask.entity.ProductEntity;
 import com.liuhao.datasynctask.service.ProductService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,8 +16,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class ProductSyncToGoodsHandler {
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     public ProductService dataSyncService;
     @Autowired

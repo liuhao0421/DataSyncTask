@@ -5,7 +5,6 @@ import com.liuhao.datasynctask.util.PushUtil;
 import com.liuhao.datasynctask.entity.PosGoodsFlowEntity;
 import com.liuhao.datasynctask.entity.SaleDailyEntity;
 import com.liuhao.datasynctask.service.SaleDailyService;
-import com.liuhao.datasynctask.service.impl.SendMessageServcice;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,8 +17,7 @@ import java.util.List;
 @Service
 @Slf4j
 public class SaleDToPosGFHandler {
-    @Autowired
-    SendMessageServcice sendMessageServcice;
+    
     @Autowired
     public SaleDailyService dataSyncService;
     @Autowired
